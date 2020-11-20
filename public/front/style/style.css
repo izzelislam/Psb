@@ -1,0 +1,207 @@
+body {
+    font-family: "Roboto", sans-serif;
+}
+
+.logo {
+    width: 50%;
+}
+
+.logo-mobile {
+    width: 130px;
+}
+
+.btn-daftar {
+    background-color: #82c47c;
+    color: #fff;
+}
+
+.btn-daftar:hover {
+    background-color: #97da90;
+    transition: all 0.5;
+    color: #fff;
+}
+
+.btn-masuk {
+    background-color: #21c7d5;
+    color: #fff;
+}
+
+/* login page */
+.login {
+    width: 350px;
+    margin: auto;
+}
+
+.login-page {
+    height: 100vh;
+}
+
+.nav-bg {
+    background-color: #363f48;
+}
+
+.nav-item {
+    display: inline-block;
+    position: relative;
+}
+
+.nav-item::after {
+    content: "";
+    display: block;
+    margin: auto;
+    height: 1px;
+    width: 0px;
+    background: transparent;
+    transition: width 0.5s ease, background-color 0.5s ease;
+}
+.nav-active {
+    font-weight: bold;
+}
+
+.nav-active .nav-item::after {
+    content: "";
+    display: block;
+    margin: auto;
+    height: 1px;
+    width: 0px;
+    background: transparent;
+    transition: width 0.5s ease, background-color 0.5s ease;
+}
+
+.nav-item:hover::after {
+    width: 70%;
+    background: #fff;
+}
+
+.nav-link {
+    font-size: 10pt;
+}
+
+.bg-hero {
+    background-image: url("/front/assets/img/spalce.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.book {
+    width: 45%;
+    margin-bottom: -70px;
+}
+
+/* footer */
+.find {
+    font-size: 9pt;
+}
+
+.social a {
+    color: #363f48;
+}
+.logo-footer {
+    width: 40%;
+}
+
+/* qna */
+.card-header {
+    background-color: #fff;
+}
+
+/*  */
+.card-item {
+    background-color: #114551;
+}
+
+.color-menu {
+    color: red;
+    font-weight: 400;
+}
+
+.btn-link {
+    color: #114551;
+    text-decoration: none;
+}
+
+/* chat */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    width: 5px;
+    background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 1em;
+    background-color: #ddd;
+    outline: 1px solid slategrey;
+    border-radius: 1rem;
+}
+
+.text-small {
+    font-size: 0.9rem;
+}
+
+.messages-box,
+.chat-box {
+    height: 510px;
+    overflow-y: scroll;
+}
+
+.rounded-lg {
+    border-radius: 0.5rem;
+}
+
+input::placeholder {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+/* qna */
+.title {
+    color: #114551;
+}
+
+/* user */
+.profil {
+    line-height: 30 px;
+}
+
+/* succes */
+.success {
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* step wizard */
+
+/* form */
+b {
+    color: red;
+}
+
+.ico {
+    font-size: 1.5em;
+    color: #4caf50;
+}
+
+/* other */
+.card-1 {
+    background-color: #6c63ff;
+    border-radius: 5px;
+}
+
+.card-2 {
+    background-color: #21c7d5;
+    border-radius: 5px;
+}
+
+.card-3 {
+    background-color: #82c47c;
+    border-radius: 5px;
+}
+
+.sub-cap {
+    background-image: url("/front/assets/img/spalce.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
