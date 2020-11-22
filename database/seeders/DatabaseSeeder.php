@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             Biodata2Seeder::class,
             QnaSeeder::class,
             JadwalSeeder::class,
+            QuisSeeder::class,
+            SoalSeeder::class,
             
         ]);
     }

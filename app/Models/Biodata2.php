@@ -31,4 +31,14 @@ class Biodata2 extends Model
     {
         return $this->belongsTo(User::class,'users_id','id');
     }
+
+    public function kabupaten()
+    {
+        return $this->belongsTo(IndonesiaCity::class,'indonesia_cities_id','id');
+    }
+
+    public function provinsi()
+    {
+        return $this->belongsTo(IndonesiaProvince::class,'indonesia_provinces_id','id');
+    }
 }

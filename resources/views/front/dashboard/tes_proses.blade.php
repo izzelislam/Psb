@@ -71,26 +71,67 @@
                             </td>
                             <td>tes tahap kedua</td>
                             <td>
-                              {{-- @if ($tahap1 == 0)
-                                  <div class="badge badge-warning">
-                                    Belum mengikuti tes ini
-                                  </div>
+                              {{-- @php
+                                  dd($tahap2->status)
+                              @endphp --}}
+                              @if (empty($tahap2))
+                                <div class="badge badge-warning">
+                                  Belum mengikuti tes
+                                </div>
+                              @elseif($tahap2->status == "tidak")
+                                <div class="badge badge-danger">
+                                  Tidak Lolos
+                                </div>
+                              @elseif($tahap2->status == "lolos")
+                                <div class="badge badge-success">
+                                   Lolos
+                                </div>
                               @else
+                                 <div class="badge badge-info">
+                                   Sudah Mengikuti Tes
+                                </div>
+                              @endif
+
+                            </td>
+                            <td>
+                              @if (empty($tahap2))
+                                  <a href="{{ route('tahap-kedua') }}" class="btn btn-primary">Ikuti Tes</a>
+                              @else
+                                  <span class="btn btn-success">Sudah Di Ikuti</span>
+                              @endif
+                            </td>
+                          </tr> 
+                          @endif
+                          {{-- tahap ke tiga --}}
+                          @if (!empty($tahap2) && $tahap2->status == "lolos")
+                          <tr>
+                            <td>
+                              <div class="sort-handler">
+                                <i class="fas fa-th"></i>
+                              </div>
+                            </td>
+                            <td>tes tahap Ketiga</td>
+                            <td>
+                              {{-- @if (!empty($tahap2))
+                                  <div class="badge badge-warning">
+                                    Sudah mengikuti tes ini
+                                  </div>
+                              @elseif($tahap2->status == 'lolos')
                                   <div class="badge badge-success">
                                     Lolos
                                   </div>
+                              @else
                               @endif --}}
                               <div class="badge badge-warning">
-                                    belum mengikuti
+                                Belum mengikuti tes
                               </div>
                             </td>
                             <td>
-                              {{-- @if ($tahap1 == 0)
-                                  <a href="{{ route('tahap-pertama') }}" class="btn btn-primary">Ikuti Tes</a>
+                              @if (empty($tahap3))
+                                  <a href="{{ route('tahap-ketiga-iq') }}" class="btn btn-primary">Ikuti Tes</a>
                               @else
                                   <span class="btn btn-success">Sudah Di Ikuti</span>
-                              @endif --}}
-                              <a href="{{ route('tahap-kedua') }}" class="btn btn-primary">Ikuti tes</a>
+                              @endif
                             </td>
                           </tr> 
                           @endif

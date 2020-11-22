@@ -72,12 +72,18 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/',[AdminDashboardController::class,'index'])->name('dashboard');
     Route::get('/data-pendaftar',[DataPendaftarController::class,'index'])->name('data-pendaftar');
     Route::get('/data-pendaftar/export',[DataPendaftarController::class,'export'])->name('pendaftar-export');
-    Route::delete('/data-pendaftar/delete/{id}',[DataPendaftarController::class,'destroy'])->name('pendaftar-hapus');
+    Route::post('/data-pendaftar/delete/{id}',[DataPendaftarController::class,'destroy'])->name('pendaftar-hapus');
     Route::resource('/tahun-ajaran', TahunAjaranController::class);
     Route::post('/tahun-ajaran/aktif/{id}',[TahunAjaranController::class,'aktif'])->name('tahun-ajaran.aktif');
     Route::post('/tahun-ajaran/nonaktif/{id}',[TahunAjaranController::class,'nonaktif'])->name('tahun-ajaran.nonaktif');
     Route::resource('/qna', QnaController::class);
     Route::resource('/jadwal', JadwalController::class);
     Route::get('/status-pendaftar',[StatusPendaftarController::class,'index'])->name('status-pendaftar');
+    Route::post('/status-pendaftarlolos/{id}',[StatusPendaftarController::class,'lolos'])->name('status-pendaftar.lolos');
+    Route::post('/status-pendaftartidak/{id}',[StatusPendaftarController::class,'tidak'])->name('status-pendaftar.tidak');
+    Route::post('/status-pendaftar/bulk-action',[StatusPendaftarController::class,'lolosall'])->name('bulk-action');
+    Route::post('/status-tidaklolos',[StatusPendaftarController::class,'tidaklolos'])->name('tidak-lolos');
+    Route::post('/status-hapusall',[StatusPendaftarController::class,'hapusall'])->name('hapusall');
+    Route::get('/status-pendaftar/{id}',[StatusPendaftarController::class,'show'])->name('status-pendaftar.show');
 });
 

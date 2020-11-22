@@ -15,11 +15,16 @@ class TahunAjaran extends Model
 
     public function biodata1()
     {
-        return $this->hasMany('App\Models\Biodata1','id');
+        return $this->hasMany(Biodata1::class,'id');
     }
 
     public function biodata2()
     {
-        return $this->hasMany('App\Models\Biodata2','id');
+        return $this->hasMany(Biodata2::class,'id');
+    }
+
+    public function quis()
+    {
+        return $this->hasMany(Quis::class,'id');
     }
 }

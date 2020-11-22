@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Biodata1::class,'id');
     }
+
+    public function quis()
+    {
+        return $this->hasOne(Quis::class,'id');
+    }
 }

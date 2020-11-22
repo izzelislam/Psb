@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Faker\Factory;
 use App\Models\Biodata2;
+use App\Models\IndonesiaCity;
+use App\Models\IndonesiaProvince;
 
 class Biodata2Seeder extends Seeder
 {
@@ -19,6 +21,8 @@ class Biodata2Seeder extends Seeder
         $this->command->getOutput()->progressStart(500);
 
         $faker=Factory::create('id_ID');
+        $kota=IndonesiaCity::all()->pluck('id');
+        $kota_id=$kota->toArray();
 
         for ($i=0; $i <500 ; $i++) { 
             Biodata2::create([
@@ -28,7 +32,7 @@ class Biodata2Seeder extends Seeder
                 'tempat_lahir'=>$faker->city,
                 'alamt_lengkap'=>$faker->address,
                 'indonesia_provinces_id'=>rand(11,94),
-                'indonesia_cities_id'=>rand(1101,9419),
+                'indonesia_cities_id'=>$faker->randomElement($kota_id),
                 'facebook'=>$faker->url,
                 'instagram'=>$faker->url,
                 'pendidikan_terakhir'=>$faker->randomElement(['SMP','SMA']),
@@ -66,7 +70,7 @@ class Biodata2Seeder extends Seeder
                 'izin_ortu'=>$faker->randomElement(['iya','tidak']),
                 'punya_laptop'=>$faker->randomElement(['iya','tidak']),
                 'setuju'=>1,
-                'status'=>$faker->randomElement(['lolos','tidak']),
+                'status'=>null,
             ]);
         $this->command->getOutput()->progressAdvance();
         }
