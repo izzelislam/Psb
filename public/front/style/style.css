@@ -69,7 +69,7 @@ body {
 }
 
 .bg-hero {
-    background-image: url("/assets/img/spalce.png");
+    background-image: url("/front/assets/img/spalce.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -237,7 +237,7 @@ b {
 }
 
 .sub-cap {
-    background-image: url("/assets/img/spalce.png");
+    background-image: url("/front/assets/img/spalce.png");
     background-size: cover;
     background-repeat: no-repeat;
 }
