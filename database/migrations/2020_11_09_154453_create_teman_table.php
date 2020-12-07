@@ -15,9 +15,7 @@ class CreateTemanTable extends Migration
     {
         Schema::create('teman', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_1')->nullable();
-            $table->foreignId('user_2')->nullable();
-            $table->foreignId('chat_id');
+            $table->foreignId('users_id')->nullable();
             $table->timestamps();
         });
     }

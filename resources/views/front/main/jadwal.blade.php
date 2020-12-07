@@ -15,13 +15,21 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($jadwal as $item)
-                  <tr>
-                    <th scope="row">{{ $loop->iteration }}</th>
-                    <td class="{{ $item->tanggal > date('now') ? 'text-muted' : '' }}">{{ $item->nama_kegiatan }}</td>
-                    <td class="{{ $item->tanggal > date('now') ? 'text-muted' : '' }}">{{ $item->tanggal }}</td>
-                  </tr>
-                @endforeach
+                @if ($jadwal->count() > 0)
+                    @foreach ($jadwal as $item)
+                      <tr>
+                        <th scope="row">{{ $loop->iteration }}</th>
+                        <td class="{{ $item->tanggal < date('Y-m-d') ? 'text-danger' : 'font-weight-bold' }}">{{ $item->nama_kegiatan }}</td>
+                        <td class="{{ $item->tanggal < date('Y-m-d') ? 'text-danger' : 'font-weight-bold' }}">{{ $item->tanggal }}</td>
+                      </tr>
+                    @endforeach
+                @else
+                     <tr>
+                       <td colspan="3">
+                         <small class="text-danger">tidak ada data yang ditampilkan.</small>
+                       </td>
+                     </tr>
+                @endif
               </tbody>
             </table>
           </div>

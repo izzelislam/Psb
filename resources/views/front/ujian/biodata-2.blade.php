@@ -3,6 +3,11 @@
 @section('title','Tes Tahap Pertama')
     
 @section('content')
+    <style>
+      b{
+        color: red;
+      }
+    </style>
     <div class="container py-5">
       <div class="my-4">
         <div class="row justify-content-center px-4">
@@ -172,15 +177,14 @@
                   {{-- step 3 --}}
                   <div x-show="form_3">
                     <div class="form-group">
-                    <label for="pendidikan_terakhir">Pendidikan Terakhir<b>*</b></label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="pendidikan_terakhir"
-                      name="pendidikan_terakhir"
-                      required
-                    />
+                      <label for="exampleInputPassword1">Provinsi<b>*</b></label>
+                      <select name="pendidikan_terakhir" class="custom-select">
+													<option value="SD" >SD SEDERAJAT</option>
+													<option value="SMP" >SMP SEDERAJAT</option>
+													<option value="SMA" >SMA SEDERAJAT</option>
+                      </select>
                     </div>
+
                     <div class="form-group">
                     <label for="asal_sekolah">Asal Sekolah<b>*</b></label>
                     <input
@@ -393,6 +397,7 @@
                           id="sukagame1"
                           value="iya"
                           required
+                          x-on:click="gamer(true)"
                         />
                         <label class="form-check-label" for="sukagame1">
                           suka
@@ -405,6 +410,7 @@
                           name="suka_game"
                           id="sukagame2"
                           value="tidak"
+                          x-on:click="gamer(false)"
                           required
                         />
                         <label class="form-check-label" for="sukagame2">
@@ -412,29 +418,31 @@
                         </label>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1"
-                        >Nama Game Kesukaan</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="exampleInputPassword1"
-                        name="nama_game"
-                      />
-                      <small>Tidak di isi jika tidak suka game</small>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1"
-                        >Berapa Jam Yang Dihabiskan Untuk Main game</label
-                      >
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="exampleInputPassword1"
-                        name="waktu_game"
-                      />
-                      <small>Tidak di isi jika tidak suka game</small>
+                    <div x-show="gamer_in">
+                      <div class="form-group">
+                        <label for="exampleInputPassword1"
+                          >Nama Game Kesukaan</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="exampleInputPassword1"
+                          name="nama_game"
+                        />
+                        <small>Tidak di isi jika tidak suka game</small>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1"
+                          >Berapa Jam Yang Dihabiskan Untuk Main game</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="exampleInputPassword1"
+                          name="waktu_game"
+                        />
+                        <small>Tidak di isi jika tidak suka game</small>
+                      </div>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1"
@@ -574,7 +582,7 @@
                         >Total Penghasilan Orang Tua Perbulan<b>*</b></label
                       >
                       <input
-                        type="text"
+                        type="number"
                         class="form-control"
                         id="penghasilan_ortu"
                         name="penghasilan_ortu"
@@ -743,7 +751,6 @@
 @endsection
 @push('end-script')
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
   <script>
     function formdata(){
@@ -755,9 +762,13 @@
 					form_3:false,
 					form_4:false,
 					provin_id:null,
-					kabupatenids:[],
+          kabupatenids:[],
+          gamer_in:null,
 					
-				// method
+        // method
+        gamer(param){
+          this.gamer_in=param;
+        },
 				form1Button(){
           this.form_1=false;
           this.form_2=true;
@@ -796,89 +807,3 @@
     }
   </script>  
 @endpush
-{{-- editData(id) {
-      const data = this.articles.find((article) => article.id == id);
-      this.isEdit = true;
-      this.form = Object.assign({}, data);
-    }, --}}
-
-
-      {{-- el:'#multi-form',
-      mounted(){
-        this.getProvinsi();
-      },
-      data(){
-        return{
-          // slide
-          form_1:true,
-          form_2:false,
-          form_3:false,
-          form_4:false,
-          tes:'pak bambang',
-          // data profinsi
-          provinsis:null,
-          kabupatens:null,
-          provinsis_id:null,
-          kabupatens_id:null,
-          // data form
-          tanggal_lahir:null,
-          tempat_lahir:null,
-          alamat_lengkap:null,
-
-        }
-      },
-      methods:{
-        form1Button(){
-          this.form_1=false;
-          this.form_2=true;
-        },
-        form1ButtonBack(){
-          this.form_1=true;
-          this.form_2=false;
-        },
-        form2Button(){
-          this.form_1= false;
-          this.form_2= false;
-          this.form_3=true;
-        },
-        form2ButtonBack(){
-          this.form_1= false;
-          this.form_2= true;
-          this.form_3=false;
-        },
-        form3Button(){
-          this.form_1= false;
-          this.form_2= false;
-          this.form_3=false;
-          this.form_4=true;
-        },
-        form3ButtonBack(){
-          this.form_1=false;
-          this.form_2=false;
-          this.form_3=true;
-          this.form_4=false;
-        },
-        // axios
-        getProvinsi(){
-          var self=this;
-
-          axios.get('{{ route('provinsi') }}')
-          .then(function(response){
-            self.provinsis=response.data;
-          })
-        },
-        getKabupaten(){
-          var self=this;
-
-          axios.get('{{ url('api/kabupaten') }}/'+ self.provinsis_id)
-          .then(function(response){
-            self.kabupatens=response.data;
-          })
-        }
-      },
-      watch:{
-        provinsis_id:function(val,oldVal){
-          this.kabupatens_id=null;
-          this.getKabupaten();
-        },
-      } --}}

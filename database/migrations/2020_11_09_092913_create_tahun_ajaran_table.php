@@ -18,6 +18,7 @@ class CreateTahunAjaranTable extends Migration
             $table->string('tahun');
             $table->enum('gelombang',['gel-1','gel-2','gel-3','gel-4']);
             $table->enum('status',['aktif','tidak-aktif']);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

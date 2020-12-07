@@ -27,12 +27,22 @@ class QnaController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'pertanyaan'=>'required',
+            'jawaban'=>'required'
+        ]);
+
         Qna::create($request->all());
         return redirect()->route('qna.index')->with('sukses-buat','Data Berhasil Di Buat .');
     }
 
     public function update(Request $request,$id)        
     {
+        $request->validate([
+            'pertanyaan'=>'required',
+            'jawaban'=>'required'
+        ]);
+
         $data=Qna::find($id);
         $data->update($request->all());
 
@@ -45,5 +55,20 @@ class QnaController extends Controller
         $data->delete();
 
         return redirect()->back()->with('sukses-hapus','data berhasil di hapus');
+    }
+
+    public function hapusall(Request $request)
+    {
+        $ids=$request->get('ids');
+
+        if ($ids != null) {
+            foreach ($ids as $item) {
+                $data=Qna::find($item);
+                $data->delete();
+            }
+            return redirect()->back()->with('sukses-hapus','data berhasil di hapus');
+        }else{
+            return redirect()->back();
+        }
     }
 }

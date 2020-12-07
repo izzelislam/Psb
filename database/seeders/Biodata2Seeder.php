@@ -7,6 +7,7 @@ use Faker\Factory;
 use App\Models\Biodata2;
 use App\Models\IndonesiaCity;
 use App\Models\IndonesiaProvince;
+use App\Models\User;
 
 class Biodata2Seeder extends Seeder
 {
@@ -18,16 +19,16 @@ class Biodata2Seeder extends Seeder
     public function run()
     {
         Biodata2::truncate();
-        $this->command->getOutput()->progressStart(500);
+        $this->command->getOutput()->progressStart(200);
 
         $faker=Factory::create('id_ID');
         $kota=IndonesiaCity::all()->pluck('id');
         $kota_id=$kota->toArray();
 
-        for ($i=0; $i <500 ; $i++) { 
+        for ($i=2; $i <202 ; $i++) { 
             Biodata2::create([
-                'users_id'=>rand(1,500),
-                'tahun_ajaran_id'=>rand(1,4),
+                'users_id'=>$i,
+                'tahun_ajaran_id'=>$faker->randomElement([1,2,3,4]),
                 'tanggal_lahir'=>$faker->date('Y-m-d','2005-12-01'),
                 'tempat_lahir'=>$faker->city,
                 'alamt_lengkap'=>$faker->address,

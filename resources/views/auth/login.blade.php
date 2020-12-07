@@ -16,8 +16,7 @@
       <div class="container mt-5">
         <div class="row">
           <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
-            <div class="login-brand">
-              
+            <div class="login-brand">   
             </div>
 
             <div class="card card-primary">
@@ -34,7 +33,7 @@
                     <label for="email">Email</label>
                     <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
                     <div class="invalid-feedback">
-                      Please fill in your email
+                     Masukkan email anda
                     </div>
                   </div>
 
@@ -49,7 +48,7 @@
                     </div>
                     <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
                     <div class="invalid-feedback">
-                      please fill in your password
+                      Masukkan password anda
                     </div>
                   </div>
 
@@ -68,11 +67,11 @@
                 </form>
               </div>
             </div>
-            <div class="mt-5 text-muted text-center">
-              Don't have an account? <a href="{{ route('register') }}">Create One</a>
+            <div class="mt-3 text-muted text-center">
+              Belum Punya Akun? <a href="{{ route('register') }}">Buat</a>
             </div>
             <div class="simple-footer">
-              Copyright &copy; pondok Informatika 2020
+              Copyright &copy; pondok Informatika {{ date('Y') }}
             </div>
           </div>
         </div>

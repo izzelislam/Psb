@@ -4,27 +4,29 @@
 
 @section('title-page','Dashboard')
 
+@push('end-style')
+    <link rel="stylesheet" href="{{ asset('vendor/kalender/simple-calendar.css') }}">
+@endpush
+
 @section('bread-crumb')
     <div class="section-header-breadcrumb">
         <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-        <div class="breadcrumb-item"><a href="#">Layout</a></div>
-        <div class="breadcrumb-item">Default Layout</div>
     </div>
 @endsection
 
 @section('content')
-         <div class="row">
+          <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-primary">
-                  <i class="far fa-user"></i>
+                  <i class="fas fa-users"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Total Admin</h4>
+                    <h4>Pendaftar Gel1</h4>
                   </div>
                   <div class="card-body">
-                    10
+                    {{ App\Models\Biodata1::whereHas('tahun_ajaran',function($query){$query->where('tahun','=',date('Y'))->where('gelombang','=','gel-1');})->count() }}
                   </div>
                 </div>
               </div>
@@ -32,14 +34,14 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-danger">
-                  <i class="far fa-newspaper"></i>
+                  <i class="fas fa-users"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>News</h4>
+                    <h4>Pendaftar Gel2</h4>
                   </div>
                   <div class="card-body">
-                    42
+                    {{ App\Models\Biodata1::whereHas('tahun_ajaran',function($query){$query->where('tahun','=',date('Y'))->where('gelombang','=','gel-2');})->count() }}
                   </div>
                 </div>
               </div>
@@ -47,14 +49,14 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-warning">
-                  <i class="far fa-file"></i>
+                  <i class="fas fa-envelope-open"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Reports</h4>
+                    <h4>Pesan Masuk</h4>
                   </div>
                   <div class="card-body">
-                    1,201
+                    {{ App\Models\Teman::whereHas('chat',function($query){$query->where('read','=',null);})->count() }}
                   </div>
                 </div>
               </div>
@@ -62,14 +64,53 @@
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
                 <div class="card-icon bg-success">
-                  <i class="fas fa-circle"></i>
+                  <i class="fas fa-bacon"></i>
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Online Users</h4>
+                    <h4>Event Terlaksana</h4>
                   </div>
                   <div class="card-body">
-                    47
+                    {{ App\Models\Jadwal::where('tanggal','<',date('Y-m-d'))->count() }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            {{-- chart --}}
+            <div class="col-12 col-md-8 col-lg-8">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Chart Umur</h4>
+                </div>
+                <div class="card-body pb-5">
+                  <canvas id="myChart3"></canvas>
+                </div>
+              </div>
+            </div>
+            {{-- side --}}
+            <div class="col-lg-4 col-md-12 col-12 col-sm-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Pendaftar Terbaru</h4>
+                </div>
+                <div class="card-body">
+                  <ul class="list-unstyled list-unstyled-border">
+                    @foreach ($pendaftar_baru as $item)
+                      <li class="media">
+                        <img class="mr-3 rounded-circle" width="40" src="{{ Avatar::create($item->nama)->toGravatar(['d' => 'wavatar', 'r' => 'pg', 's' => 100])}}" alt="avatar" >
+                        <div class="media-body">
+                          <div class="float-right text-primary"><small>{{ $item->created_at->format('Y-m-d') }}</small></div>
+                          <div class="media-title"><small><strong>{{ $item->nama }}</strong></small></div>
+                        </div>
+                      </li>
+                    @endforeach
+                  </ul>
+                  <div class="text-center pt-1 pb-1">
+                    <a href="{{ route('data-pendaftar') }}" class="btn btn-primary btn-lg btn-round">
+                      View All
+                    </a>
                   </div>
                 </div>
               </div>
@@ -79,88 +120,100 @@
             <div class="col-lg-8 col-md-12 col-12 col-sm-12">
               <div class="card">
                 <div class="card-header">
-                  <h4>Statistics</h4>
-                  <div class="card-header-action">
-                    <div class="btn-group">
-                      <a href="#" class="btn btn-primary">Week</a>
-                      <a href="#" class="btn">Month</a>
+                  <h4>Daftar Kegiatan</h4>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+                        <tr>
+                          <th>No</th>
+                          <th>Nama Kegiatan</th>
+                          <th>Tanggal</th>
+                        </tr>
+                        @foreach ($jadwal as $item)
+                          <tr>
+                            <td class="p-0 text-center">
+                            <span>{{ $loop->iteration }}</span>
+                            </td>
+                            <td class="{{ $item->tanggal < date('Y-m-d') ? 'text-danger' : 'font-weight-bold' }}">{{ $item->nama_kegiatan }}</td>
+                    <td class="{{ $item->tanggal < date('Y-m-d') ? 'text-danger' : 'font-weight-bold' }}">{{ $item->tanggal }}</td>
+                          </tr>
+                        @endforeach
+                      </table>
+                      <span class="float-right mr-4 mb-3"><a href="{{ route('jadwal.index') }}" class="btn btn-sm btn-primary">Lihat Semua</a></span>
                     </div>
                   </div>
-                </div>
-                <div class="card-body">
-                  <canvas id="myChart" height="182"></canvas>
-                  <div class="statistic-details mt-sm-4">
-                    <div class="statistic-details-item">
-                      <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 7%</span>
-                      <div class="detail-value">$243</div>
-                      <div class="detail-name">Today's Sales</div>
-                    </div>
-                    <div class="statistic-details-item">
-                      <span class="text-muted"><span class="text-danger"><i class="fas fa-caret-down"></i></span> 23%</span>
-                      <div class="detail-value">$2,902</div>
-                      <div class="detail-name">This Week's Sales</div>
-                    </div>
-                    <div class="statistic-details-item">
-                      <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span>9%</span>
-                      <div class="detail-value">$12,821</div>
-                      <div class="detail-name">This Month's Sales</div>
-                    </div>
-                    <div class="statistic-details-item">
-                      <span class="text-muted"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 19%</span>
-                      <div class="detail-value">$92,142</div>
-                      <div class="detail-name">This Year's Sales</div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
             <div class="col-lg-4 col-md-12 col-12 col-sm-12">
               <div class="card">
-                <div class="card-header">
-                  <h4>Recent Activities</h4>
-                </div>
-                <div class="card-body">
-                  <ul class="list-unstyled list-unstyled-border">
-                    <li class="media">
-                      <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-1.png" alt="avatar">
-                      <div class="media-body">
-                        <div class="float-right text-primary">Now</div>
-                        <div class="media-title">Farhan A Mujib</div>
-                        <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
-                      </div>
-                    </li>
-                    <li class="media">
-                      <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-2.png" alt="avatar">
-                      <div class="media-body">
-                        <div class="float-right">12m</div>
-                        <div class="media-title">Ujang Maman</div>
-                        <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
-                      </div>
-                    </li>
-                    <li class="media">
-                      <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-3.png" alt="avatar">
-                      <div class="media-body">
-                        <div class="float-right">17m</div>
-                        <div class="media-title">Rizal Fakhri</div>
-                        <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
-                      </div>
-                    </li>
-                    <li class="media">
-                      <img class="mr-3 rounded-circle" width="50" src="../assets/img/avatar/avatar-4.png" alt="avatar">
-                      <div class="media-body">
-                        <div class="float-right">21m</div>
-                        <div class="media-title">Alfa Zulkarnain</div>
-                        <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
-                      </div>
-                    </li>
-                  </ul>
-                  <div class="text-center pt-1 pb-1">
-                    <a href="#" class="btn btn-primary btn-lg btn-round">
-                      View All
-                    </a>
-                  </div>
+                <div class="card-body" id="kalender">
                 </div>
               </div>
             </div>
           </div>
 @endsection
+@push('end-script')
+     <script src="{{ asset('stisla/node_modules/chart.js/dist/Chart.min.js') }}"></script>
+     <script src="{{ asset('vendor/kalender/jquery.simple-calendar.min.js') }}"></script>
+     
+     <script>
+      $(function(){
+        $("#kalender").simpleCalendar(
+          {
+            months: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+            days: ['Ahad', 'Senin', 'Selesa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],
+            displayYear: true,
+            fixedStartDay: true,
+            disableEventDetails: true,
+            disableEmptyDetails: true 
+	        }
+        );
+      });       
+     </script>
+
+     <script>
+       var ctx = document.getElementById("myChart3").getContext('2d');
+        var myChart = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            datasets: [{
+              data: [
+                {{ App\Models\Biodata1::where('umur','=',16)->whereHas('tahun_ajaran',function($query){$query->where('status','=','aktif');})->count() }},
+                {{ App\Models\Biodata1::where('umur','=',17)->whereHas('tahun_ajaran',function($query){$query->where('status','=','aktif');})->count() }},
+                {{ App\Models\Biodata1::where('umur','=',18)->whereHas('tahun_ajaran',function($query){$query->where('status','=','aktif');})->count() }},
+                {{ App\Models\Biodata1::where('umur','=',19)->whereHas('tahun_ajaran',function($query){$query->where('status','=','aktif');})->count() }},
+                {{ App\Models\Biodata1::where('umur','=',20)->whereHas('tahun_ajaran',function($query){$query->where('status','=','aktif');})->count() }},
+                {{ App\Models\Biodata1::where('umur','>',21)->whereHas('tahun_ajaran',function($query){$query->where('status','=','aktif');})->count() }},
+                {{ App\Models\Biodata1::where('umur','<',16)->whereHas('tahun_ajaran',function($query){$query->where('status','=','aktif');})->count() }},
+              ],
+              backgroundColor: [
+                '#191d21',
+                '#63ed7a',
+                '#ffa426',
+                '#fc544b',
+                '#6777ef',
+                '#dd67ef',
+                '#bbef67',
+              ],
+              label: 'Dataset 1'
+            }],
+            labels: [
+              '16',
+              '17',
+              '18',
+              '19',
+              '20',
+              'diatas 21',
+              'dibawah 21'
+            ],
+          },
+          options: {
+            responsive: true,
+            legend: {
+              position: 'bottom',
+            },
+          }
+        });
+     </script>
+@endpush

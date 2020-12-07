@@ -1,4 +1,13 @@
-    <div class="navbar-bg"></div>
+   @php
+        $teman=App\Models\Teman::where('users_id','=',Auth::user()->id)->pluck('id')->first();
+
+        $pesan=App\Models\Chat::where('teman_id','=',$teman)->where('read','=',null)->whereHas('user',function($query){
+            $query->where('role','=','admin');
+        })->get();
+
+        // dd($pesan->toArray());
+    @endphp
+   <div class="navbar-bg"></div>
       <nav class="navbar navbar-expand-lg main-navbar">
         <div class="container">
             <div class="navbar-nav">
@@ -10,59 +19,25 @@
             </a>
             </div>
             <ul class="navbar-nav navbar-right">
-            <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
+            <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg {{ $pesan->count() > 0 ? 'beep' : '' }}"><i class="far fa-envelope"></i></a>
                 <div class="dropdown-menu dropdown-list dropdown-menu-right">
-                <div class="dropdown-header">Notifications
-                    <div class="float-right">
-                    <a href="#">Mark All As Read</a>
-                    </div>
+                <div class="dropdown-header">Pesan <h6 class="d-inline"><span class="d-inline badge badge-danger">{{ $pesan->count() }}</span></h6>
                 </div>
                 <div class="dropdown-list-content dropdown-list-icons">
-                    <a href="#" class="dropdown-item dropdown-item-unread">
-                    <div class="dropdown-item-icon bg-primary text-white">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="dropdown-item-desc">
-                        Template update is available now!
-                        <div class="time text-primary">2 Min Ago</div>
-                    </div>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                    <div class="dropdown-item-icon bg-info text-white">
-                        <i class="far fa-user"></i>
-                    </div>
-                    <div class="dropdown-item-desc">
-                        <b>You</b> and <b>Dedik Sugiharto</b> are now friends
-                        <div class="time">10 Hours Ago</div>
-                    </div>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                    <div class="dropdown-item-icon bg-success text-white">
-                        <i class="fas fa-check"></i>
-                    </div>
-                    <div class="dropdown-item-desc">
-                        <b>Kusnaedi</b> has moved task <b>Fix bug header</b> to <b>Done</b>
-                        <div class="time">12 Hours Ago</div>
-                    </div>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                    <div class="dropdown-item-icon bg-danger text-white">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="dropdown-item-desc">
-                        Low disk space. Let's clean it!
-                        <div class="time">17 Hours Ago</div>
-                    </div>
-                    </a>
-                    <a href="#" class="dropdown-item">
-                    <div class="dropdown-item-icon bg-info text-white">
-                        <i class="fas fa-bell"></i>
-                    </div>
-                    <div class="dropdown-item-desc">
-                        Welcome to Stisla template!
-                        <div class="time">Yesterday</div>
-                    </div>
-                    </a>
+                     @foreach ($pesan as $index=>$item)
+                        @if ($item->count() > 0)
+                            <a href="{{ route('dashboard-pesan')}}" class="dropdown-item dropdown-item-unread">
+                            <div class="dropdown-item-avatar">
+                                <img alt="image" src="{{ Avatar::create($item->user->name)->toGravatar(['d' => 'wavatar', 'r' => 'pg', 's' => 100])}}" class="rounded-circle">
+                            </div>
+                            <div class="dropdown-item-desc">
+                                <b>{{ $item->user->name }}</b>
+                                <p>{{ $item->pesan }}</p>
+                                <div class="time">{{ $item->created_at->format('H:i:s A') }}</div>
+                            </div>
+                            </a>
+                        @endif
+                    @endforeach
                 </div>
                 <div class="dropdown-footer text-center">
                     <a href="#">View All <i class="fas fa-chevron-right"></i></a>
@@ -70,16 +45,16 @@
                 </div>
             </li>
             <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="{{ asset('stisla/assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
+                <img alt="image" src="{{ Avatar::create(Auth::user()->name)->toGravatar(['d' => 'wavatar', 'r' => 'pg', 's' => 100])}}" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-divider"></div>
-                
+                <div class="dropdown-divider"></div>                
                     <form action="{{ route('logout') }}" method="POST" >
                         @csrf
-                        <button class="dropdown-item has-icon text-danger"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                        <button href="#" class="dropdown-item btn-icon icon-left text-danger">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
                     </form>
-                
                 </div>
             </li>
             </ul>

@@ -32,10 +32,10 @@ class UserSeeder extends Seeder
         ]);
 
         $faker=Factory::create('id_ID');
-        for ($i=2; $i <500 ; $i++) { 
+        for ($i=2; $i < 202 ; $i++) { 
             User::create([
                 'name'=>$faker->name('male'),
-                'email'=>$faker->email,
+                'email'=>$faker->unique()->email,
                 'password'=>bcrypt(123),
                 'role'=>'pendaftar'
             ]);

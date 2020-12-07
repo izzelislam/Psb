@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->enum('role',['pendaftar','admin']);
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

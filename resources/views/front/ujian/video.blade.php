@@ -70,22 +70,25 @@
             </p>
             <div class="card text-left overflow-auto">
               <div class="card-body">
-                <form>
+                <form method="POST" action="{{ route('tahap-empat-video.store') }}">
+                  @csrf
                   <div class="form-group">
                     <label for="exampleInputEmail1">Link Video <b>*</b> </label>
                     <input
-                      type="email"
+                      type="twxt"
+                      required
                       class="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
+                      name="link"
                     />
                   </div>
+                </div>
+                <div>
+                  <button class="btn btn-primary mx-3 float-right mb-3">
+                    Kirim
+                  </button>
                 </form>
-              </div>
-              <div>
-                <button class="btn btn-primary mx-3 float-right mb-3">
-                  Selanjutnya
-                </button>
               </div>
             </div>
           </div>

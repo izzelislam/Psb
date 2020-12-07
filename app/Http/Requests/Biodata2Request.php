@@ -48,8 +48,6 @@ class Biodata2Request extends FormRequest
             'perokok'=>'required',
             'punya_pacar'=>'required',
             'suka_game'=>'required',
-            'nama_game'=>'required',
-            'waktu_game'=>'required',
             'alasan_mendaftar'=>'required',
             'kegiatan'=>'required',
             'kepribadian'=>'required',

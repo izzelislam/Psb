@@ -51,7 +51,7 @@ class CreateBiodata2Table extends Migration
             $table->string('pekerjaan_ayah');
             $table->string('nama_ibu');
             $table->string('pekerjaan_ibu');
-            $table->string('penghasilan_ortu');
+            $table->integer('penghasilan_ortu');
             $table->string('anak_ke');
             $table->integer('saudara');
             $table->string('no_wali');
@@ -60,6 +60,7 @@ class CreateBiodata2Table extends Migration
             $table->enum('punya_laptop',['iya','tidak']);
             $table->boolean('setuju');
             $table->enum('status',['sudah-dikerjakan','lolos','tidak'])->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

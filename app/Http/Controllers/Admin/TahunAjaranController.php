@@ -37,6 +37,11 @@ class TahunAjaranController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'tahun'=>'required',
+            'gelombang'=>'required',
+            'status'=>'required'
+        ]);
         TahunAjaran::create($request->all());
         return redirect()->route('tahun-ajaran.index')->with('sukses-buat','data berhasil ditambahkan.');
     }
@@ -73,6 +78,11 @@ class TahunAjaranController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'tahun'=>'required',
+            'gelombang'=>'required',
+            'status'=>'required'
+        ]);
         $data=TahunAjaran::find($id);
         $data->update($request->all());
 
@@ -90,7 +100,7 @@ class TahunAjaranController extends Controller
         $data=TahunAjaran::find($id);
         $data->delete();
 
-        return redirect()->route('tahun-ajaran.index');
+        return redirect()->route('tahun-ajaran.index')->with('sukses-hapus','Data Berhasil DI Hapus.');
     }
 
     public function aktif($id)  
@@ -106,4 +116,48 @@ class TahunAjaranController extends Controller
         $data->update(['status'=>'tidak-aktif']);
         return redirect()->route('tahun-ajaran.index')->with('sukses-nonaktif','Berhasil Di Non Aktifkan');
     }
+
+    public function hapusall(Request $request)
+    {
+        $ids=$request->get('ids');
+
+        if ($ids == null) {
+            return redirect()->back();
+        }else{
+            foreach ($ids as $id) {
+                TahunAjaran::find($id)->delete();
+            }
+
+            return redirect()->route('tahun-ajaran.index')->with('sukses-hapus','Data Berhasil DI Hapus.');
+        }
+    }
+
+    public function aktifall(Request $request)
+    {
+        $ids=$request->get('ids');
+
+        if ($ids != null) {
+            foreach ($ids as $id ) {
+                TahunAjaran::find($id)->update(['status'=>'aktif']);
+            }
+            return redirect()->route('tahun-ajaran.index')->with('sukses-aktif','Berhasil Di Aktifkan');
+        }else{
+            return redirect()->back();
+        }
+    }
+
+    public function nonaktifall(Request $request)
+    {
+        $ids=$request->get('ids');
+
+        if ($ids != null) {
+            foreach ($ids as $id ) {
+                TahunAjaran::find($id)->update(['status'=>'tidak-aktif']);
+            }
+            return redirect()->route('tahun-ajaran.index')->with('sukses-nonaktif','Berhasil Di Non Aktifkan');
+        }else{
+            return redirect()->back();
+        }
+    }
+    
 }

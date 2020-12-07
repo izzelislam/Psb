@@ -19,7 +19,7 @@
 <body>
   <div id="app" style="background-color: #fff;">
     <div class="col-12 col-md-12 col-sm-12">
-        <div class="empty-state" style="height: 90vh;">
+        <div class="empty-state" style="height: 100vh;backgroud-color:#fff;">
             <div class="empty-state-icon">
                 <i class="fas fa-question"></i>
             </div>

@@ -16,10 +16,10 @@ class Biodata1Seeder extends Seeder
     public function run()
     {
         Biodata1::truncate();
-        $this->command->getOutput()->progressStart(500);
+        $this->command->getOutput()->progressStart(100);
         $faker=Factory::create('id_ID');
 
-        for ($i=0; $i <500 ; $i++) { 
+        for ($i=2; $i <202 ; $i++) { 
             Biodata1::create([
                 'users_id'=>$i,
                 'tahun_ajaran_id'=>$faker->randomElement([1,2,3,4]),

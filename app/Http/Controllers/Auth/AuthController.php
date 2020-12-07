@@ -3,12 +3,19 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AuthRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+        $this->middleware('auth')->only('logout');
+    }
+
     public function login()
     {
         return view('auth.login');
@@ -37,7 +44,7 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function registerProses(Request $request)
+    public function registerProses(AuthRequest $request)
     {
         User::create([
             'name'=>$request->name,

@@ -18,6 +18,7 @@ class CreateChatTable extends Migration
             $table->foreignId('teman_id');
             $table->foreignId('users_id');
             $table->text('pesan');
+            $table->integer('read')->nullable();
             $table->timestamps();
         });
     }

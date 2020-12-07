@@ -58,6 +58,36 @@
             </table>
         </div>
     </div>
+    @if (isset($biodata2->user->quis) || isset($biodata2->user->video))
+        <div class="row mt-4">
+            <div class="col">
+            <h6>Nilai</h6>
+                <table cellpadding="5">
+                    <tr>
+                        <td style="width: 280px;">Tes Iq</td>
+                        <td>{{ $biodata2->user->quis->nilai_tes_iq }}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 280px;">Tes Iq</td>
+                        <td>{{ $biodata2->user->quis->nilai_tes_kepribadian }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        @if (isset($biodata2->user->video))
+            <div class="row mt-4">
+                <div class="col">
+                <h6>Video</h6>
+                    <table cellpadding="5">
+                        <tr>
+                            <td style="width: 280px;">Link Viedo</td>
+                            <td><a href="{{ $biodata2->user->video->link }}">{{ $biodata2->user->video->link }}</a></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        @endif
+    @endif
     <div class="row mt-4">
         <div class="col">
         <h6>Contact</h6>

@@ -22,6 +22,7 @@ class CreateBiodata1Table extends Migration
             $table->string('no_wa')->unique();
             $table->enum('keluarga',['mampu','tidak-mampu']);
             $table->string('jenis_kelamin');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

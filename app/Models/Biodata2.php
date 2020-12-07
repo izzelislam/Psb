@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Biodata2 extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $table='biodata_2';
 
@@ -24,12 +26,12 @@ class Biodata2 extends Model
 
     public function tahun_ajaran()
     {
-        return $this->belongsTo('App\Models\TahunAjaran','tahun_ajaran_id','id');
+        return $this->belongsTo(TahunAjaran::class,'tahun_ajaran_id','id')->withTrashed();
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class,'users_id','id');
+        return $this->belongsTo(User::class,'users_id','id')->withTrashed();
     }
 
     public function kabupaten()

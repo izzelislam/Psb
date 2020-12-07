@@ -15,9 +15,10 @@ class CreateLolosTable extends Migration
     {
         Schema::create('lolos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('biodata_id');
+            $table->foreignId('users_id');
             $table->foreignId('tahun_ajaran_id');
             $table->enum('status',['sudah-dikerjakan','lolos','tidak'])->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

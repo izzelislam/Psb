@@ -24,7 +24,11 @@ class DatabaseSeeder extends Seeder
             JadwalSeeder::class,
             QuisSeeder::class,
             SoalSeeder::class,
-            
+            KepribadianSeeder::class,
+            VideoSeeder::class,
+            WawancaraSeeder::class,
+            TemanSeeder::class,
+            ChatSeeder::class,
         ]);
     }
 }

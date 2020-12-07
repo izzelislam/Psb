@@ -37,6 +37,11 @@ class JadwalController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nama_kegiatan'=>'required',
+            'tanggal'=>'required'
+        ]);
+
         Jadwal::create($request->all());
         return redirect()->route('jadwal.index')->with('sukses-buat','Data Berhasil Di Buat');
     }
@@ -73,6 +78,10 @@ class JadwalController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'nama_kegiatan'=>'required',
+            'tanggal'=>'required'
+        ]);
         $data=Jadwal::find($id);
         $data->update($request->all());
         return redirect()->route('jadwal.index')->with('sukses-edit','Data Berhasil Di Edit.');
@@ -90,5 +99,19 @@ class JadwalController extends Controller
         $data->delete();
 
         return redirect()->route('jadwal.index')->with('sukses-hapus','Data Berhasil DI Hapus.');
+    }
+
+    public function hapusall(Request $request)
+    {
+        $ids=$request->get('ids');
+        
+        if ($ids != null) {
+            foreach ($ids as $id) {
+                Jadwal::find($id)->delete();
+            }
+            return redirect()->route('jadwal.index')->with('sukses-hapus','Data Berhasil DI Hapus.');
+        }else{
+            return redirect()->back();
+        }
     }
 }

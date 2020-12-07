@@ -17,11 +17,11 @@ class CreateSoalIqTable extends Migration
             $table->id();
             $table->text('soal');
             $table->string('gambar')->nullable();
-            $table->string('a');
-            $table->string('b');
-            $table->string('c');
-            $table->string('d');
-            $table->string('e');
+            $table->text('a');
+            $table->text('b');
+            $table->text('c');
+            $table->text('d');
+            $table->text('e');
             $table->string('kunci_jawaban');
             $table->timestamps();
         });

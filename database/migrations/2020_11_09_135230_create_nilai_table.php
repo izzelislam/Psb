@@ -20,6 +20,7 @@ class CreateNilaiTable extends Migration
             $table->integer('nilai_tes_iq');
             $table->integer('nilai_tes_kepribadian');
             $table->enum('status',['sudah-dikerjakan','lolos','tidak'])->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

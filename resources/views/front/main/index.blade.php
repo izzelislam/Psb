@@ -66,7 +66,7 @@
                         </p>
                     </div>
                     <div class="col-md-4 col-sm-12 align-self-center" data-aos="fade-left" data-aos-delay="100" data-aos-duration="1000">
-                        <a href="" class="btn btn-daftar px-4">INFO LEBIH LANJUT</a>
+                        <a href="https://pondokinformatika.com/psb/" target="blank" class="btn btn-daftar px-4">INFO LEBIH LANJUT</a>
                     </div>
                 </div>
             </div>

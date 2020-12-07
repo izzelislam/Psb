@@ -25,6 +25,18 @@ class Biodata1Controller extends Controller
             'jenis_kelamin'=>'required',
 
         ]);
+
+        $no_wa=$request->get('no_wa');
+        $no=str_split($no_wa,3);
+        
+        if ($no[0] == "+62") {
+            $no1=array(0=>"08");
+            $wa1=array_replace($no,$no1);
+            $wa=implode("",$wa1);
+
+        }else{
+            $wa=$no_wa;
+        }
         
         $TahunAjaran=TahunAjaran::where('status','=','aktif')->orderBy('id','desc')->pluck('id');
         
@@ -34,10 +46,21 @@ class Biodata1Controller extends Controller
             'nama'=>$request->nama,
             'keluarga'=>$request->keluarga,
             'umur'=>$request->umur,
-            'no_wa'=>$request->no_wa,
+            'no_wa'=>$wa,
             'jenis_kelamin'=>$request->jenis_kelamin,
         ]);
 
         return redirect()->route('sukses');
+    }
+
+    public function updatenowa(Request $request,$id)
+    {
+        if ( $request != null ) {
+            $data=Biodata1::find($id);
+            $data->update(['no_wa'=>$request->no_wa]);
+            return redirect()->back();
+        }else{
+            return redirect()->back();
+        }
     }
 }
