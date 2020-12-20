@@ -29,7 +29,6 @@ class Biodata2Seeder extends Seeder
             Biodata2::create([
                 'users_id'=>$i,
                 'tahun_ajaran_id'=>$faker->randomElement([1,2,3,4]),
-                'tanggal_lahir'=>$faker->date('Y-m-d','2005-12-01'),
                 'tempat_lahir'=>$faker->city,
                 'alamt_lengkap'=>$faker->address,
                 'indonesia_provinces_id'=>rand(11,94),

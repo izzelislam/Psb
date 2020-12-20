@@ -12,11 +12,11 @@
                 <a href="{{ route('dashboard') }}" class="nav-link "><i class="fas fa-fire"></i><span>Dashboard</span></a>
               </li>
               <li class="menu-header">UTAMA</li>
-              <li class="nav-item {{ request()->is('admin/data-pendaftar') ? 'active' : '' }}">
+              {{-- <li class="nav-item {{ request()->is('admin/data-pendaftar') ? 'active' : '' }}">
                 <a href="{{ route('data-pendaftar') }}" class="nav-link "><i class="fas fa-user-graduate"></i><span>Data Pendaftar</span></a>
-              </li>
+              </li> --}}
               <li class="nav-item {{ request()->is('admin/status-pendaftar') ? 'active' : '' }}">
-                <a href="{{ route('status-pendaftar') }}" class="nav-link "><i class="fas fa-id-card"></i><span>Biodata 2</span></a>
+                <a href="{{ route('status-pendaftar') }}" class="nav-link "><i class="fas fa-id-card"></i><span>Biodata</span></a>
               </li>
               <li class="nav-item {{ request()->is('admin/nilai') ? 'active' : '' }}">
                 <a href="{{ route('nilai.index') }}" class="nav-link "><i class="fas fa-tachometer-alt"></i><span>Nilai</span></a>
@@ -42,7 +42,7 @@
                 <a href="{{ route('tahun-ajaran.index') }}" class="nav-link "><i class="fas fa-calendar"></i><span>Data Tahun Ajaran</span></a>
               </li> 
               <li class="nav-item {{ request()->is('admin/jadwal*') ? 'active' : '' }}">
-                <a href="{{ route('jadwal.index') }}" class="nav-link "><i class="fas fa-lemon"></i><span>Jadwal Kegiatan</span></a>
+                <a href="{{ route('jadwal.index') }}" class="nav-link "><i class="fas fa-info-circle"></i><span>Informasi</span></a>
               </li>
               <li class="nav-item {{ request()->is('admin/chat-admin*') ? 'active' : '' }}">
                 <a href="{{ route('chat-admin.index') }}" class="nav-link "><i class="fas fa-envelope"></i><span>Pesan</span>

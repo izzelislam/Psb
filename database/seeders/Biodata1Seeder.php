@@ -26,6 +26,7 @@ class Biodata1Seeder extends Seeder
                 'nama'=>$faker->name('male'),
                 'keluarga'=>$faker->randomElement(['mampu','tidak-mampu']),
                 'umur'=>rand(16,21),
+                'tanggal_lahir'=>$faker->date('Y-m-d','2005-12-01'),
                 'no_wa'=>$faker->e164PhoneNumber,
                 'jenis_kelamin'=>'laki-laki'
             ]);

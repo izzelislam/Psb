@@ -7,6 +7,7 @@ use App\Models\Biodata2;
 use App\Models\Quis;
 use Illuminate\Http\Request;
 use App\Exports\BiodataExport;
+use App\Models\Biodata1;
 use Maatwebsite\Excel\Facades\Excel;
 
 class StatusPendaftarController extends Controller
@@ -138,6 +139,28 @@ class StatusPendaftarController extends Controller
     public function biodataexport()
     {
         return Excel::download(new BiodataExport,'data Biodata.xlsx');
+    }
+
+    public function edit($id)
+    {
+        $biodata2=Biodata2::find($id);
+        return view('admin.statusdaftar.edit',compact('biodata2'));
+    }
+
+    public function update(Request $request,$id)
+    {
+        $biodata1=Biodata1::find($request->biodata1_id);
+        $biodata2=Biodata2::find($id);
+
+        $biodata1->update([
+            'nama'=>$request->nama,
+            'umur'=>$request->umur,
+            'no_wa'=>$request->no_wa,
+            'keluarga'=>$request->keluarga
+        ]);
+
+        $biodata2->update($request->except(['nama','umur','no_wa','keluarga']));
+        return redirect()->back()->with('sukses-edit','Data Berhasil Dibuat');
     }
 
 }

@@ -8,8 +8,6 @@
     <div class="my-4">
       <div class="row justify-content-center px-4">
         <div class="col-md-10 col-sm-12 title">
-          <!-- step wizard -->
-          <!-- end step wizard -->
           <div class="success pt-5">
             <div class="row pt-5 ">
               <div class="col-md-7 m-auto col-sm-6 text-center title">

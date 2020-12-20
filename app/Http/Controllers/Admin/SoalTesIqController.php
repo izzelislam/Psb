@@ -49,8 +49,15 @@ class SoalTesIqController extends Controller
             'e'=>'required',
             'kunci_jawaban'=>'required',
         ]);
+
+        if ($request->file('gambar') !== null ) {
+            $gambar = $request->file('gambar')->store('img','public');
+        }else{
+            $gambar=null;
+        }
+
         Soal::create([
-            'gambar'=>$request->file('gambar')->store('img','public'),
+            'gambar'=>$gambar,
             'soal'=>$request->soal,
             'a'=>$request->a,
             'b'=>$request->b,

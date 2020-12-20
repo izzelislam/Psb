@@ -4,14 +4,6 @@
 @push('end-style')
      <link rel="stylesheet" href="{{ asset('front/style/style.css') }}" />
 @endpush
-@section('page-title','Pesan')
-    
-@section('bread-crumb')
-    <div class="section-header-breadcrumb">
-        <div class="breadcrumb-item active"><a href="#">Pesan</a></div>
-        <div class="breadcrumb-item">Home</div>
-    </div>
-@endsection
 
 @section('content')
 <div class="row">

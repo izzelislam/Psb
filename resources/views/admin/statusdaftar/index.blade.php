@@ -69,6 +69,7 @@
                   </th>
                   <th>No</th>
                   <th>Nama</th>
+                  <th>No WA</th>
                   <th>Umur</th>
                   <th>Pendidikan</th>
                   <th>Cita-Cita</th>
@@ -114,6 +115,9 @@
                     </a>
                     </td>
                     <td>
+                      {{ $item->user->biodata1->no_wa }}
+                    </td>
+                    <td>
                     {{ $item->user->biodata1->umur }} &nbsp; Tahun
                     </td>
                     <td>{{ $item->pendidikan_terakhir }}</td>
@@ -144,7 +148,16 @@
                         <i class="fas fa-eye"></i>
                         Detail  
                       </a>
-                        <button form="{{ route('pendaftar-hapus', $item->id ) }}" class="btn btn-danger btn-sm btn-icon icon-left"> <i class="fas fa-trash"></i> delete</button>
+                      <a href="#mymodal"
+                        data-remote="{{ route('status-pendaftar.edit',$item->id) }}"
+                        data-toggle="modal"
+                        data-target="#mymodal"
+                        data-title="Detail Data" 
+                        class="btn btn-primary btn-sm btn-icon icin-right">
+                        <i class="fas fa-edit"></i>
+                        Edit  
+                      </a>  
+                      <button form="{{ route('pendaftar-hapus', $item->id ) }}" class="btn btn-danger btn-sm btn-icon icon-left"> <i class="fas fa-trash"></i> delete</button>
                     </td>
                 </tr>
                 @endforeach

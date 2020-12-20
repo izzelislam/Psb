@@ -14,7 +14,7 @@ class Biodata2 extends Model
     protected $table='biodata_2';
 
     protected $fillable =[
-        'users_id','tahun_ajaran_id','tanggal_lahir','tempat_lahir',
+        'users_id','tahun_ajaran_id','tempat_lahir',
         'alamt_lengkap','indonesia_provinces_id','indonesia_cities_id',
         'facebook','instagram','pendidikan_terakhir','asal_sekolah','jurusan',
         'pengalaman_organisasi','prestasi','hobi','cita_cita','skill','jumlah_hafalan',

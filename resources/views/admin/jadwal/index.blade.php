@@ -1,12 +1,12 @@
 @extends('admin.pages.app')
 
-@section('title','Data Jadwal Kegiatan')
+@section('title','Data Informasi')
 
-@section('title-page','Data Jadwal Kegiatan')
+@section('title-page','Data Informasi')
 
 @section('bread-crumb')
     <div class="section-header-breadcrumb">
-        <div class="breadcrumb-item active"><a href="#">Jadwal</a></div>
+        <div class="breadcrumb-item active"><a href="#">informasi</a></div>
         <div class="breadcrumb-item">List</div>
     </div>
 @endsection
@@ -48,7 +48,7 @@
 
                 <div class="card">
                   <div class="card-header">
-                    <h4>Daftar Jadwal Kegiatan</h4>
+                    <h4>Daftar Informasi</h4>
                   </div>
                   <div class="card-body">
                     <div class="row mb-3 justify-content-between">

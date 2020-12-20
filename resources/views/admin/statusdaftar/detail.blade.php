@@ -13,14 +13,14 @@
                 </tr>
                 <tr>
                     <td>Tanggal Lahir</td>
-                    <td>{{ $biodata2->tanggal_lahir }}</td>
+                    <td>{{ $biodata2->user->biodata1->tanggal_lahir }}</td>
                 </tr>
                 <tr>
                     <td>Hobi</td>
                     <td>{{ $biodata2->hobi }}</td>
                 </tr>
                 <tr>
-                    <td>Hobi</td>
+                    <td>cita-cita</td>
                     <td>{{ $biodata2->cita_cita }}</td>
                 </tr>
                 <tr>
@@ -112,13 +112,21 @@
         <h6>Biodata Orang Tua</h6>
             <table cellpadding="5">
                 <tr>
-                    <td style="width: 280px;">Nama Ayah</td>
+                    <td style="width: 280px;">Orang Tua</td>
+                    <td>{{ $biodata2->orang_tua }}</td>
+                </tr>
+                <tr>
+                    <td >Nama Ayah</td>
                     <td>{{ $biodata2->nama_ayah }}</td>
                 </tr>
                 <tr>
                     <td>Nama Ibu</td>
                     <td>{{ $biodata2->nama_ibu }}</td>
                 </tr>
+                <tr>
+                    <td>Kondidi Keluarga</td>
+                    <td>{{ $biodata2->user->biodata1->keluarga }}</td>
+                </tr
                 <tr>
                     <td>Pekerjaan Ayah</td>
                     <td>{{ $biodata2->pekerjaan_ayah }}</td>
@@ -140,7 +148,7 @@
                     <td>{{ $biodata2->anak_ke }}</td>
                 </tr>
                 <tr>
-                    <td>No Hp Waliu</td>
+                    <td>No Hp Wali</td>
                     <td>{{ $biodata2->no_wali }}</td>
                 </tr>
             </table>

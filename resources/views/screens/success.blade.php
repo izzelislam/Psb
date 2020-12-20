@@ -19,9 +19,10 @@
 <body>
   <div id="app" style="background-color: #fff;">
     <div class="col-12 col-md-12 col-sm-12">
-        <div class="empty-state" style="height: 100vh;backgroud-color:#fff;">
-            <div class="empty-state-icon">
-                <i class="fas fa-question"></i>
+        <div class="empty-state" style="height: 100vh;backgroud-color:rgb(24, 23, 23);">
+            <div class="">
+                {{-- <i class="mdi checkbox-marked-circle-outline"></i> --}}
+                <img src="{{ asset('front/assets/img/note-list.svg') }}" alt="">
             </div>
             <h2>Berhasil</h2>
                 <p class="lead">

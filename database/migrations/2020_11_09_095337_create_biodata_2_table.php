@@ -17,7 +17,6 @@ class CreateBiodata2Table extends Migration
             $table->id();
             $table->foreignId('users_id');
             $table->foreignId('tahun_ajaran_id');
-            $table->date('tanggal_lahir');
             $table->string('tempat_lahir');
             $table->text('alamt_lengkap');
             $table->foreignId('indonesia_provinces_id');

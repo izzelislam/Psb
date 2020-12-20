@@ -27,7 +27,7 @@ class FrontPageController extends Controller
         return view('front.main.qna',compact('qna'));
     }
 
-    public function jadwal()
+    public function informasi()
     {
         $jadwal=Jadwal::all();
         return view('front.main.jadwal',compact('jadwal'));

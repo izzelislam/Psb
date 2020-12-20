@@ -21,11 +21,6 @@
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
-          <div class="section-header">
-            <h1>@yield('page-title')</h1>
-            @yield('bread-crumb')
-          </div>
-
           <div class="section-body">
             @yield('content')
           </div>

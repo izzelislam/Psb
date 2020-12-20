@@ -38,7 +38,7 @@
              <div class="form-group">
               <h6>Gambar</h6>
               <div class="ml-2 col-sm-6">
-                <img src="{{ $cek ?  Storage::url($data->gambar) :'https://placehold.it/100x100' }}" id="preview" class="img-thumbnail" style="width: 200px;height:200pxpx;">
+                <img src="{{ $cek ?  Storage::url($data->gambar) : url('https://placehold.it/100x100') }}" id="preview" class="img-thumbnail" style="width: 200px;height:200pxpx;">
               </div>
               <input type="file" name="gambar" class="file d-none" accept="image/*">
               <div class="input-group my-3">

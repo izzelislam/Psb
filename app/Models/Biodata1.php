@@ -19,6 +19,7 @@ class Biodata1 extends Model
         'nama',
         'keluarga',
         'umur',
+        'tanggal_lahir',
         'no_wa',
         'jenis_kelamin'];
 

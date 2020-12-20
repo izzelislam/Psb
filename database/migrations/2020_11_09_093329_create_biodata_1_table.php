@@ -19,6 +19,7 @@ class CreateBiodata1Table extends Migration
             $table->foreignId('tahun_ajaran_id');
             $table->string('nama');
             $table->string('umur');
+            $table->date('tanggal_lahir');
             $table->string('no_wa')->unique();
             $table->enum('keluarga',['mampu','tidak-mampu']);
             $table->string('jenis_kelamin');

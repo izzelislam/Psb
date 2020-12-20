@@ -1,12 +1,12 @@
 @extends('admin.pages.app')
 
-@section('title','Data Tahun Ajaran')
+@section('title','Data Soal Tes Iq')
 
-@section('title-page','Data Tahun Ajaran')
+@section('title-page','Data Soal Tes Iq')
 
 @section('bread-crumb')
     <div class="section-header-breadcrumb">
-        <div class="breadcrumb-item active"><a href="#">Data Tahun Ajaran</a></div>
+        <div class="breadcrumb-item active"><a href="#">Data Soal Tes Iq</a></div>
         <div class="breadcrumb-item">List</div>
     </div>
 @endsection
@@ -38,7 +38,7 @@
 
                 <div class="card">
                   <div class="card-header">
-                    <h4>Daftar data tahun ajaran</h4>
+                    <h4>Daftar soal tes iq</h4>
                   </div>
                   <div class="card-body">
                     <div class="row mb-3 justify-content-between">

@@ -21,10 +21,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link text-light mx-2" href="https://pondokinformatika.com/psb/" target="blank">INFORMASI</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link text-light mx-2 {{ request()->is('jadwal') ? 'nav-active' : '' }}" href="{{ route('jadwal') }}">JADWAL</a>
+              <a class="nav-link text-light mx-2 {{ request()->is('informasi') ? 'nav-active' : '' }}" href="{{ route('informasi') }}">INFORMASI</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link text-light mx-2  {{ request()->is('question-and-answer') ? 'nav-active' : '' }}" href="{{ route('qna') }}">Q&A</a>

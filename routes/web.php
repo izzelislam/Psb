@@ -41,16 +41,18 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => '','middleware'=>['guest']],function () {
     Route::get('/',[FrontpageController::class,'index'])->name('front-page');
     Route::get('/question-and-answer',[FrontpageController::class,'qna'])->name('qna');
-    Route::get('/jadwal',[FrontpageController::class,'jadwal'])->name('jadwal');
+    Route::get('/informasi',[FrontpageController::class,'informasi'])->name('informasi');
 });
 
 // dashboard user
 Route::group(['prefix' => 'user','middleware'=>['auth','pendaftar']],function () {
     Route::get('/',[UserDashboardController::class,'index'])->name('dashboard-user');
-    Route::get('/tes-proses',[UserDashboardController::class,'tes_proses'])->name('dashboard-tes-proses');
+    Route::get('/profile-user',[UserDashboardController::class,'profiluser'])->name('dashboard-profile-user');
     Route::get('/pesan',[ChatController::class,'index'])->name('dashboard-pesan');
     Route::post('/pesan',[ChatController::class,'chatstore'])->name('chat-user.store');
     Route::put('/update/no-wa/{id}',[Biodata1Controller::class,'updatenowa'])->name('no_wa.edit');
+    Route::get('/question-and-answer',[UserDashboardController::class,'qna'])->name('qna-user');
+    Route::get('/informasi',[UserDashboardController::class,'informasi'])->name('informasi-user');
 });
 
 // proses seleksi
@@ -114,11 +116,13 @@ Route::group(['prefix' => 'admin','middleware'=>['auth','admin']], function () {
     // status pendaftar
     Route::get('/status-pendaftar',[StatusPendaftarController::class,'index'])->name('status-pendaftar');
     Route::post('/status-pendaftarlolos/{id}',[StatusPendaftarController::class,'lolos'])->name('status-pendaftar.lolos');
+    Route::PUT('/status-pendaftar/update/{id}',[StatusPendaftarController::class,'update'])->name('status-pendaftar.update');
     Route::post('/status-pendaftartidak/{id}',[StatusPendaftarController::class,'tidak'])->name('status-pendaftar.tidak');
     Route::post('/status-pendaftar/bulk-action',[StatusPendaftarController::class,'lolosall'])->name('bulk-action');
     Route::post('/status-tidaklolos',[StatusPendaftarController::class,'tidaklolos'])->name('tidak-lolos');
     Route::post('/status-hapusall',[StatusPendaftarController::class,'hapusall'])->name('hapusall');
     Route::get('/status-pendaftar/{id}',[StatusPendaftarController::class,'show'])->name('status-pendaftar.show');
+    Route::get('/status-pendaftar/edit/{id}',[StatusPendaftarController::class,'edit'])->name('status-pendaftar.edit');
     Route::get('/filter-reset-tahatap-dua',[StatusPendaftarController::class,'filterreset'])->name('filter-reset-tahap2');
     Route::get('/biodata-export',[StatusPendaftarController::class,'biodataexport'])->name('biodata-export');
     
