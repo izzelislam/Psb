@@ -18,17 +18,15 @@
 
 <body>
   <div id="app" style="background-color: #fff;">
-    <div class="col-12 col-md-12 col-sm-12">
+    <div class="col-4 col-md-4 col-sm-12 mx-auto">
       <div class="empty-state" style="height: 100vh;backgroud-color:rgb(24, 23, 23);">
         <div class="">
-          {{-- <i class="mdi checkbox-marked-circle-outline"></i> --}}
-              <img src="{{ asset('/front/assets/img/note-list.png') }}" alt="" style="width: 40%;" class="pl-4">
+          <i class="fas fa-envelope-open-text text-primary" style=" font-size: 100pt;"></i>
             </div>
-            <h2>Berhasil</h2>
-                <p class="lead">
-                Data berhasil di kirim silahkan kembali ke beranda
+            <p class="lead py-4">
+              Link Verifikasi telah terkirim ke email anda,
+              cek email anda untuk melakukan verifikasi !
             </p>
-                <a href="{{ route('dashboard-user') }}" class="btn btn-primary mt-4">Kembali ke beranda</a>
         </div>
     </div>
 </div>

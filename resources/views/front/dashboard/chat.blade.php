@@ -20,9 +20,10 @@
                       @if (isset($pesan))
                         @foreach ($pesan as $index=>$item)
                           @if ( $item->users_id != Auth::user()->id )
-                              <div class="media w-50 mb-3"><img src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg" alt="user" width="50" class="rounded-circle">
+                              <div class="media w-50 mb-3"><img src="{{ Avatar::create($item->user->name)->toGravatar(['d' => 'wavatar', 'r' => 'pg', 's' => 100])}}" alt="user" width="50" class="rounded-circle">
                                 <div class="media-body ml-3">
                                   <div class="bg-light rounded py-2 px-3 mb-2">
+                                    <p class="small text-muted">{{ $item->user->name }}
                                     <p class="text-small mb-0 text-muted">{{ $item->pesan }}</p>
                                   </div>
                                   <p class="small text-muted">{{ $item->created_at->format('H:i:s A') }} | {{ $item->created_at->format('M d') }}</p>
@@ -33,6 +34,7 @@
                               <div class="media w-50 ml-auto mb-3">
                                 <div class="media-body">
                                   <div class="bg-primary rounded py-2 px-3 mb-2">
+                                    <p class="small text-light">{{ $item->user->name }}</p>
                                     <p class="text-small mb-0 text-white">{{ $item->pesan }}</p>
                                   </div>
                                   <p class="small text-muted">{{ $item->created_at->format('H:i:s A') }} | {{ $item->created_at->format('M d') }}</p>

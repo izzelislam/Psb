@@ -28,7 +28,11 @@ class KepribadianSeeder extends Seeder
                 'c'=>$faker->sentence(rand(1,3),true),
                 'd'=>$faker->sentence(rand(1,3),true),
                 'e'=>$faker->sentence(rand(1,3),true),
-                'kunci_jawaban'=>'a',
+                'poin_a'=>$faker->randomElement([1]),
+                'poin_b'=>$faker->randomElement([2]),
+                'poin_c'=>$faker->randomElement([3]),
+                'poin_d'=>$faker->randomElement([4]),
+                'poin_e'=>$faker->randomElement([5]),
             ]);
         }
     }

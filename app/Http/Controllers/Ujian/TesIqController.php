@@ -61,7 +61,7 @@ class TesIqController extends Controller
 
     public function kepribadian()
     {
-        $kepribadian=Kepribadian::all()->random(50)->chunk(10);
+        $kepribadian=Kepribadian::all()->random(100)->chunk(20);
         return view('front.ujian.tes-kepribadian',compact('kepribadian'));
     }
 
@@ -70,61 +70,33 @@ class TesIqController extends Controller
         $jawaban=$request->input('pilihan');
         
         if($jawaban != null){
-            $jawaban_benar=null;
-            $jawaban_salah=null;
-
+            
+            
+            $nilai = 0 ;
             foreach ($jawaban as $key => $value) {
-                $cek=Kepribadian::where('id','=',$key)->where('kunci_jawaban','=',$value)->get();
-                $benar=count($cek);
+                $cek=Kepribadian::where('id','=',$key)->first();
                 
-                if($benar){
-                    $jawaban_benar++;
-                }else{
-                    $jawaban_salah++;
+                if ($value == 'a') {
+                    $nilai= $nilai + $cek->poin_a;
                 }
+                elseif ($value == 'b') {
+                    $nilai= $nilai + $cek->poin_b;
+                }
+                elseif ($value == 'c') {
+                    $nilai= $nilai + $cek->poin_c;
+                }
+                elseif ($value == 'd') {
+                    $nilai= $nilai + $cek->poin_d;
+                }
+                elseif ($value == 'e') {
+                    $nilai= $nilai + $cek->poin_e;
+                }  
             }
-
-            $nilai_tes=$jawaban_benar*20;
-
+            
             $data=Quis::where('users_id','=',Auth::user()->id)->pluck('id')->first();
-            $nilai=Quis::find($data); 
-            $nilai->update(['nilai_tes_kepribadian'=>$nilai_tes]);     
+            $nilai_kepribadian=Quis::find($data); 
+            $nilai_kepribadian->update(['nilai_tes_kepribadian'=>$nilai]);     
             return redirect()->route('sukses');
         }
     }
 }
-
-// $jawaban=$request->input('pilihan');
-        
-//         $jawaban_a=null;
-//         $jawaban_b=null;
-//         $jawaban_c=null;
-//         $jawaban_d=null;
-//         $jawaban_e=null;
-
-//         foreach ($jawaban as $value) {
-//             if ($value == 'a') {
-//                 $jawaban_a++;
-//             }elseif($value == 'b'){
-//                 $jawaban_b++;
-//             }elseif($value == 'c'){
-//                 $jawaban_c++;
-//             }elseif($value == 'd'){
-//                 $jawaban_d++;
-//             }elseif($value == 'e'){
-//                 $jawaban_e++;
-//             }
-//         }
-
-//        $a=$jawaban_a*30;
-//        $b=$jawaban_b*20;
-//        $c=$jawaban_c*15;
-//        $d=$jawaban_d*10;
-//        $e=$jawaban_e*5;
-
-//        $total=$a+$b+$c+$d+$e;
-
-//        $data=Quis::where('users_id','=',Auth::user()->id)->pluck('id')->first();
-//        $nilai=Quis::find($data); 
-//        $nilai->update(['nilai_tes_kepribadian'=>$total]);     
-//        return redirect()->route('sukses');

@@ -58,7 +58,6 @@
                 </div>
               </div>
               <!-- end step wizard -->
-              <h5><strong>Tes Tahap Kedua</strong></h5>
               <p class="card-text">Silahkan isi form dibawah ini</p>
               <div class="card text-left">
                 <div class="card-body">

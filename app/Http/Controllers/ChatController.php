@@ -15,8 +15,9 @@ class ChatController extends Controller
 
         
         if($teman != null){
-            $pesan=Chat::where('teman_id','=',$teman->id)->get();
+            $pesan=Chat::where('teman_id','=',$teman->id)->with('user')->get();
             // $this->readpesan($teman->id);
+            // dd($pesan->toArray());
         }else{
             $pesan=null;
         }

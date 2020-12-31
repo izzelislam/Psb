@@ -42,6 +42,7 @@ Route::group(['prefix' => '','middleware'=>['guest']],function () {
     Route::get('/',[FrontpageController::class,'index'])->name('front-page');
     Route::get('/question-and-answer',[FrontpageController::class,'qna'])->name('qna');
     Route::get('/informasi',[FrontpageController::class,'informasi'])->name('informasi');
+    Route::get('/verifikasi/email',[AuthController::class,'verifikasi'])->name('verifikasi-email');
 });
 
 // dashboard user

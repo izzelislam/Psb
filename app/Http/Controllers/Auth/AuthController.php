@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthRequest;
+use App\Mail\VerifikasiEmail;
 use App\Models\Biodata1;
 use App\Models\TahunAjaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -35,6 +37,7 @@ class AuthController extends Controller
             if ($role == 'admin') {
                 return redirect()->route('dashboard');            
             }else{
+                Mail::to('bangfkr002@gmail.com')->send(new VerifikasiEmail());
                 return redirect()->route('dashboard-user');
             }
         }else{
@@ -90,6 +93,14 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect('/');
+    }
+
+    public function verifikasi()
+    {
+        $current_date_time= Carbon::now();
+        $user= User::where('email', 'bangfkr02@gmail.com')->first();
+        $user->update(['email_verified_at' => $current_date_time]);
+        return redirect()->route('dashboard-user')->with('user');
     }
 
 }

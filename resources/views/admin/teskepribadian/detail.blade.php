@@ -40,7 +40,11 @@
             </tr>
             <tr>
                 <td>
-                    <strong>Kunci Jawaban : {{ $soal->kunci_jawaban }}</strong>
+                    poin : <span class="mx-4">a :{{ $soal->poin_a }}</span>
+                           <span class="mx-4">b :{{ $soal->poin_b }}</span>
+                           <span class="mx-4">c :{{ $soal->poin_c }}</span>
+                           <span class="mx-4">d :{{ $soal->poin_d }}</span>
+                           <span class="mx-4">e :{{ $soal->poin_e }}</span>
                 </td>
             </tr>
         </table>

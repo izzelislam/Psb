@@ -6,7 +6,7 @@
       $action="/admin/soal-tes-kepribadian";
     }
 
-    $cek=isset($data);
+    $cek=isset($data);;
 @endphp
 
 
@@ -15,7 +15,7 @@
     <div class="container">
       <h6>{{ $cek ? 'Edit' :'Buat' }} data tahun ajaran</h6>
     </div>
-    <form action={{ $action }} method="POST">
+    <form action={{ $action }} method="POST" x-data="selectform()">
       @csrf
       @if ($cek)
           @method('PUT')
@@ -37,7 +37,7 @@
               <h6>Jawaban</h6>
             </th>
             <th>
-              <h6>Kunci Jawaban</h6>
+              <h6>Poin Jawaban</h6>
             </th>
           </tr>
           {{-- A --}}
@@ -50,12 +50,16 @@
               </input>
             </td>
             <td class="pl-5">
-              <div class="selectgroup selectgroup-pills">
-                <label class="selectgroup-item">
-                  <input type="radio" name="kunci_jawaban" value="a"  {{ isset($data->a) ? 'checked' : ''  }} class="selectgroup-input" />
-                  <span class="selectgroup-button selectgroup-button-icon"><i class="fas fa-check"></i></span>
-                </label>
-              </div>
+              <select name="poin_a" id="">
+                @if ($cek)
+                    <option value="{{ $data->poin_a }}">{{ $data->poin_a }}</option>
+                @else
+                  <option value="">-- scrore --</option>
+                @endif
+                <template x-for="poin in poins" index="poin.id">
+                  <option :value="poin" x-text="poin" ></option>
+                </template>
+              </select>
             </td>
           </tr>
           {{-- B --}}
@@ -68,12 +72,16 @@
               </input>
             </td>
             <td class="pl-5">
-              <div class="selectgroup selectgroup-pills">
-                <label class="selectgroup-item">
-                  <input type="radio" name="kunci_jawaban" value="b"  {{ isset($data->b) ? 'checked' : ''  }} class="selectgroup-input" />
-                  <span class="selectgroup-button selectgroup-button-icon"><i class="fas fa-check"></i></span>
-                </label>
-              </div>
+              <select name="poin_b" id="">
+                @if ($cek)
+                    <option value="{{ $data->poin_b }}">{{ $data->poin_b }}</option>
+                @else
+                  <option value="">-- scrore --</option>
+                @endif
+                <template x-for="poin in poins" index="poin.id">
+                  <option :value="poin" x-text="poin" ></option>
+                </template>
+              </select>
             </td>
           </tr>
           {{-- c --}}
@@ -86,12 +94,16 @@
               </input>
             </td>
             <td class="pl-5">
-              <div class="selectgroup selectgroup-pills">
-                <label class="selectgroup-item">
-                  <input type="radio" name="kunci_jawaban" value="c"  {{ isset($data->c) ? 'checked' : ''  }} class="selectgroup-input" />
-                  <span class="selectgroup-button selectgroup-button-icon"><i class="fas fa-check"></i></span>
-                </label>
-              </div>
+              <select name="poin_c" id="">
+                @if ($cek)
+                    <option value="{{ $data->poin_c }}">{{ $data->poin_c }}</option>
+                @else
+                  <option value="">-- scrore --</option>
+                @endif
+                <template x-for="poin in poins" index="poin.id">
+                  <option :value="poin" x-text="poin" ></option>
+                </template>
+              </select>
             </td>
           </tr>
           {{-- d --}}
@@ -104,12 +116,16 @@
               </input>
             </td>
             <td class="pl-5">
-              <div class="selectgroup selectgroup-pills">
-                <label class="selectgroup-item">
-                  <input type="radio" name="kunci_jawaban" value="d"  {{ isset($data->d) ? 'checked' : ''  }} class="selectgroup-input" />
-                  <span class="selectgroup-button selectgroup-button-icon"><i class="fas fa-check"></i></span>
-                </label>
-              </div>
+              <select name="poin_d" id="" >
+                @if ($cek)
+                    <option value="{{ $data->poin_d }}">{{ $data->poin_d }}</option>
+                @else
+                  <option value="">-- scrore --</option>
+                @endif
+                <template x-for="poin in poins" index="poin.id">
+                  <option :value="poin" x-text="poin" x-on:change="coba(poin)"></option>
+                </template>
+              </select>
             </td>
           </tr>
           {{-- e --}}
@@ -118,16 +134,20 @@
               <strong> E .</strong>
             </td>
             <td>
-              <input type="text" style="height: 50px;" name="e" class="form-control"  value="{{ $cek ? $data->e :''}}">
+              <input  type="text" style="height: 50px;" name="e" class="form-control"  value="{{ $cek ? $data->e :''}}">
               </input>
             </td>
             <td class="pl-5">
-              <div class="selectgroup selectgroup-pills">
-                <label class="selectgroup-item">
-                  <input type="radio" name="kunci_jawaban" value="e"  {{ isset($data->e) ? 'checked' : ''  }} class="selectgroup-input" />
-                  <span class="selectgroup-button selectgroup-button-icon"><i class="fas fa-check"></i></span>
-                </label>
-              </div>
+            <select name="poin_e" id="">
+              @if ($cek)
+                  <option value="{{ $data->poin_e }}" >{{ $data->poin_e }}</option>
+              @else
+                <option value="">-- scrore --</option>
+              @endif
+              <template x-for="poin in poins" index="poin.id">
+                <option :value="poin" x-text="poin"></option>
+              </template>
+            </select>
             </td>
           </tr>
         </table>
@@ -137,3 +157,30 @@
     </form>
 </div>
 </div>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+
+  <script>
+    function selectform(){
+      return{
+        a:null,
+        b:null,
+        c:null,
+        d:null,
+        e:null,
+        poins:[1, 2, 3, 4, 5],
+
+        coba(param){
+          var data = this.poins
+           for ( var i = 0; i < data.length; i++ ){
+             if ( data[i] === param ){
+               data.splice(i,1)
+             }
+           }
+
+           this.poins=data
+          console.log(this.e)
+        }
+      }
+    }
+  </script>
+

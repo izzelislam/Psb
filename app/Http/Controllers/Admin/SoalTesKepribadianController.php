@@ -47,7 +47,11 @@ class SoalTesKepribadianController extends Controller
             'c'=>'required',
             'd'=>'required',
             'e'=>'required',
-            'kunci_jawaban'=>'required'
+            'poin_a' => 'required',
+            'poin_b' => 'required',
+            'poin_c' => 'required',
+            'poin_d' => 'required',
+            'poin_e' => 'required',
         ]);
         Kepribadian::create($request->all());
         return redirect()->route('soal-tes-kepribadian.index')->with('sukses-buat','Soal Berhasil Di Buat.');
@@ -93,9 +97,26 @@ class SoalTesKepribadianController extends Controller
             'c'=>'required',
             'd'=>'required',
             'e'=>'required',
-            'kunci_jawaban'=>'required'
+            'poin_a' => 'required',
+            'poin_b' => 'required',
+            'poin_c' => 'required',
+            'poin_d' => 'required',
+            'poin_e' => 'required',
         ]);
-        Kepribadian::find($id)->update($request->all());
+        // dd($request->toArray());
+        Kepribadian::find($id)->update([
+            'soal'=> $request->soal,
+            'a'=> $request->a,
+            'b'=> $request->b,
+            'c'=> $request->c,
+            'd'=> $request->d,
+            'e'=> $request->e,
+            'poin_a' =>  $request->poin_a,
+            'poin_b' =>  $request->poin_b,
+            'poin_c' =>  $request->poin_c,
+            'poin_d' =>  $request->poin_d,
+            'poin_e' =>  $request->poin_e,
+        ]);
         return redirect()->route('soal-tes-kepribadian.index')->with('sukses-buat','Soal-Berhasil Di Edit');
     }
 

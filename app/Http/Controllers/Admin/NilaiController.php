@@ -13,7 +13,7 @@ class NilaiController extends Controller
     {
         $data=Quis::with(['tahun_ajaran'=>function($query){
             $query->where('status','=','aktif');
-        },'user.biodata1']);
+        },'user.biodata1'])->orderBy('id','desc');
 
         if((request()->get('nilai_tes_iq_min') && request()->get('nilai_tes_iq_min') != null) && (request()->get('nilai_tes_iq_max') && request()->get('nilai_tes_iq_max') != null)){
             $data=$data->whereBetween('nilai_tes_iq',[request()->get('nilai_tes_iq_min'),request()->get('nilai_tes_iq_max')]);

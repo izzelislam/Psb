@@ -21,7 +21,11 @@ class CreateSoalKepribadianTable extends Migration
             $table->text('c');
             $table->text('d');
             $table->text('e');
-            $table->string('kunci_jawaban');
+            $table->integer('poin_a');
+            $table->integer('poin_b');
+            $table->integer('poin_c');
+            $table->integer('poin_d');
+            $table->integer('poin_e');
             $table->timestamps();
         });
     }

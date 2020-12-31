@@ -80,34 +80,27 @@
 		@endif --}}
 		text-white">
 			<div class="hero-inner">
-				@if (empty($tahap1))
-					<h2>Selamat datang, {{ Auth::user()->name }}!</h2>
-					<p class="lead">untuk melakukan tes <strong class="font-weight-bold">Tahap Pertama</strong> anda silahkan klik tombol di bawah ini</p>
-
-					<div class="mt-4">
-						<a href="{{ route('tahap-pertama') }}" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class="fas fa-book"></i> Ikuti Tes</a>
-					</div>
-				@elseif(empty($tahap2) && isset($tahap1))
-					<h2>Halo, {{ Auth::user()->name }} anda telah mengikuti tes tahap pertama.</h2>
-					<p class="lead">untuk melakukan tes <strong class="font-weight-bold">Tahap Kedua</strong> anda silahkan klik tombol di bawah ini</p>
+				@if(empty($tahap2) && isset($tahap1))
+					<h2>Halo Selamat datang, {{ Auth::user()->name }}</h2>
+					<p class="lead">untuk melakukan seleksi <strong class="font-weight-bold">Tahap Pertama</strong> anda silahkan klik tombol di bawah ini</p>
 
 					<div class="mt-4">
 						<a href="{{ route('tahap-kedua') }}" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class="fas fa-book"></i> Ikuti Tes</a>
 					</div>
 				@elseif(!empty($tahap2) && isset($tahap1) && $tahap2->status == null) 
 					<h2>Hallo, {{ Auth::user()->name }}!</h2>
-					<p class="lead">Anda Telah Melaksanakan tes <strong class="font-weight-bold">Tahap Kedua</strong>,Anda bisa lanjut <br>mengikuti tes tahap ketiga jika dinyatakan lolos di tes tahap kedua</p>
+					<p class="lead">Anda Telah Melaksanakan tes <strong class="font-weight-bold">Tahap Pertama</strong>,Anda bisa lanjut <br>mengikuti tes tahap kedua jika dinyatakan lolos di tes tahap pertama</p>
 				@elseif(!empty($tahap3) && isset($tahap2) && $tahap3->status == null) 
 					<h2>Hallo, {{ Auth::user()->name }}!</h2>
-					<p class="lead">Anda Telah Melaksanakan tes <strong class="font-weight-bold">Tahap KeTiga</strong>,Anda bisa lanjut <br>mengikuti tes tahap ke-empat jika dinyatakan lolos di tes tahap KeTiga</p>
+					<p class="lead">Anda Telah Melaksanakan tes <strong class="font-weight-bold">Tahap Kedua</strong>,Anda bisa lanjut <br>mengikuti tes tahap ke-tiga jika dinyatakan lolos di tes tahap keDua</p>
 				@elseif(!empty($tahap4) && isset($tahap4) && $tahap4->status == null) 
 					<h2>Hallo, {{ Auth::user()->name }}!</h2>
-					<p class="lead">Anda Telah Melaksanakan tes <strong class="font-weight-bold">Tahap Ke-Empat</strong>,Anda bisa lanjut <br>mengikuti tes tahap Ke-Lima jika dinyatakan lolos di tes tahap Ke-Empat</p>
+					<p class="lead">Anda Telah Melaksanakan tes <strong class="font-weight-bold">Tahap Ke-Tiga</strong>,Anda bisa lanjut <br>mengikuti tes tahap Ke-Empat jika dinyatakan lolos di tes tahap Ke-Tiga</p>
 				@elseif(!empty($tahap2) && $tahap2->status == 'lolos')
 					@if ($tahap2->status == 'lolos' && !isset($tahap3->status) )
 						<h2>Selamat, {{ Auth::user()->name }}! .</h2>
 						<p><strong>Anda Dinyatakan Lolos Ketahap Berikutnya</strong></p>
-						<p class="lead">untuk melakukan tes <strong class="font-weight-bold">Tahap Ketiga</strong> anda silahkan klik tombol di bawah ini</p>
+						<p class="lead">untuk melakukan tes <strong class="font-weight-bold">Tahap Ke-Dua</strong> anda silahkan klik tombol di bawah ini</p>
 
 						<div class="mt-4">
 							<a href="{{ route('tahap-ketiga-iq') }}" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class="fas fa-book"></i> Ikuti Tes</a>
@@ -115,7 +108,7 @@
 					@elseif($tahap3->status == 'lolos' && !isset($tahap4->status))
 						<h2>Selamat, {{ Auth::user()->name }}! .</h2>
 						<p><strong>Anda Dinyatakan Lolos Ketahap Berikutnya</strong></p>
-						<p class="lead">untuk melakukan tes <strong class="font-weight-bold">Tahap Ke-Empat</strong> silahkan anda klik tombol di bawah ini.</p>
+						<p class="lead">untuk melakukan tes <strong class="font-weight-bold">Tahap Ke-Tiga</strong> silahkan anda klik tombol di bawah ini.</p>
 
 						<div class="mt-4">
 							<a href="{{ route('tahap-empat-video') }}" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class="fas fa-book"></i> Ikuti Tes</a>
@@ -123,7 +116,7 @@
 					@elseif($tahap4->status == 'lolos' && !isset($tahap5->status))
 						<h2>Selamat, {{ Auth::user()->name }}! .</h2>
 						<p><strong>Anda Dinyatakan Lolos Ketahap Berikutnya</strong></p>
-						<p class="lead">untuk  tes <strong class="font-weight-bold">Tahap Ke-Lima</strong> anda akan kami hubungi untuk melakukan tes wawancara.</p>
+						<p class="lead">untuk  tes <strong class="font-weight-bold">Tahap Ke-Empat</strong> anda akan kami hubungi untuk melakukan tes wawancara.</p>
 						<div class="mt-4">
 							<a href="{{ route('tahap-lima-wawancara') }}" class="btn btn-outline-white btn-lg btn-icon icon-left"><i class="fas fa-microphone"></i> Info mengenai tes wawancara</a>
 						</div>
@@ -235,33 +228,6 @@
 							</tr>
 						</thead>
 						<tbody>
-						{{-- tahap pertama --}}
-						<tr>
-						<td>
-							<div class="sort-handler">
-							<i class="fas fa-th"></i>
-							</div>
-						</td>
-						<td>tes tahap Pertama</td>
-						<td>
-							@if ($tahap1->count() == 0)
-								<div class="badge badge-warning">
-								Belum mengikuti tes ini
-								</div>
-							@else
-								<div class="badge badge-success">
-								Lolos
-								</div>
-							@endif
-						</td>
-						<td>
-							@if ($tahap1->count() == 0)
-								<a href="{{ route('tahap-pertama') }}" class="btn btn-primary">Ikuti Tes</a>
-							@else
-								<span class="btn btn-success">Sudah Di Ikuti</span>
-							@endif
-						</td>
-						</tr>
 						{{-- tahapp ke dua --}}
 							@if ($tahap1->count() > 0 )
 							<tr>
@@ -270,7 +236,7 @@
 								<i class="fas fa-th"></i>
 								</div>
 							</td>
-							<td>tes tahap kedua</td>
+							<td>tes tahap pertama</td>
 							<td>
 								{{-- @php
 									dd($tahap2->status)
@@ -311,7 +277,7 @@
 								<i class="fas fa-th"></i>
 								</div>
 							</td>
-							<td>tes tahap Ketiga</td>
+							<td>tes tahap kedua</td>
 							<td>
 								@if (empty($tahap3))
 									<div class="badge badge-warning">
@@ -351,7 +317,7 @@
 								<i class="fas fa-th"></i>
 								</div>
 							</td>
-							<td>tes tahap Ke Empat</td>
+							<td>tes tahap Ke Tiga</td>
 							<td>
 								@if (empty($tahap4))
 									<div class="badge badge-warning">
@@ -391,7 +357,7 @@
 							<i class="fas fa-th"></i>
 							</div>
 						</td>
-						<td>tes tahap Ke Lima</td>
+						<td>tes tahap Ke Empat</td>
 						<td>
 							@if ($tahap5->status == null)
 								<div class="badge badge-info">
