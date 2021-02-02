@@ -13,7 +13,7 @@ class FrontPageController extends Controller
     public function index()
     {
         $data=Biodata1::with(['tahun_ajaran'=>function($query){
-            $query->where('tahun','=',date('Y'));
+            $query->where('tahun',date('Y'));
         }])->get();
 
         $gel=TahunAjaran::where('status','=','aktif')->pluck('gelombang')->first();
@@ -31,5 +31,11 @@ class FrontPageController extends Controller
     {
         $jadwal=Jadwal::all();
         return view('front.main.jadwal',compact('jadwal'));
+    }
+
+    public function infodetail($id)
+    {
+        $jadwal= Jadwal::find($id);
+        return view('front.main.info_detail', compact('jadwal'));
     }
 }

@@ -28,7 +28,11 @@ class SoalKepribadianImport implements ToModel, WithStartRow
             'c'=>$row[4],
             'd'=>$row[5],
             'e'=>$row[6],
-            'kunci_jawaban'=>$row[7],
+            'poin_a'=>$row[7],
+            'poin_b'=>$row[8],
+            'poin_c'=>$row[9],
+            'poin_d'=>$row[10],
+            'poin_e'=>$row[11],
         ]);
     }
 }

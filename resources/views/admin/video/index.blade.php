@@ -105,7 +105,7 @@
                               </a>
                               </td>
                               <td style=" width:200px;">
-                                <a href="{{ $item->link}}">
+                                <a href="{{ $item->link}}" target="blank">
                                   {{ $item->link}}
                                 </a>
                               </td>

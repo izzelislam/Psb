@@ -11,53 +11,6 @@
 
 @section('content')
 <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-primary">
-                  <i class="fas fa-users"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Jumlah Pendaftar</h4>
-                  </div>
-                  <div class="card-body">
-                    {{ App\Models\Biodata1::whereHas('tahun_ajaran',function($query){$query->where('tahun','=',date('Y'));})->count() }}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-warning">
-                  <i class="fas fa-book"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Pendaftaran Dibuka</h4>
-                  </div>
-                  <div class="card-body">
-                    {{ App\models\TahunAjaran::where('status','=','aktif')->pluck('gelombang')->first() }}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-success">
-                  <i class="fas fa-envelope-open"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Pesan Masuk</h4>
-                  </div>
-                  <div class="card-body">
-                    {{ $pesan }}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-<div class="row">
 	{{-- @php
 		dd($tahap4->status)
 	@endphp --}}
@@ -143,7 +96,92 @@
 		</div>
 	</div>
 </div>
-{{-- <div class="row">
+
+<div class="row">
+	<div class="col-lg-4 col-md-6 col-sm-6 col-12">
+		<div class="card card-statistic-1">
+		<div class="card-icon bg-primary">
+			<i class="fas fa-users"></i>
+		</div>
+		<div class="card-wrap">
+			<div class="card-header">
+			<h4>Jumlah Pendaftar</h4>
+			</div>
+			<div class="card-body">
+			{{ App\Models\Biodata1::whereHas('tahun_ajaran',function($query){$query->where('status','aktif');})->count() }}
+			</div>
+		</div>
+		</div>
+	</div>
+	<div class="col-lg-4 col-md-6 col-sm-6 col-12">
+		<div class="card card-statistic-1">
+		<div class="card-icon bg-warning">
+			<i class="fas fa-book"></i>
+		</div>
+		<div class="card-wrap">
+			<div class="card-header">
+			<h4>Pendaftaran Dibuka</h4>
+			</div>
+			<div class="card-body">
+			{{ App\models\TahunAjaran::where('status','=','aktif')->pluck('gelombang')->first() }}
+			</div>
+		</div>
+		</div>
+	</div>
+	<div class="col-lg-4 col-md-6 col-sm-6 col-12">
+		<div class="card card-statistic-1">
+		<div class="card-icon bg-success">
+			<i class="fas fa-envelope-open"></i>
+		</div>
+		<div class="card-wrap">
+			<div class="card-header">
+			<h4>Pesan Masuk</h4>
+			</div>
+			<div class="card-body">
+			{{ $pesan }}
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+
+@if (isset($jadwal))
+	<div class="row my-3">
+		<div class="col">
+			<h5 class="text-primary">Informasi</h5>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="row row-cols-1 row-cols-md-3">
+				@foreach ($jadwal as $item)
+					<div class="col">
+						<div class="card">
+						<div style="
+							width: 100%; 
+							height: 158px; 
+							background-image: url({{ Storage::url($item->gambar) }});
+							background-size: contain, cover;
+							" 
+							class="bg-dark"
+						></div>
+						{{-- <img src="{{ Storage::url($item->gambar) }}" class="card-img-top" alt="..." style="height: 150px;"> --}}
+						<div class="card-body">
+							<h5 class="card-title">{{ $item->title }}</h5>
+							<p class="card-text">{{ \Illuminate\Support\Str::limit($item->isi,100, $end='.' ) }}</p>
+							<p class="card-text"><small class="text-muted">{{ $item->created_at->format('Y-m-d') }}</small></p>
+						</div>
+						</div>
+					</div>
+				@endforeach
+			</div>	
+			<div class="mb-4 d-flex justify-content-end"">
+				<div> <a href="{{ route('informasi-user') }}"> <h6>Selengkapnya</h6></a></div>
+			</div>
+		</div>
+	</div>
+@endif
+{{-- < class="row">
 	<div class="col-lg-3 col-md-6 col-sm-6 col-12">
 		<div class="card card-statistic-1">
 		<div class="card-icon bg-primary">
@@ -204,7 +242,7 @@
 		</div>
 		</div>
 	</div>
-</div> --}}
+</> --}}
 {{-- tes yang di ikuti --}}
 <div class="row">
 	<div class="col-12">

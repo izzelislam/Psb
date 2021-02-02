@@ -61,7 +61,7 @@
                                    href="#mymodal"
                                    data-toggle="modal"
                                    data-target="#mymodal"
-                                   data-remote="{{ route('jadwal.create') }}"
+                                   data-remote="{{ route('informasi.create') }}"
                                 >
                                   <i class="fas fa-plus"></i>
                                   Buat Data
@@ -72,7 +72,7 @@
                     <div class="table-responsive">
                       <form action="" method="POST">
                         @csrf
-                        <button class="d-none" formaction="{{ route('jadwal-hapus.all') }}" id="del2"></button>
+                        <button class="d-none" formaction="{{ route('informasi-hapus.all') }}" id="del2"></button>
                         <table class="table table-striped" id="table-2">
                           <thead>
                             <tr>
@@ -83,10 +83,9 @@
                                 </div>
                               </th>
                               <th>No</th>
-                              <th style="width:30%;">Nama Kegiatan</th>
-                              <th>Tanggal</th>
-                              <th>Penangungjawab</th>
-                              <th>Action</th>
+                              <th style="width:20%;">Judul</th>
+                              <th>isi</th>
+                              <th style="width:30%;">Action</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -100,24 +99,31 @@
                               </td>
                               <td width="10">{{ $loop->iteration }}</td>
                               <td>
-                                {{ $item->nama_kegiatan }}
+                                {{ $item->title }}
                               </td>
-                              <td>{{ $item->tanggal }}</td>
-                              <td>{{ $item->penaggung_jawab }}</td>
-                              
+                              <td>{{ \Illuminate\Support\Str::limit($item->isi,100, $end='.' ) }}</td>                              
                               <td>
+                                <a 
+                                  href="#mymodal"
+                                  data-target="#mymodal"
+                                  data-toggle="modal"
+                                  data-remote="{{ route('informasi.show', $item->id) }}"
+                                  id="edit-data"
+                                  class="btn btn-primary btn-icon icon-left btn-sm"> 
+                                  <i class="fas fa-eye"></i> Detail
+                                </a>
                                 
                                 <a 
                                   href="#mymodal"
                                   data-target="#mymodal"
                                   data-toggle="modal"
-                                  data-remote="{{ route('jadwal.edit', $item->id) }}"
+                                  data-remote="{{ route('informasi.edit', $item->id) }}"
                                   id="edit-data"
                                   class="btn btn-info btn-icon icon-left btn-sm"> 
                                   <i class="fas fa-edit"></i> Edit
                                 </a>
 
-                                <button formaction="{{ route('jadwal.destroy', $item->id) }}" class="btn btn-danger btn-icon icon-left btn-sm"> <i class="fas fa-times"></i> Hapus</button>
+                                <button formaction="{{ route('informasi.destroy', $item->id) }}" class="btn btn-danger btn-icon icon-left btn-sm"> <i class="fas fa-times"></i> Hapus</button>
                               </td>
                             </tr>
           

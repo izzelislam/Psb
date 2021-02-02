@@ -18,18 +18,19 @@ class UserDashboardController extends Controller
     public function index()
     {   
         $data=Biodata1::with(['tahun_ajaran'=>function($query){
-            $query->where('tahun','=',date('Y'));
+            $query->where('tahun',date('Y'));
         }])->get();
 
-        $gel=TahunAjaran::where('status','=','aktif')->pluck('gelombang')->first();
         $pendaftar=$data->where('tahun_ajaran','!=',null)->count();
+        $gel=TahunAjaran::where('status','=','aktif')->pluck('gelombang')->first();
 
         $tahap1=Biodata1::where('users_id','=',Auth::user()->id)->with('user.biodata2')->first();
         $tahap2=Biodata2::where('users_id','=',Auth::user()->id)->with('user.biodata1')->first();
         $tahap3=Quis::where('users_id','=',Auth::user()->id)->first();
         $tahap4=Video::where('users_id','=',Auth::user()->id)->first();
         $tahap5=Wawancara::where('users_id','=',Auth::user()->id)->first();
-        return view('front.dashboard.index',compact('tahap1','tahap2','tahap3','tahap4','tahap5','gel','pendaftar'));
+        $jadwal=Jadwal::orderBy('created_at','desc')->take(4)->get();
+        return view('front.dashboard.index',compact('jadwal','tahap1','tahap2','tahap3','tahap4','tahap5','gel','pendaftar'));
     }
 
     public function profiluser()
@@ -48,5 +49,11 @@ class UserDashboardController extends Controller
     {
         $jadwal=Jadwal::all();
         return view('front.dashboard.info',compact('jadwal'));
+    }
+
+    public function infodetail($id)
+    {
+        $jadwal= Jadwal::find($id);
+        return view('front.dashboard.info_detail', compact('jadwal'));
     }
 }

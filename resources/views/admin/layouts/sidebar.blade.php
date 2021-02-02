@@ -1,7 +1,7 @@
       <div class="main-sidebar">
         <aside id="sidebar-wrapper">
-          <div class="sidebar-brand">
-            <a href="index.html">PSB</a>
+          <div class="sidebar-brand mt-2 mb-4">
+            <img src="{{ asset('front/assets/img/Pita_web_logo-1.png') }}" alt="" style="width: 70%">
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">PSB</a>
@@ -41,8 +41,8 @@
               <li class="nav-item {{ request()->is('admin/tahun-ajaran*') ? 'active' : '' }}">
                 <a href="{{ route('tahun-ajaran.index') }}" class="nav-link "><i class="fas fa-calendar"></i><span>Data Tahun Ajaran</span></a>
               </li> 
-              <li class="nav-item {{ request()->is('admin/jadwal*') ? 'active' : '' }}">
-                <a href="{{ route('jadwal.index') }}" class="nav-link "><i class="fas fa-info-circle"></i><span>Informasi</span></a>
+              <li class="nav-item {{ request()->is('admin/informasi*') ? 'active' : '' }}">
+                <a href="{{ route('informasi.index') }}" class="nav-link "><i class="fas fa-info-circle"></i><span>Informasi</span></a>
               </li>
               <li class="nav-item {{ request()->is('admin/chat-admin*') ? 'active' : '' }}">
                 <a href="{{ route('chat-admin.index') }}" class="nav-link "><i class="fas fa-envelope"></i><span>Pesan</span>

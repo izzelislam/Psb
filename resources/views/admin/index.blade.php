@@ -26,25 +26,27 @@
                     <h4>Jumlah Pendaftar</h4>
                   </div>
                   <div class="card-body">
-                    {{ App\Models\Biodata1::whereHas('tahun_ajaran',function($query){$query->where('tahun','=',date('Y'));})->count() }}
+                    {{ App\Models\Biodata1::whereHas('tahun_ajaran',function($query){$query->where('status','aktif');})->count() }}
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-              <div class="card card-statistic-1">
-                <div class="card-icon bg-warning">
-                  <i class="fas fa-envelope-open"></i>
-                </div>
-                <div class="card-wrap">
-                  <div class="card-header">
-                    <h4>Pesan Masuk</h4>
+              <a href="{{ route('chat-admin.index') }}">
+                <div class="card card-statistic-1">
+                  <div class="card-icon bg-warning">
+                    <i class="fas fa-envelope-open"></i>
                   </div>
-                  <div class="card-body">
-                    {{ App\Models\Teman::whereHas('chat',function($query){$query->where('read','=',null);})->count() }}
+                  <div class="card-wrap">
+                    <div class="card-header">
+                      <h4>Pesan Masuk</h4>
+                    </div>
+                    <div class="card-body">
+                      {{ App\Models\Teman::whereHas('chat',function($query){$query->where('read','=',null);})->count() }}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-6 col-12">
               <div class="card card-statistic-1">
@@ -53,10 +55,10 @@
                 </div>
                 <div class="card-wrap">
                   <div class="card-header">
-                    <h4>Event Terlaksana</h4>
+                    <h4>Informasi</h4>
                   </div>
                   <div class="card-body">
-                    {{ App\Models\Jadwal::where('tanggal','<',date('Y-m-d'))->count() }}
+                    {{ App\Models\Jadwal::all()->count() }}
                   </div>
                 </div>
               </div>
@@ -105,7 +107,7 @@
             <div class="col-lg-8 col-md-12 col-12 col-sm-12">
               <div class="card">
                 <div class="card-header">
-                  <h4>Daftar Kegiatan</h4>
+                  <h4>Info</h4>
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive">
@@ -113,19 +115,17 @@
                         <tr>
                           <th>No</th>
                           <th>Nama Kegiatan</th>
-                          <th>Tanggal</th>
                         </tr>
                         @foreach ($jadwal as $item)
                           <tr>
                             <td class="p-0 text-center">
                             <span>{{ $loop->iteration }}</span>
                             </td>
-                            <td class="{{ $item->tanggal < date('Y-m-d') ? 'text-danger' : 'font-weight-bold' }}">{{ $item->nama_kegiatan }}</td>
-                    <td class="{{ $item->tanggal < date('Y-m-d') ? 'text-danger' : 'font-weight-bold' }}">{{ $item->tanggal }}</td>
+                            <td>{{ $item->title }}</td>
                           </tr>
                         @endforeach
                       </table>
-                      <span class="float-right mr-4 mb-3"><a href="{{ route('jadwal.index') }}" class="btn btn-sm btn-primary">Lihat Semua</a></span>
+                      <span class="float-right mr-4 mb-3"><a href="{{ route('informasi.index') }}" class="btn btn-sm btn-primary">Lihat Semua</a></span>
                     </div>
                   </div>
               </div>

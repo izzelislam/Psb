@@ -12,7 +12,7 @@
             </div>
             <div class="col-8">
              <h6 class="text-light"> Download Template</h6>
-             <a href="{{ route('download-template') }}" class="btn btn-sm bg-light px-5"><strong class="text-info">Download</strong></a>
+             <a href="{{ route('download-template-iq') }}" class="btn btn-sm bg-light px-5"><strong class="text-info">Download</strong></a>
             </div>
           </div>
         </div>

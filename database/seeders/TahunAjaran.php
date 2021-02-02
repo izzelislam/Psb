@@ -17,25 +17,25 @@ class TahunAjaran extends Seeder
         ModelsTahunAjaran::truncate();
 
         ModelsTahunAjaran::create([
-            'tahun'=>'2019',
+            'tahun'=>'2020',
             'gelombang'=>'gel-1',
             'status'=>'tidak-aktif',
         ]);
 
         ModelsTahunAjaran::create([
-            'tahun'=>'2019',
+            'tahun'=>'2020',
             'gelombang'=>'gel-2',
             'status'=>'tidak-aktif',
         ]);
 
         ModelsTahunAjaran::create([
-            'tahun'=>'2020',
+            'tahun'=>'2021',
             'gelombang'=>'gel-1',
             'status'=>'tidak-aktif',
         ]);
 
         ModelsTahunAjaran::create([
-            'tahun'=>'2020',
+            'tahun'=>'2021',
             'gelombang'=>'gel-2',
             'status'=>'aktif',
         ]);

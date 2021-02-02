@@ -25,17 +25,14 @@ class AuthRequest extends FormRequest
     {
         return [
             'name'=>'required',
+            'nama'=>'required',
+            'umur'=>'required',
+            'keluarga'=>'required',
+            'no_wa'=>'required',
             'email'=>'required|email|unique:users,email',
-            'password'=>'required|string|size:8'
+            'password'=>'required|string|size:6',
+            'jenis_kelamin'=>'required',
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'password.size' => ':attribute minimal 8 karakter',
-            'password.required' => ':attribute wajib di isi.',
-            'email.required'=>':attribute email wajib di isi'
-        ];
-    }
 }

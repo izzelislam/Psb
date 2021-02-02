@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Jadwal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class JadwalController extends Controller
 {
@@ -15,7 +16,7 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        $jadwal=Jadwal::orderBy('created_at','desc')->get();
+        $jadwal=Jadwal::orderBy('created_at','desc')->orderBy('created_at','desc')->get();
         return view('admin.jadwal.index',compact('jadwal'));
     }
 
@@ -38,12 +39,22 @@ class JadwalController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_kegiatan'=>'required',
-            'tanggal'=>'required'
+            'title'=>'required',
+            'isi'=>'required'
         ]);
+        
+         if ($request->file('gambar') !== null ) {
+            $gambar = $request->file('gambar')->store('img','public');
+        }else{
+            $gambar=null;
+        }
 
-        Jadwal::create($request->all());
-        return redirect()->route('jadwal.index')->with('sukses-buat','Data Berhasil Di Buat');
+        Jadwal::create([
+            'gambar' => $gambar,
+            'title' => $request->title,
+            'isi' => $request->isi
+        ]);
+        return redirect()->route('informasi.index')->with('sukses-buat','Data Berhasil Di Buat');
     }
 
     /**
@@ -54,7 +65,8 @@ class JadwalController extends Controller
      */
     public function show($id)
     {
-        //
+        $informasi= Jadwal::find($id);
+        return view('admin.jadwal.info_detail', compact('informasi'));
     }
 
     /**
@@ -79,12 +91,24 @@ class JadwalController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_kegiatan'=>'required',
-            'tanggal'=>'required'
+            'title'=>'required',
+            'isi'=>'required'
         ]);
+
         $data=Jadwal::find($id);
-        $data->update($request->all());
-        return redirect()->route('jadwal.index')->with('sukses-edit','Data Berhasil Di Edit.');
+
+        if($request->file('gambar') != null){
+            $gambar=$request->file('gambar')->store('img','public');         
+        }else{
+            $gambar=$data->gambar;
+        }
+
+        $data->update([
+            'gambar' => $gambar,
+            'title' => $request->title,
+            'isi' => $request->isi
+        ]);
+        return redirect()->route('informasi.index')->with('sukses-edit','Data Berhasil Di Edit.');
     }
 
     /**
@@ -96,9 +120,10 @@ class JadwalController extends Controller
     public function destroy($id)
     {
         $data=Jadwal::find($id);
+        Storage::delete('img/'.$data->gambar);
         $data->delete();
 
-        return redirect()->route('jadwal.index')->with('sukses-hapus','Data Berhasil DI Hapus.');
+        return redirect()->route('informasi.index')->with('sukses-hapus','Data Berhasil DI Hapus.');
     }
 
     public function hapusall(Request $request)
@@ -109,7 +134,7 @@ class JadwalController extends Controller
             foreach ($ids as $id) {
                 Jadwal::find($id)->delete();
             }
-            return redirect()->route('jadwal.index')->with('sukses-hapus','Data Berhasil DI Hapus.');
+            return redirect()->route('informasi.index')->with('sukses-hapus','Data Berhasil DI Hapus.');
         }else{
             return redirect()->back();
         }

@@ -13,7 +13,7 @@ class VideoController extends Controller
     {
         $data=Video::with(['tahun_ajaran'=>function($query){
             $query->where('status','=','aktif');
-        },'user.biodata1'])->get();
+        },'user.biodata1'])->orderBy('created_at','desc')->get();
         
         $video=$data->where('tahun_ajaran','!=',null);
         return view('admin.video.index',compact('video'));

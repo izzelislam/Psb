@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Soal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response as FacadeResponse;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\TesIqImport; 
 
@@ -170,5 +171,11 @@ class SoalTesIqController extends Controller
     {
         Excel::import(new TesIqImport, $request->file('soal'));
         return redirect()->route('soal-tes-iq.index')->with('sukses-buat','File Berhasil Di Import');
+    }
+
+    public function downloadtemplate()
+    {
+        $template="./storage/Download/template-import-soal-tes-iq.csv";
+        return FacadeResponse::download($template);
     }
 }

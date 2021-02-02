@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class VerifyUser extends Model
 {
     use HasFactory;
+
+    protected $fillable = [ 'users_id', 'token' ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'users_id','id');
+    }
 }

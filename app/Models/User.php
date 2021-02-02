@@ -70,4 +70,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Wawancara::class,'users_id')->withTrashed();
     }
+
+    public function verifyuser()
+    {
+        return $this->hasOne(VerifyUser::class,'users_id');
+    }
 }

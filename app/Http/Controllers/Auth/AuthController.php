@@ -10,6 +10,7 @@ use App\Models\TahunAjaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\VerifyUser;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 
@@ -28,7 +29,7 @@ class AuthController extends Controller
 
     public function loginProses(Request $request)
     {
-        $data=$request->only('email','password');
+      $data=$request->only('email','password');
 
         if (Auth::attempt($data)) {
             $role=User::where('email','=',$request->email)->get();
@@ -37,11 +38,14 @@ class AuthController extends Controller
             if ($role == 'admin') {
                 return redirect()->route('dashboard');            
             }else{
-                Mail::to('bangfkr002@gmail.com')->send(new VerifikasiEmail());
+                // if (Auth::user()->email_verified_at == null) {
+                //     Auth::logout();
+                //     return redirect()->route('login')->with('sukses-warning','Email anda belum terverifikasi, Silahkan Verifikasi email terlebih dahulu!');
+                // }
                 return redirect()->route('dashboard-user');
             }
         }else{
-            return redirect()->route('login')->with('gagal','email atau password salah.');
+            return redirect()->route('login')->with('sukses-danger','email atau password salah.');
         }
     }
 
@@ -50,24 +54,24 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function registerProses(Request $request)
-    {   
+    public function registerProses(AuthRequest $request)
+    { 
         $user=User::create([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'password'=>bcrypt($request->password),
-            'role'=>'pendaftar'
+          'name'=>$request->name,
+          'email'=>$request->email,
+          'password'=>bcrypt($request->password),
+          'role'=>'pendaftar'
         ]);
 
         $no_wa=$request->get('no_wa');
         $no=str_split($no_wa,3);
         $tanggal=$request->get('umur');
         $umur=Carbon::parse($tanggal)->age;
-        
+
         if ($no[0] == "+62") {
-            $no1=array(0=>"08");
-            $wa1=array_replace($no,$no1);
-            $wa=implode("",$wa1);
+          $no1=array(0=>"08");
+          $wa1=array_replace($no,$no1);
+          $wa=implode("",$wa1);
 
         }else{
             $wa=$no_wa;
@@ -76,31 +80,29 @@ class AuthController extends Controller
         $TahunAjaran=TahunAjaran::where('status','=','aktif')->orderBy('id','desc')->pluck('id');
         
         Biodata1::create([
-            'users_id'=>$user->id,
-            'tahun_ajaran_id'=>$TahunAjaran->first(),
-            'nama'=>$request->nama,
-            'keluarga'=>$request->keluarga,
-            'umur'=>$umur,
-            'tanggal_lahir'=>$tanggal,
-            'no_wa'=>$wa,
-            'jenis_kelamin'=>$request->jenis_kelamin,
+          'users_id'=>$user->id,
+          'tahun_ajaran_id'=>$TahunAjaran->first(),
+          'nama'=>$request->nama,
+          'keluarga'=>$request->keluarga,
+          'umur'=>$umur,
+          'tanggal_lahir'=>$tanggal,
+          'no_wa'=>$wa,
+          'jenis_kelamin'=>$request->jenis_kelamin,
         ]);
-
-        return redirect()->back()->with('sukses-buat','Selamat anda berhasil mendaftar, silahkan masuk untuk memulai mengikuti tes.');
+        
+        // kirim email untuk verifikasi
+        // VerifyUser::create([
+        //   'users_id' => $user->id,
+        //   'token' => bin2hex(random_bytes(40))
+        // ]);
+        // Mail::to('bangfkr002@gmail.com')->send(new VerifikasiEmail($user));
+        return redirect()->back()->with('sukses-buat','Selamat anda berhasil mendaftar, silahkan login untuk memulai pendaftaran !');
     }
 
     public function logout()
     {
-        Auth::logout();
-        return redirect('/');
-    }
-
-    public function verifikasi()
-    {
-        $current_date_time= Carbon::now();
-        $user= User::where('email', 'bangfkr02@gmail.com')->first();
-        $user->update(['email_verified_at' => $current_date_time]);
-        return redirect()->route('dashboard-user')->with('user');
+      Auth::logout();
+      return redirect('/');
     }
 
 }

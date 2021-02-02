@@ -21,9 +21,9 @@ class JadwalSeeder extends Seeder
 
         for ($i=0; $i <20 ; $i++) { 
             Jadwal::create([
-                'nama_kegiatan'=>$faker->sentence(6,true),
-                'tanggal'=>$faker->date('Y-m-d','now'),
-                'penaggung_jawab'=>$faker->name('male'),
+                'gambar'=>$faker->randomElement(['img/banner-pondok.jpg','img/banner-pondok1.jpg','img/banner-pondok2.jpg']),
+                'title'=>$faker->sentence(4,true),
+                'isi'=>$faker->paragraphs(6,true),
             ]);
         }
     }

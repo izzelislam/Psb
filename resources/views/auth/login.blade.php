@@ -6,7 +6,9 @@
   <title>Halaman Login</title>
 
   @stack('head-style')
-  @include('admin.layouts.style')
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('stisla/assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('stisla/assets/css/components.css')}}">
   @stack('end-style')
 </head>
 
@@ -21,9 +23,17 @@
 
             <div class="card card-primary">
               <div class="card-header"><h4>Masuk</h4></div>
-              @if (session('gagal'))
+              @if (session('sukses'))
+                  <div class="alert alert-success">
+                    {{ session('sukses') }}
+                  </div>
+              @elseif(session('sukses-warning'))
+                  <div class="alert alert-warning">
+                    {{ session('sukses-warning') }}
+                  </div>
+              @elseif(session('sukses-danger'))
                   <div class="alert alert-danger">
-                    {{ session('gagal') }}
+                    {{ session('sukses-danger') }}
                   </div>
               @endif
               <div class="card-body">
@@ -79,7 +89,7 @@
     </section>
   </div>
   @stack('head-script')
-  @include('admin.layouts.script')
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   @stack('end-script')
 
 </body>

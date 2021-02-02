@@ -3,35 +3,29 @@
 @section('content')
     <div class="container py-5">
       <div class="my-4 title">
-        <h5><strong>Jadwal Kegiatan & Penerimaan Santri Baru</strong></h5>
+        <h5><strong>Informasi</strong></h5>
         <div class="row">
-          <div class="col-md-10">
-            <table class="table table-bordered mt-4 title">
-              <thead>
-                <tr>
-                  <th scope="col">No</th>
-                  <th scope="col">Kegiatan</th>
-                  <th scope="col">Tanggal</th>
-                </tr>
-              </thead>
-              <tbody>
-                @if ($jadwal->count() > 0)
-                    @foreach ($jadwal as $item)
-                      <tr>
-                        <th scope="row">{{ $loop->iteration }}</th>
-                        <td class="{{ $item->tanggal < date('Y-m-d') ? 'text-danger' : 'font-weight-bold' }}">{{ $item->nama_kegiatan }}</td>
-                        <td class="{{ $item->tanggal < date('Y-m-d') ? 'text-danger' : 'font-weight-bold' }}">{{ $item->tanggal }}</td>
-                      </tr>
-                    @endforeach
-                @else
-                     <tr>
-                       <td colspan="3">
-                         <small class="text-danger">tidak ada data yang ditampilkan.</small>
-                       </td>
-                     </tr>
-                @endif
-              </tbody>
-            </table>
+          <div class="col-md-10 mt-3">
+           @if (isset($jadwal))
+               @foreach ($jadwal as $item)
+                <a href="{{ route('informasi-detail', $item->id) }}" class="text-decoration-none text-dark">
+                  <div class="card mb-3 shadow">
+                    <div class="row no-gutters">
+                      <div class="col-md-4">
+                        <img src="{{ Storage::url($item->gambar) }}" class="card-img" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ $item->title }}</h5>
+                          <p class="card-text">{{ \Illuminate\Support\Str::limit($item->isi,100, $end='.' ) }}</p>
+                          <p class="card-text"><small class="text-muted">{{ $item->created_at->format('Y-m-d') }}</small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+           @endforeach
+           @endif
           </div>
         </div>
       </div>

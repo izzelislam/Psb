@@ -42,7 +42,8 @@ Route::group(['prefix' => '','middleware'=>['guest']],function () {
     Route::get('/',[FrontpageController::class,'index'])->name('front-page');
     Route::get('/question-and-answer',[FrontpageController::class,'qna'])->name('qna');
     Route::get('/informasi',[FrontpageController::class,'informasi'])->name('informasi');
-    Route::get('/verifikasi/email',[AuthController::class,'verifikasi'])->name('verifikasi-email');
+    Route::get('/informasi-detail/{id}',[FrontpageController::class,'infodetail'])->name('informasi-detail');
+    Route::get('/verifikasi/email/{token}',[AuthController::class,'verifikasi'])->name('verifikasi-email');
 });
 
 // dashboard user
@@ -53,7 +54,8 @@ Route::group(['prefix' => 'user','middleware'=>['auth','pendaftar']],function ()
     Route::post('/pesan',[ChatController::class,'chatstore'])->name('chat-user.store');
     Route::put('/update/no-wa/{id}',[Biodata1Controller::class,'updatenowa'])->name('no_wa.edit');
     Route::get('/question-and-answer',[UserDashboardController::class,'qna'])->name('qna-user');
-    Route::get('/informasi',[UserDashboardController::class,'informasi'])->name('informasi-user');
+    Route::get('/informasi-user',[UserDashboardController::class,'informasi'])->name('informasi-user');
+    Route::get('/informasi-detail/{id}',[UserDashboardController::class,'infodetail'])->name('informasi-detail-user');
 });
 
 // proses seleksi
@@ -110,9 +112,9 @@ Route::group(['prefix' => 'admin','middleware'=>['auth','admin']], function () {
     Route::post('/qna-hapus/{id}',[QnaController::class,'destroy'])->name('qna.delete');
     
     // jadwal
-    Route::resource('/jadwal', JadwalController::class);
-    Route::post('/jadwal-hapus-all',[JadwalController::class,'hapusall'])->name('jadwal-hapus.all');
-    Route::post('/jadwal-hapus/{id}',[JadwalController::class,'destroy'])->name('jadwal.hapus');
+    Route::resource('/informasi', JadwalController::class);
+    Route::post('/informasi-hapus-all',[JadwalController::class,'hapusall'])->name('informasi-hapus.all');
+    Route::post('/informasi-hapus/{id}',[JadwalController::class,'destroy'])->name('informasi.hapus');
 
     // status pendaftar
     Route::get('/status-pendaftar',[StatusPendaftarController::class,'index'])->name('status-pendaftar');
@@ -152,6 +154,7 @@ Route::group(['prefix' => 'admin','middleware'=>['auth','admin']], function () {
     Route::post('/soal-tes-iq/hapus-all',[SoalTesIqController::class,'hapusall'])->name('tes-iq-hapus.all');
     Route::get('/import-soal-iq',[SoalTesIqController::class,'modalimport'])->name('modal-import.iq');
     Route::post('/import-soal-iq',[SoalTesIqController::class,'importsoaliq'])->name('import-soal.iq');
+    Route::get('/download-template-iq',[SoalTesIqController::class,'downloadtemplate'])->name('download-template-iq');
 
     // tes kepribadian
     Route::resource('/soal-tes-kepribadian', SoalTesKepribadianController::class);

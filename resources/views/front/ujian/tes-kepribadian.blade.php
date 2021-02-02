@@ -689,32 +689,38 @@
       soal1(){
         this.soal_1=false;
         this.soal_2=true;
+        window.scrollTo(0, 0); 
       },
       soal2back(){
         this.soal_1=true;
         this.soal_2=false;
+        window.scrollTo(0, 0); 
       },
       soal2(){
         this.soal_1=false;
         this.soal_2=false;
         this.soal_3=true;
+        window.scrollTo(0, 0); 
       },
       soal3back(){
         this.soal_1=false;
         this.soal_2=true;
         this.soal_3=false;
+        window.scrollTo(0, 0); 
       },
       soal3(){
         this.soal_1=false;
         this.soal_2=false;
         this.soal_3=false;
         this.soal_4=true;
+        window.scrollTo(0, 0); 
       },
       soal4back(){
         this.soal_1=false;
         this.soal_2=false;
         this.soal_3=true;
         this.soal_4=false;
+        window.scrollTo(0, 0); 
       },
       soal4(){
         this.soal_1=false;
@@ -722,6 +728,7 @@
         this.soal_3=false;
         this.soal_4=false;
         this.soal_5=true;
+        window.scrollTo(0, 0); 
       },
       soal5back(){
         this.soal_1=false;
@@ -729,6 +736,7 @@
         this.soal_3=false;
         this.soal_4=true;
         this.soal_5=false;
+        window.scrollTo(0, 0); 
       }
     }
   }
