@@ -19,8 +19,8 @@ class UserSeeder extends Seeder
 
         User::create([
             'name'=>'admin',
-            'email'=>'admin@admin',
-            'password'=>bcrypt('12345678'),
+            'email'=>'pondokit@admin',
+            'password'=>bcrypt('secret1234'),
             'role'=>'admin'
         ]);
 
