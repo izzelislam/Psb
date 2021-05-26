@@ -28,7 +28,7 @@ class NilaiController extends Controller
         return view('admin.nilai.index',compact('nilai'));
     }
 
-     public function nilailolos($id)
+    public function nilailolos($id)
     {
         $nilai=Quis::find($id);
         $nilai->update(['status'=>'lolos']);

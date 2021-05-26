@@ -9,33 +9,18 @@ use Illuminate\Support\Facades\Storage;
 
 class JadwalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $jadwal=Jadwal::orderBy('created_at','desc')->orderBy('created_at','desc')->get();
         return view('admin.jadwal.index',compact('jadwal'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.jadwal.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -43,7 +28,7 @@ class JadwalController extends Controller
             'isi'=>'required'
         ]);
         
-         if ($request->file('gambar') !== null ) {
+        if ($request->file('gambar') !== null ) {
             $gambar = $request->file('gambar')->store('img','public');
         }else{
             $gambar=null;
@@ -57,37 +42,21 @@ class JadwalController extends Controller
         return redirect()->route('informasi.index')->with('sukses-buat','Data Berhasil Di Buat');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $informasi= Jadwal::find($id);
         return view('admin.jadwal.info_detail', compact('informasi'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function edit($id)
     {
         $data=Jadwal::find($id);
         return view('admin.jadwal.create',compact('data'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -111,12 +80,7 @@ class JadwalController extends Controller
         return redirect()->route('informasi.index')->with('sukses-edit','Data Berhasil Di Edit.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $data=Jadwal::find($id);

@@ -1,3 +1,6 @@
+@php
+    $tahun_ajaran=App\Models\TahunAjaran::where('status','=','aktif')->first();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +34,7 @@
               @if (session('sukses-buat'))
                   <div class="alert alert-success">
                     {{ session('sukses-buat') }} <br>
-                    <a href="{{ route('login') }}" class="text-light">Login</a>
+                    <a href="{{ route('login') }}" class="text-light"><b class="text-white">Login</b></a>
                   </div>
               @endif        
               <div class="card-body">
@@ -144,9 +147,15 @@
                   </div>
 
                   <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                      Daftar
-                    </button>
+                    @if (is_null($tahun_ajaran))
+                      <button type="submit" class="btn btn-secondary btn-lg btn-block" disabled tabindex="4">
+                        pendaftaran belum di buka
+                      </button>
+                    @else
+                      <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                        Daftar
+                      </button>
+                    @endif
                   </div>
                 </form>
               </div>

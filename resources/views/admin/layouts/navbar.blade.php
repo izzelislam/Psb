@@ -4,6 +4,7 @@
           }])->orderBy('created_at','desc')->get();
       @endphp
       <div class="navbar-bg"></div>
+      
       <nav class="navbar navbar-expand-lg main-navbar">
         <form class="form-inline mr-auto">
           <ul class="navbar-nav mr-3">
@@ -35,7 +36,7 @@
               <div class="dropdown-list-content dropdown-list-message">
 
               @foreach ($pesan as $index=>$item)
-                @if ($item->chat->count() > 0)
+                @if ( isset($item) && $item->chat->count() > 0)
                     <a href="#mymodal"
                        data-toggle="modal" 
                        data-target="#mymodal"
@@ -44,6 +45,9 @@
                       <div class="dropdown-item-avatar">
                         <img alt="image" src="{{ Avatar::create($item->user->name)->toGravatar(['d' => 'wavatar', 'r' => 'pg', 's' => 100])}}" class="rounded-circle">
                       </div>
+                      @php
+                          dd($item)
+                      @endphp
                       <div class="dropdown-item-desc">
                         <strong>
                           @if ($item->user->biodata1 != null)
@@ -66,7 +70,7 @@
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="{{ Avatar::create($item->user->name)->toGravatar(['d' => 'retro', 'r' => 'g', 's' => 100])}}" class="rounded-circle mr-1">
+            <img alt="image" src="{{ Avatar::create(Auth::user()->name)->toGravatar(['d' => 'retro', 'r' => 'g', 's' => 100])}}" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Logged in 5 min ago</div>

@@ -31,14 +31,14 @@ class UserSeeder extends Seeder
             'role'=>'pendaftar'
         ]);
 
-        $faker=Factory::create('id_ID');
-        for ($i=2; $i < 202 ; $i++) { 
-            User::create([
-                'name'=>$faker->name('male'),
-                'email'=>$faker->unique()->email,
-                'password'=>bcrypt(123),
-                'role'=>'pendaftar'
-            ]);
-        }
+        // $faker=Factory::create('id_ID');
+        // for ($i=2; $i < 202 ; $i++) { 
+        //     User::create([
+        //         'name'=>$faker->name('male'),
+        //         'email'=>$faker->unique()->email,
+        //         'password'=>bcrypt(123),
+        //         'role'=>'pendaftar'
+        //     ]);
+        // }
     }
 }
