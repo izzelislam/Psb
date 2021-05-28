@@ -2,6 +2,7 @@
           $pesan=App\Models\Teman::with(['chat'=>function($query){
             $query->where('read','=',null)->whereHas('user',function($query){$query->where('role','=','pendaftar');});
           }])->orderBy('created_at','desc')->get();
+
       @endphp
       <div class="navbar-bg"></div>
       
@@ -45,9 +46,6 @@
                       <div class="dropdown-item-avatar">
                         <img alt="image" src="{{ Avatar::create($item->user->name)->toGravatar(['d' => 'wavatar', 'r' => 'pg', 's' => 100])}}" class="rounded-circle">
                       </div>
-                      @php
-                          dd($item)
-                      @endphp
                       <div class="dropdown-item-desc">
                         <strong>
                           @if ($item->user->biodata1 != null)
