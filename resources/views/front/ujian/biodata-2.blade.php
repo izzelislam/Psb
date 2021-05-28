@@ -182,56 +182,26 @@
                       />
                       </div>
                       <div class="form-group">
-                      <label for="pengalaman_organisasi">Pengalaman Organisasi<b>*</b></label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="pengalaman_organisasi"
-                        name="pengalaman_organisasi"
-                        required
-                      />
+                        <label for="pengalaman_organisasi">Pengalaman Organisasi<b>*</b></label>
+                        <textarea name="pengalaman_organisasi" id="" class="form-control h-50"  required></textarea>
                       </div>
                       <div class="form-group">
-                      <label for="prestasi">Prestasi<b>*</b></label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="prestasi"
-                        name="prestasi"
-                        required
-                      />
+                        <label for="prestasi">Prestasi<b>*</b></label>
+                        <textarea name="prestasi" id="" class="form-control h-50"  required></textarea>
                       </div>
                       <div class="form-group">
-                      <label for="Hobi">Hobi<b>*</b></label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="Hobi"
-                        name="hobi"
-                        required
-                      />
+                        <label for="Hobi">Hobi<b>*</b></label>
+                        <textarea name="hobi" id="" class="form-control h-50"  required></textarea>
                       </div>
                       <div class="form-group">
                         <label for="cita-cita">Cita-Cita<b>*</b></label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="cita-cita"
-                          name="cita_cita"
-                          required
-                        />
+                        <textarea name="cita-cita" id="" class="form-control h-50"  required></textarea>
                       </div>
                       <div class="form-group">
                         <label for="skill"
                           >Skill/Kelebihan<b>*</b></label
                         >
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="skill"
-                          name="skill"
-                          required
-                        />
+                        <textarea name="skill" id="" class="form-control h-50"  required></textarea>
                       </div>
                       <div class="form-group">
                         <label for="jumlah_hafalan"
@@ -424,7 +394,7 @@
                         <label for="exampleInputPassword1"
                           >Alasan Mendaftar <b>*</b></label
                         >
-                        <textarea name="alasan_mendaftar" id="" class="form-control" required></textarea>
+                        <textarea name="alasan_mendaftar" id="" class="form-control h-50" required></textarea>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1"
@@ -462,8 +432,8 @@
                       <label for="">Orang Tua<b>*</b></label>
                       <select name="orang_tua" class="custom-select">
                             <option value="lengkap" >LENGKAP</option>
-                            <option value="ayah" >AYAH</option>
-                            <option value="ibu" >IBU</option>
+                            <option value="ayah" >PIATU</option>
+                            <option value="ibu" >YATIM</option>
                             <option value="yatim-piatu" >YATIM-PIATU</option>
                       </select>
                       </div>
