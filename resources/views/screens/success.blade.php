@@ -22,7 +22,9 @@
       <div class="empty-state" style="height: 100vh;backgroud-color:rgb(24, 23, 23);">
         <div class="">
           {{-- <i class="mdi checkbox-marked-circle-outline"></i> --}}
-              <img src="{{ asset('/front/assets/img/note-list.png') }}" alt="" style="width: 40%;" class="pl-4">
+            <div class="col-md-4 col-sm-12 m-auto">
+              <img src="{{ asset('/front/assets/img/note-list.png') }}" alt="" style="width: 100%;" class="pl-4">
+            </div>
             </div>
             <h2>Berhasil</h2>
                 <p class="lead">
