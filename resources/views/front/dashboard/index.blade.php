@@ -4,6 +4,7 @@
 	$pesan=App\Models\Chat::where('teman_id','=',$teman)->where('read','=',null)->whereHas('user',function($query){
 		$query->where('role','=','admin');
 	})->count();
+
 @endphp
 @extends('front.dashboard.pages.app')
 
@@ -374,6 +375,7 @@
 					<div class="col-md-1 py-2"><i class="fas fa-th"></i></div>
 					<div class="col-md-3 py-2">tes tahap Ke Empat</div>
 					<div class="col-md-4 py-2">
+						@isset($tahap5)
 						@if ($tahap5->status == null)
 							<div class="badge badge-info">
 							Menunggu Di Hubunggi
@@ -388,13 +390,16 @@
 							</div>
 						@else
 						@endif
+						@endisset
 					</div>
 					<div class="col-md-4 my-2">
+						@isset($tahap5)
 						@if ($tahap5->status == null)
 							<a href="{{ route('tahap-lima-wawancara') }}" class="btn btn-primary">Info Wawancara</a>
 						@else
 							<span class="btn btn-success">Sudah Di Ikuti</span>
 						@endif
+						@endisset
 					</div>
 				</div> 
 				@endif
