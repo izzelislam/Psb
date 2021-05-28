@@ -15,6 +15,7 @@ class TesIqController extends Controller
     public function iq()
     {
         $soal_iq=Soal::all()->random(50)->chunk(10);
+       // dd($soal_iq);
         return view('front.ujian.tes-iq',compact('soal_iq'));
     }
 
@@ -61,7 +62,7 @@ class TesIqController extends Controller
 
     public function kepribadian()
     {
-        $kepribadian=Kepribadian::all()->random(100)->chunk(20);
+        $kepribadian=Kepribadian::all()->random(50)->chunk(10);
         return view('front.ujian.tes-kepribadian',compact('kepribadian'));
     }
 

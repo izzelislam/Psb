@@ -19,7 +19,7 @@ class SoalSeeder extends Seeder
         $faker = Factory::create();
 
         $this->command->getOutput()->progressStart(200);
-        for ($i=0; $i <200 ; $i++) { 
+        for ($i=0; $i <60 ; $i++) { 
             Soal::create([
                 'soal' =>$faker->paragraphs(rand(1,3),true),
                 'gambar'=>$faker->randomElement(['img/pict1.jpg','img/pict2.png','img/pict3.jpeg',null,null]),

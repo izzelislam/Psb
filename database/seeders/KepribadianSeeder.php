@@ -20,7 +20,7 @@ class KepribadianSeeder extends Seeder
         $faker=Factory::create();
 
         $this->command->getOutput()->progressStart(200);
-        for ($i=0; $i <200 ; $i++) { 
+        for ($i=0; $i <100 ; $i++) { 
             Kepribadian::create([
                 'soal'=>$faker->paragraphs(rand(1,2),true),
                 'a'=>$faker->sentence(rand(1,3),true),

@@ -195,7 +195,7 @@
                       </div>
                       <div class="form-group">
                         <label for="cita-cita">Cita-Cita<b>*</b></label>
-                        <textarea name="cita-cita" id="" class="form-control h-50"  required></textarea>
+                        <textarea name="cita_cita" id="" class="form-control h-50"  required></textarea>
                       </div>
                       <div class="form-group">
                         <label for="skill"
