@@ -87,6 +87,7 @@
                   <div class="form-group">
                     <label for="no_wa">No WhatssApp</label>
                     <input id="no_wa" value="{{ old('no_wa') }}" type="number" class="form-control @error('no_wa') is-invalid @enderror" name="no_wa" tabindex="1" required autofocus placeholder="contoh : 085823945673">
+                    <small>mohon di isi dengan no  whatsapp yang dapat kami hubunggi!.</small>
                     @error('no_wa')
                       <div class="invalid-feedback">
                         {{ $message }} 
@@ -97,7 +98,7 @@
                   <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email" value="{{ old('email') }}" placeholder="contoh : budi@mail.com" type="email" class="form-control @error('email') is-invalid @enderror" name="email" tabindex="1" required autofocus>
-                    
+                    <small> mohon di isi dengan alamat email aktif anda !</small>
                     @error('email')
                       <div class="invalid-feedback">
                         {{ $message }} 
@@ -111,6 +112,7 @@
                     	<label for="password" class="control-label">Password</label>
                     </div>
                     <input id="password" value="{{ old('password') }}" type="password" class="form-control @error('password') is-invalid @enderror" name="password" tabindex="2" required>
+                    <small>di isi dengan password utuk masuk ke akun anda.</small>
                     @error('password')
                       <div class="invalid-feedback">
                         {{ $message }} 
