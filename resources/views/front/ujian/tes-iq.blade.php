@@ -71,7 +71,7 @@
                   @csrf 
                   <div x-data="soal()">
                     {{-- page 1--}}
-                    <div x-show="soal_1">
+                    <div class="row" x-show="soal_1">
                       @foreach ($soal_iq[0] as $index=>$item)
                         <div class="card-body mb-1">
                           <div class="card text-left">
@@ -190,9 +190,10 @@
                         <button
                           type="button"
                           class="btn btn-primary float-right px-3"
-                          x-on:click="soal1()"
+                          {{-- x-on:click="soal1()" --}}
+                          {{-- X-on:click="confirm()" --}}
                         >
-                          Selanjutnya
+                          Lanjut
                         </button>
                       </div>
                     </div>
@@ -317,14 +318,14 @@
                           class="btn btn-primary float-left px-3"
                           x-on:click="soal2back()"
                         >
-                          Sebelumnya
+                          Kembali
                         </button>
                         <button
                           type="button"
                           class="btn btn-primary float-right px-3"
                           x-on:click="soal2()"
                         >
-                          Selanjutnya
+                          Lanjut
                         </button>
                       </div>
                     </div>
@@ -449,14 +450,14 @@
                           class="btn btn-primary float-left px-3"
                           x-on:click="soal3back()"
                         >
-                          Sebelumnya
+                          Kembali
                         </button>
                         <button
                           type="button"
                           class="btn btn-primary float-right px-3"
                           x-on:click="soal3()"
                         >
-                          Selanjutnya
+                          Lanjut
                         </button>
                       </div>
                     </div>
@@ -581,14 +582,14 @@
                           class="btn btn-primary float-left px-3"
                           x-on:click="soal4back()"
                         >
-                          Sebelumnya
+                          Kembali
                         </button>
                         <button
                           type="button"
                           class="btn btn-primary float-right px-3"
                           x-on:click="soal4()"
                         >
-                          Selanjutnya
+                          Lanjut
                         </button>
                       </div>
                     </div>
@@ -713,14 +714,15 @@
                           class="btn btn-primary float-left px-3"
                           x-on:click="soal5back()"
                         >
-                          Sebelumnya
+                          Kembali
                         </button>
                         <button
-                          type="submit"
+                          type="button"
                           class="btn btn-primary float-right px-3"
                         >
                           Selesai
                         </button>
+                        <button type="submit" class="d-none"></button>
                       </div>
                     </div>
                   </div>
@@ -799,6 +801,10 @@
             this.soal_4=true;
             this.soal_5=false;
             window.scrollTo(0, 0); 
+          },
+          confirm(){
+            var a = confirm('Apakah anda sudah yakin dengan jawaban anda ?');
+            console.log(a);
           }
         }
       }

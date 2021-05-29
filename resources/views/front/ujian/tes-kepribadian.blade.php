@@ -138,7 +138,7 @@
                           class="btn btn-primary float-right px-3"
                           x-on:click="soal1()"
                         >
-                          Selanjutnya
+                          Lanjut
                         </button>
                       </div>
                     </div>
@@ -262,14 +262,14 @@
                           class="btn btn-primary float-left px-3"
                           x-on:click="soal2back()"
                         >
-                          Sebelumnya
+                          Kembali
                         </button>
                         <button
                           type="button"
                           class="btn btn-primary float-right px-3"
                           x-on:click="soal2()"
                         >
-                          Selanjutnya
+                          Lanjut
                         </button>
                       </div>
                     </div>
@@ -393,14 +393,14 @@
                           class="btn btn-primary float-left px-3"
                           x-on:click="soal3back()"
                         >
-                          Sebelumnya
+                          Kembali
                         </button>
                         <button
                           type="button"
                           class="btn btn-primary float-right px-3"
                           x-on:click="soal3()"
                         >
-                          Selanjutnya
+                          Lanjut
                         </button>
                       </div>
                     </div>
@@ -524,14 +524,14 @@
                           class="btn btn-primary float-left px-3"
                           x-on:click="soal4back()"
                         >
-                          Sebelumnya
+                          Kembali
                         </button>
                         <button
                           type="button"
                           class="btn btn-primary float-right px-3"
                           x-on:click="soal4()"
                         >
-                          Selanjutnya
+                          Lanjut
                         </button>
                       </div>
                     </div>
@@ -655,7 +655,7 @@
                           class="btn btn-primary float-left px-3"
                           x-on:click="soal5back()"
                         >
-                          Sebelumnya
+                          Kembali
                         </button>
                         <button
                           type="submit"
