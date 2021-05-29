@@ -64,11 +64,11 @@
             <h6>Nilai</h6>
                 <table cellpadding="5">
                     <tr>
-                        <td style="width: 280px;">Tes Iq</td>
+                        <td style="width: 280px;">Nilai Tes Iq</td>
                         <td>{{ $biodata2->user->quis->nilai_tes_iq }}</td>
                     </tr>
                     <tr>
-                        <td style="width: 280px;">Tes Iq</td>
+                        <td style="width: 280px;">Nilai Tes Kepribadian</td>
                         <td>{{ $biodata2->user->quis->nilai_tes_kepribadian }}</td>
                     </tr>
                 </table>

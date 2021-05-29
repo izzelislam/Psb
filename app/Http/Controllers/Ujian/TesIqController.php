@@ -9,13 +9,14 @@ use App\Models\Soal;
 use App\Models\TahunAjaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TesIqController extends Controller
 {
     public function iq()
     {
-        $soal_iq=Soal::all()->random(50)->chunk(10);
-       // dd($soal_iq);
+        $soal=Soal::inRandomOrder()->limit(50)->get();
+        $soal_iq = $soal->chunk(10);
         return view('front.ujian.tes-iq',compact('soal_iq'));
     }
 
@@ -62,7 +63,8 @@ class TesIqController extends Controller
 
     public function kepribadian()
     {
-        $kepribadian=Kepribadian::all()->random(50)->chunk(10);
+        $soal=Kepribadian::inRandomOrder()->limit(50)->get();
+        $kepribadian = $soal->chunk(10);
         return view('front.ujian.tes-kepribadian',compact('kepribadian'));
     }
 

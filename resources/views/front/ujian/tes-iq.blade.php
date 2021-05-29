@@ -8,7 +8,7 @@
         <div class="row justify-content-center px-4">
           <div class="col-md-10 col-sm-12 title">
             <!-- step wizard -->
-            <div class="stepwizard mb-5">
+            {{-- <div class="stepwizard mb-5">
               <div class="stepwizard-row setup-panel">
                 <div class="stepwizard-step">
                   <a
@@ -60,7 +60,7 @@
                   <p>Step 5</p>
                 </div>
               </div>
-            </div>
+            </div> --}}
             <!-- end step wizard -->
             <h5>
               <strong> <i class="fa fa-book ico"></i> Tes IQ</strong>
