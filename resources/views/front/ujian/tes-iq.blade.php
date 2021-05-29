@@ -78,7 +78,7 @@
                             <div class="card-body">
                               <div class="soal">
                                 <div class="row">
-                                  <div class="col">
+                                  <div class="col-md-12">
                                     <p>
                                       <b class="title">{{ $index+1 }}</b>
                                       <br>
