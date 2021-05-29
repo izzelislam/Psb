@@ -190,8 +190,7 @@
                         <button
                           type="button"
                           class="btn btn-primary float-right px-3"
-                          {{-- x-on:click="soal1()" --}}
-                          {{-- X-on:click="confirm()" --}}
+                          x-on:click="soal1()"
                         >
                           Lanjut
                         </button>
@@ -717,12 +716,11 @@
                           Kembali
                         </button>
                         <button
-                          type="button"
+                          type="submit"
                           class="btn btn-primary float-right px-3"
                         >
                           Selesai
                         </button>
-                        <button type="submit" class="d-none"></button>
                       </div>
                     </div>
                   </div>
@@ -801,10 +799,6 @@
             this.soal_4=true;
             this.soal_5=false;
             window.scrollTo(0, 0); 
-          },
-          confirm(){
-            var a = confirm('Apakah anda sudah yakin dengan jawaban anda ?');
-            console.log(a);
           }
         }
       }
