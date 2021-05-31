@@ -77,7 +77,7 @@
                               <th class="w-30">Action</th>
                             </tr>
                           </thead>
-                          {{-- <tbody>
+                          <tbody>
                             @foreach ($pesan as $item)
                             <tr>
                               <td width="10">
@@ -128,11 +128,7 @@
                             </tr>
           
                             @endforeach
-                          </tbody> --}}
-
-                          @php
-                              dd($pesan)
-                          @endphp
+                          </tbody>
                         </table>
                       </div>
                     </form>
