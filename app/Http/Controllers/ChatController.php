@@ -26,8 +26,8 @@ class ChatController extends Controller
         Chat::where('teman_id','=',$teman)->where('read','=',null)->whereHas('user',function($query){
           $query->where('role','=','admin');
         })->update(['read'=>1]);
-        // dd($pesan->toArray());
-        return view('front.dashboard.chat',compact('pesan'));
+        dd($pesan->toArray());
+        // return view('front.dashboard.chat',compact('pesan'));
     }
 
     public function chatstore(Request $request)

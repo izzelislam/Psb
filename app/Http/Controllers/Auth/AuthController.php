@@ -65,7 +65,9 @@ class AuthController extends Controller
 
         $no_wa=$request->get('no_wa');
         $no=str_split($no_wa,3);
+
         $tanggal=$request->get('umur');
+        
         $umur=Carbon::parse($tanggal)->age;
 
         if ($no[0] == "+62") {
