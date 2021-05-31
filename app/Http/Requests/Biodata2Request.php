@@ -24,7 +24,6 @@ class Biodata2Request extends FormRequest
     public function rules()
     {
         return [
-            'tanggal_lahir'=>'required',
             'tempat_lahir'=>'required',
             'alamat_lengkap'=>'required',
             'indonesia_provinces_id'=>'required',
@@ -56,15 +55,13 @@ class Biodata2Request extends FormRequest
             'pekerjaan_ayah'=>'required',
             'nama_ibu'=>'required',
             'pekerjaan_ibu'=>'required',
-            'penghasilan_ortu'=>'required',
+            'penghasilan_ortu'=>'required|numeric|min:5|max:11',
             'anak_ke'=>'required',
             'saudara'=>'required',
             'no_wali'=>'required',
-            'keterangan'=>'required',
             'izin_ortu'=>'required',
             'punya_laptop'=>'required',
             'setuju'=>'required',
-            'status'=>'required',
         ];
     }
 }

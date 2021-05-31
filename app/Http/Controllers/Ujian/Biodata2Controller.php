@@ -20,7 +20,7 @@ class Biodata2Controller extends Controller
         return view('front.ujian.biodata-2',compact('provinsi','kabupaten'));
     }
 
-    public function store(Request $request)
+    public function store(Biodata2Request $request)
     {
         $users_id=Auth::user()->id;
         $tahun_ajaran_id=TahunAjaran::where('status','=','aktif')->pluck('id')->first();
