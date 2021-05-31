@@ -75,8 +75,7 @@ body {
 }
 
 .book {
-    width: 45%;
-    margin-bottom: -70px;
+    margin-bottom: -130px;
 }
 
 /* footer */
@@ -240,4 +239,8 @@ b {
     background-image: url("/front/assets/img/spalce.png");
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.card-info{
+    margin-top: 100px;
 }
