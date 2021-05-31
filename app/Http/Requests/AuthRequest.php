@@ -28,7 +28,7 @@ class AuthRequest extends FormRequest
             'nama'=>'required',
             'umur'=>'required',
             'keluarga'=>'required',
-            'no_wa'=>'required',
+            'no_wa'=>'required|unique:biodata_1,no_wa',
             'email'=>'required|email|unique:users,email',
             'password'=>'required|string|size:6',
             'jenis_kelamin'=>'required',
