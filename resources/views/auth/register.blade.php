@@ -41,7 +41,7 @@
                 <form method="POST" action="{{ route('register-proses') }}" class="needs-validation" novalidate="">
                   @csrf
                   <div class="form-group">
-                    <label for="nama_penguna">Nama Penguna</label>
+                    <label for="nama_penguna">Nama Pengguna</label>
                     <input id="nama_penguna" value="{{ old('name') }}" type="text" class="form-control @error('name') is-invalid @enderror" name="name" tabindex="1" required autofocus placeholder="contoh : budi">
                     @error('name')
                       <div class="invalid-feedback">
@@ -87,7 +87,7 @@
                   <div class="form-group">
                     <label for="no_wa">No WhatssApp</label>
                     <input id="no_wa" value="{{ old('no_wa') }}" type="number" class="form-control @error('no_wa') is-invalid @enderror" name="no_wa" tabindex="1" required autofocus placeholder="contoh : 085823945673">
-                    <small>mohon di isi dengan no  whatsapp yang dapat kami hubunggi!.</small>
+                    <small>mohon di isi denggan no  whatsapp yang dapat kami hubungi!.</small>
                     @error('no_wa')
                       <div class="invalid-feedback">
                         {{ $message }} 
@@ -98,7 +98,7 @@
                   <div class="form-group">
                     <label for="email">Email</label>
                     <input id="email" value="{{ old('email') }}" placeholder="contoh : budi@mail.com" type="email" class="form-control @error('email') is-invalid @enderror" name="email" tabindex="1" required autofocus>
-                    <small> mohon di isi dengan alamat email aktif anda !</small>
+                    <small> mohon di isi denggan alamat email aktif anda !</small>
                     @error('email')
                       <div class="invalid-feedback">
                         {{ $message }} 
@@ -112,6 +112,18 @@
                     	<label for="password" class="control-label">Password</label>
                     </div>
                     <input id="password" value="{{ old('password') }}" type="password" class="form-control @error('password') is-invalid @enderror" name="password" tabindex="2" required>
+                    <div class="row d-flex ">
+                      <div class="col">
+                        <input
+                            class="form-check-input ml-1"
+                            type="checkbox"
+                            onclick="myFunction()"
+                        />
+                        <small class="ml-4">show password</small>
+                      </div>
+                    </div>
+                    
+                    <br>
                     <small>di isi dengan password utuk masuk ke akun anda.</small>
                     @error('password')
                       <div class="invalid-feedback">
@@ -120,6 +132,7 @@
                     @enderror
                   </div>
 
+                  
                   <div class="form-group">
                     <label for="jenis-kelamin"
                       >Jenis Kelamin, Wanita Belum Diterima <b>*</b></label
@@ -173,6 +186,16 @@
   </div>
   @stack('head-script')
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+  </script>
   @stack('end-script')
 
 </body>

@@ -104,7 +104,7 @@
                                         class="custom-control-label"
                                         for="pilihan{{ $item->id }}d"
                                         ><strong>D .</strong>
-                                        {{ $item->e }}
+                                        {{ $item->d }}
                                       </label>
                                     </div>
                                     <!-- jawaban 5 -->
@@ -228,7 +228,7 @@
                                         class="custom-control-label"
                                         for="pilihan{{ $item->id }}d"
                                         ><strong>D .</strong>
-                                        {{ $item->e }}
+                                        {{ $item->d }}
                                       </label>
                                     </div>
                                     <!-- jawaban 5 -->
@@ -359,7 +359,7 @@
                                         class="custom-control-label"
                                         for="pilihan{{ $item->id }}d"
                                         ><strong>D .</strong>
-                                        {{ $item->e }}
+                                        {{ $item->d }}
                                       </label>
                                     </div>
                                     <!-- jawaban 5 -->
@@ -490,7 +490,7 @@
                                         class="custom-control-label"
                                         for="pilihan{{ $item->id }}d"
                                         ><strong>D .</strong>
-                                        {{ $item->e }}
+                                        {{ $item->d }}
                                       </label>
                                     </div>
                                     <!-- jawaban 5 -->
@@ -621,7 +621,7 @@
                                         class="custom-control-label"
                                         for="pilihan{{ $item->id }}d"
                                         ><strong>D .</strong>
-                                        {{ $item->e }}
+                                        {{ $item->d }}
                                       </label>
                                     </div>
                                     <!-- jawaban 5 -->

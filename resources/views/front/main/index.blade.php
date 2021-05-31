@@ -24,21 +24,34 @@
                 </div>
                 </div>
                 <div class="row">
-                <div class="col">
+                <div class="col d-md-block d-none">
                     <a href="{{ route('login') }}" class="btn btn-masuk px-5 mx-2" data-aos="zoom-in-up" data-aos-delay="1000" data-aos-duration="1000">MASUK</a>
                     <a href="{{ route('register') }}" class="btn btn-daftar px-5 mx-2" data-aos="zoom-in-up" data-aos-delay="1000" data-aos-duration="1000">DAFTAR</a>
                 </div>
+
+                <div class="col d-md-none d-sm-block">
+                    <a href="{{ route('login') }}" class="btn btn-masuk px-5 mx-2" data-aos="zoom-in-up" data-aos-delay="1000" data-aos-duration="1000">MASUK</a>
+                    <a href="{{ route('register') }}" class="btn btn-daftar px-5 mx-2 my-4" data-aos="zoom-in-up" data-aos-delay="1000" data-aos-duration="1000">DAFTAR</a>
+                </div>
+
                 </div>
                 <div class="row mt-5">
                 <div class="col m-auto ">
-                    <img src="{{ asset('front/assets/img/book.png') }}" class="book" alt="" data-aos="zoom-in-up" data-aos-delay="1500" data-aos-duration="1000" />
+                    <div class="d-none d-md-block">
+                        <img src="{{ asset('front/assets/img/book.png') }}" class="book" style="width: 45%;
+                        margin-bottom: -70px;" alt="" data-aos="zoom-in-up" data-aos-delay="1500" data-aos-duration="1000" />
+                    </div>
+                    <div class="d-sm-block d-md-none">
+                        <img src="{{ asset('front/assets/img/book.png') }}" class="book" style="width: 80%;
+                        margin-bottom: -70px;" alt="" data-aos="zoom-in-up" data-aos-delay="1500" data-aos-duration="1000" />
+                    </div>
                 </div>
                 </div>
             </div>
             </div>
         </div>
         </div>
-        <div class="container my-5 py-5">
+        <div class="container my-5 py-5 px-5">
             <div class="row justify-content-between">
                 <div class="col-md-3 col-sm-12 text-light text-center p-3 mb-2 card-1 shadow" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000">
                     <i style="font-size: 55px" class="mt-2 fa fa-user-graduate"></i>

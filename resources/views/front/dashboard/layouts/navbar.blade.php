@@ -14,9 +14,7 @@
             <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
             </div>
             <div class="nav-collapse">
-            <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
-                <i class="fas fa-ellipsis-v"></i>
-            </a>
+    
             </div>
             <ul class="navbar-nav navbar-right">
             <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg {{ $pesan->count() > 0 ? 'beep' : '' }}"><i class="far fa-envelope"></i></a>

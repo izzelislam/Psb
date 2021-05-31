@@ -1,7 +1,6 @@
 @extends('front.ujian.app')
 
 @section('title','Tes Tahap Pertama')
-    
 @section('content')
     <div class="container py-5">
       <div class="my-4">
@@ -65,6 +64,7 @@
             <h5>
               <strong> <i class="fa fa-book ico"></i> Tes IQ</strong>
             </h5>
+            
             <p class="card-text">Silahkan Jawab Soal-Soal Dibawah Ini !</p>
             <div class="card text-left" >
                 <form method="POST" action="{{ route('iq-store') }}">
@@ -83,7 +83,12 @@
                                       <p>
                                         <b class="title">{{ $index+1 }}</b>
                                         <br>
-                                        <img src="{{ Storage::url($item->gambar) }}" alt="" class="w-50"><br>
+
+                                        <a href="{{ Storage::url($item->gambar) }}" target="blank">
+                                          <img id="myImg" src="{{ Storage::url($item->gambar) }}" alt="" class="w-50 d-none d-md-block"><br>
+                                          <img id="myImg" src="{{ Storage::url($item->gambar) }}" alt="" class="w-100 d-sm-block d-md-none"><br>
+                                        </a>
+
                                         {{ $item->soal }}
                                       </p>
                                     </div>
@@ -159,7 +164,7 @@
                                           class="custom-control-label"
                                           for="pilihan{{ $item->id }}d"
                                           ><strong>D .</strong>
-                                          {{ $item->e }}
+                                          {{ $item->d }}
                                         </label>
                                       </div>
                                       <!-- jawaban 5 -->
@@ -209,7 +214,11 @@
                                   <div class="col">
                                     <p>
                                       <b class="title">{{ $index+1 }}</b>
-                                      <img src="{{ Storage::url($item->gambar) }}" alt="" class="w-50"><br>
+                                      <a href="{{ Storage::url($item->gambar) }}" target="blank">
+                                        <img id="myImg" src="{{ Storage::url($item->gambar) }}" alt="" class="w-50 d-none d-md-block"><br>
+                                        <img id="myImg" src="{{ Storage::url($item->gambar) }}" alt="" class="w-100 d-sm-block d-md-none">
+                                      </a>
+                                      <br>
                                       {{ $item->soal }}
                                     </p>
                                   </div>
@@ -285,7 +294,7 @@
                                         class="custom-control-label"
                                         for="pilihan{{ $item->id }}d"
                                         ><strong>D .</strong>
-                                        {{ $item->e }}
+                                        {{ $item->d }}
                                       </label>
                                     </div>
                                     <!-- jawaban 5 -->
@@ -341,7 +350,11 @@
                                   <div class="col">
                                     <p>
                                       <b class="title">{{ $index+1 }}</b>
-                                      <img src="{{ Storage::url($item->gambar) }}" alt="" class="w-50"><br>
+                                      <a href="{{ Storage::url($item->gambar) }}" target="blank">
+                                        <img id="myImg" src="{{ Storage::url($item->gambar) }}" alt="" class="w-50 d-none d-md-block"><br>
+                                        <img id="myImg" src="{{ Storage::url($item->gambar) }}" alt="" class="w-100 d-sm-block d-md-none">
+                                      </a>
+                                      <br>
                                       {{ $item->soal }}
                                     </p>
                                   </div>
@@ -417,7 +430,7 @@
                                         class="custom-control-label"
                                         for="pilihan{{ $item->id }}d"
                                         ><strong>D .</strong>
-                                        {{ $item->e }}
+                                        {{ $item->d }}
                                       </label>
                                     </div>
                                     <!-- jawaban 5 -->
@@ -473,7 +486,11 @@
                                   <div class="col">
                                     <p>
                                       <b class="title">{{ $index+1 }}</b>
-                                      <img src="{{ Storage::url($item->gambar) }}" alt="" class="w-50"><br>
+                                      <a href="{{ Storage::url($item->gambar) }}" target="blank">
+                                        <img id="myImg" src="{{ Storage::url($item->gambar) }}" alt="" class="w-50 d-none d-md-block"><br>
+                                        <img id="myImg" src="{{ Storage::url($item->gambar) }}" alt="" class="w-100 d-sm-block d-md-none">
+                                      </a>
+                                      <br>
                                       {{ $item->soal }}
                                     </p>
                                   </div>
@@ -549,7 +566,7 @@
                                         class="custom-control-label"
                                         for="pilihan{{ $item->id }}d"
                                         ><strong>D .</strong>
-                                        {{ $item->e }}
+                                        {{ $item->d }}
                                       </label>
                                     </div>
                                     <!-- jawaban 5 -->
@@ -605,7 +622,11 @@
                                   <div class="col">
                                     <p>
                                       <b class="title">{{ $index+1 }}</b>
-                                      <img src="{{ Storage::url($item->gambar) }}" alt="" class="w-50"><br>
+                                      <a href="{{ Storage::url($item->gambar) }}" target="blank">
+                                        <img id="myImg" src="{{ Storage::url($item->gambar) }}" alt="" class="w-50 d-none d-md-block"><br>
+                                        <img id="myImg" src="{{ Storage::url($item->gambar) }}" alt="" class="w-100 d-sm-block d-md-none">
+                                      </a>
+                                      <br>
                                       {{ $item->soal }}
                                     </p>
                                   </div>
@@ -681,7 +702,7 @@
                                         class="custom-control-label"
                                         for="pilihan{{ $item->id }}d"
                                         ><strong>D .</strong>
-                                        {{ $item->e }}
+                                        {{ $item->d }}
                                       </label>
                                     </div>
                                     <!-- jawaban 5 -->
@@ -739,7 +760,6 @@
 
 @push('end-script')
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
-
     <script>
       function soal(){
         return{

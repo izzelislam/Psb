@@ -22,7 +22,7 @@ class SoalSeeder extends Seeder
         for ($i=0; $i <60 ; $i++) { 
             Soal::create([
                 'soal' =>$faker->paragraphs(rand(1,3),true),
-                'gambar'=>$faker->randomElement(['img/pict1.jpg','img/pict2.png','img/pict3.jpeg',null,null]),
+                'gambar'=>$faker->randomElement(['img/pict1.jpg','img/pict2.png','img/pict3.jpeg']),
                 'a'=>$faker->sentences(rand(1,3),true),
                 'b'=>$faker->sentences(rand(1,3),true),
                 'c'=>$faker->sentences(rand(1,3),true),

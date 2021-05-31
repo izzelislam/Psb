@@ -178,7 +178,6 @@
                         class="form-control"
                         id="jurusan"
                         name="jurusan"
-                        required
                       />
                       </div>
                       <div class="form-group">
@@ -188,6 +187,7 @@
                       <div class="form-group">
                         <label for="prestasi">Prestasi<b>*</b></label>
                         <textarea name="prestasi" id="" class="form-control h-50"  required></textarea>
+                        <small>di isi 'tidak ada' jika tidak ada </small>
                       </div>
                       <div class="form-group">
                         <label for="Hobi">Hobi<b>*</b></label>
@@ -375,7 +375,6 @@
                             id="exampleInputPassword1"
                             name="nama_game"
                           />
-                          <small>Tidak di isi jika tidak suka game</small>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1"
@@ -387,7 +386,6 @@
                             id="exampleInputPassword1"
                             name="waktu_game"
                           />
-                          <small>Tidak di isi jika tidak suka game</small>
                         </div>
                       </div>
                       <div class="form-group">
@@ -492,6 +490,7 @@
                           name="penghasilan_ortu"
                           required
                         />
+                        <p>di isi dengan bilangan bulat contoh 1000000.</p>
                       </div>
                       <div class="form-group">
                         <label for="anak_ke">Anak Ke ?<b>*</b></label>
