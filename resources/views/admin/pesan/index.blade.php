@@ -88,12 +88,12 @@
                               </td>
                               <td width="10">{{ $loop->iteration }}</i></td>
                               <td>
-                                @if ($item->user->biodata1 != null)
-                                    {{ $item->user->biodata1->nama }}
+                                {{-- @if ($item->user->biodata1 != null)
+                                {{ $item->user->biodata1->nama }}
                                 @else
-                                    {{ $item->user->name }}
-                                @endif
-
+                                @endif --}}
+                                
+                                {{ $item->user->name }}
                                 @php
                                     $data=App\Models\Chat::where('teman_id','=',$item->id)->whereHas('user',function($query){
                                       $query->where('role','=','pendaftar');
