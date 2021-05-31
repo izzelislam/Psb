@@ -57,10 +57,22 @@
                       </div> --}}
                     </div>
                     <input id="password" type="password" class="form-control" name="password" tabindex="2" required>
+                    <div class="row d-flex ">
+                      <div class="col">
+                        <input
+                            class="form-check-input ml-1"
+                            type="checkbox"
+                            onclick="myFunction()"
+                        />
+                        <small class="ml-4">show password</small>
+                      </div>
+                    </div>
                     <div class="invalid-feedback">
                       Masukkan password anda
                     </div>
                   </div>
+
+                  
 
                   <div class="form-group">
                     <div class="custom-control custom-checkbox">
@@ -90,6 +102,16 @@
   </div>
   @stack('head-script')
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+    function myFunction() {
+      var x = document.getElementById("password");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
+  </script>
   @stack('end-script')
 
 </body>
