@@ -156,7 +156,7 @@
 		<div class="col">
 			<div class="row">
 				@foreach ($jadwal as $item)
-					<div class="col-1 col-md-3">
+					<div class="col-12 col-md-3">
 						<a href="{{ route('informasi-detail-user', $item->id) }}">
 							<div class="card">
 								<div style="
