@@ -154,25 +154,27 @@
 	</div>
 	<div class="row">
 		<div class="col">
-			<div class="row row-cols-1 row-cols-md-3">
+			<div class="row">
 				@foreach ($jadwal as $item)
-					<div class="col">
-						<div class="card">
-						<div style="
-							width: 100%; 
-							height: 158px; 
-							background-image: url({{ Storage::url($item->gambar) }});
-							background-size: contain, cover;
-							" 
-							class="bg-dark"
-						></div>
-						{{-- <img src="{{ Storage::url($item->gambar) }}" class="card-img-top" alt="..." style="height: 150px;"> --}}
-						<div class="card-body">
-							<h5 class="card-title">{{ $item->title }}</h5>
-							<p class="card-text">{{ \Illuminate\Support\Str::limit($item->isi,100, $end='.' ) }}</p>
-							<p class="card-text"><small class="text-muted">{{ $item->created_at->format('Y-m-d') }}</small></p>
-						</div>
-						</div>
+					<div class="col-1 col-md-3">
+						<a href="{{ route('informasi-detail-user', $item->id) }}">
+							<div class="card">
+								<div style="
+									width: 100%; 
+									height: 158px; 
+									background-image: url({{ Storage::url($item->gambar) }});
+									background-size: contain, cover;
+									" 
+									class="bg-dark"
+								></div>
+								{{-- <img src="{{ Storage::url($item->gambar) }}" class="card-img-top" alt="..." style="height: 150px;"> --}}
+								<div class="card-body">
+									<h5 class="card-title">{{ $item->title }}</h5>
+									<p class="card-text">{{ \Illuminate\Support\Str::limit($item->isi,100, $end='.' ) }}</p>
+									<p class="card-text"><small class="text-muted">{{ $item->created_at->format('Y-m-d') }}</small></p>
+								</div>
+								</div>
+						</a>
 					</div>
 				@endforeach
 			</div>	
