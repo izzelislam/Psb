@@ -1,5 +1,6 @@
 @extends('admin.pages.app')
 
+
 @section('title','Data Informasi')
 
 @section('title-page','Data Informasi')
@@ -63,6 +64,7 @@
                                    data-target="#mymodal"
                                    data-remote="{{ route('informasi.create') }}"
                                 >
+                                  {{-- <a href="{{ route('informasi.create') }}" class="btn btn-info ml-2 btn-icon icon-left" > --}}
                                   <i class="fas fa-plus"></i>
                                   Buat Data
                                 </a>

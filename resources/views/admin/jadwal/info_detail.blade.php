@@ -8,7 +8,7 @@
   @endif
   <div class="card-body">
     <h5 class="card-title">{{ $informasi->title }}</h5>
-    <p class="card-text">{{ $informasi->isi }}</p>
+    <p class="card-text">{!! $informasi->isi !!}</p>
     <p class="card-text"><small class="text-muted">{{ $informasi->created_at->format('Y-m-d') }}</small></p>
   </div>
 </div>
