@@ -20,7 +20,8 @@
                       @if (isset($pesan))
                         @foreach ($pesan as $index=>$item)
                           @if ( $item->users_id != Auth::user()->id )
-                              <div class="media w-50 mb-3"><img src="{{ Avatar::create($item->user->name)->toGravatar(['d' => 'wavatar', 'r' => 'pg', 's' => 100])}}" alt="user" width="50" class="rounded-circle">
+                              <div class="media w-50 mb-3">
+                                <img src="{{ asset('front/assets/img/pita_avatar.png') }}" alt="user" width="50" class="rounded-circle">
                                 <div class="media-body ml-3">
                                   <div class="bg-light rounded py-2 px-3 mb-2">
                                     <p class="small text-muted">{{ $item->user->name }}

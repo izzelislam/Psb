@@ -22,7 +22,7 @@
               </div>
               <p class="small text-muted">{{ $item->created_at->format('H:i:s A') }} | {{ $item->created_at->format('M d') }}</p>
             </div>
-            <img src="{{ Avatar::create($item->user->name)->toGravatar(['d' => 'wavatar', 'r' => 'pg', 's' => 100])}}" alt="user" width="50" class="rounded-circle">
+            <img src="{{ asset('front/assets/img/pita_avatar.png') }}" alt="user" width="50" class="rounded-circle">
           </div>
         @endif   
       @endforeach

@@ -68,7 +68,7 @@
             </div>
           </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-            <img alt="image" src="{{ Avatar::create(Auth::user()->name)->toGravatar(['d' => 'retro', 'r' => 'g', 's' => 100])}}" class="rounded-circle mr-1">
+            <img alt="image" src="{{ asset('front/assets/img/pita_avatar.png') }}" class="rounded-circle mr-1">
             <div class="d-sm-none d-lg-inline-block">{{ Auth::user()->name }}</div></a>
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Logged in 5 min ago</div>
