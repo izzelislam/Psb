@@ -31,12 +31,12 @@
 
             <div class="card card-primary">
               <div class="card-header"><h4>Daftar</h4></div>
-              @if (session('sukses-buat'))
+              {{-- @if (session('sukses-buat'))
                   <div class="alert alert-success">
                     {{ session('sukses-buat') }} <br>
                     <a href="{{ route('login') }}" class="text-light"><b class="text-white">Login</b></a>
                   </div>
-              @endif        
+              @endif         --}}
               <div class="card-body">
                 <form method="POST" action="{{ route('register-proses') }}" class="needs-validation" novalidate="">
                   @csrf
@@ -124,7 +124,7 @@
                     </div>
                     
                     <br>
-                    <small>di isi dengan password utuk masuk ke akun anda.</small>
+                    <small>di isi dengan password utuk masuk ke akun anda, min 6 karakter max 20 karakter.</small>
                     @error('password')
                       <div class="invalid-feedback">
                         {{ $message }} 

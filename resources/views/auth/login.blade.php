@@ -35,7 +35,16 @@
                   <div class="alert alert-danger">
                     {{ session('sukses-danger') }}
                   </div>
+                
               @endif
+
+              @if (session('sukses-daftar'))
+                  <div class="alert alert-success">
+                    {{ session('sukses-daftar') }} <br>
+                    <a href="{{ route('login') }}" class="text-light"><b class="text-white">Login</b></a>
+                  </div>
+              @endif 
+
               <div class="card-body">
                 <form method="POST" action="{{ route('login-proses') }}" class="needs-validation" novalidate="">
                   @csrf

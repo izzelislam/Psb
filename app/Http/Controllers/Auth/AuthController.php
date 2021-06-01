@@ -98,9 +98,9 @@ class AuthController extends Controller
         //   'token' => bin2hex(random_bytes(40))
         // ]);
         // Mail::to('bangfkr002@gmail.com')->send(new VerifikasiEmail($user));
-        // return redirect()->back()->with('sukses-buat','Selamat anda berhasil mendaftar, silahkan login untuk memulai pendaftaran !');
+        // return redirect()->back();
 
-        return redirect('/login');
+        return redirect('/login')->with('sukses-daftar','Selamat anda berhasil mendaftar, silahkan login untuk memulai pendaftaran !');
     }
 
     public function logout()

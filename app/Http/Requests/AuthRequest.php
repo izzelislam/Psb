@@ -30,7 +30,7 @@ class AuthRequest extends FormRequest
             'keluarga'=>'required',
             'no_wa'=>'required|unique:biodata_1,no_wa',
             'email'=>'required|email|unique:users,email',
-            'password'=>'required|string|size:6',
+            'password'=>'required|string|min:6|max:20',
             'jenis_kelamin'=>'required',
         ];
     }
