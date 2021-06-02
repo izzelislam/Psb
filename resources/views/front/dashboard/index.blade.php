@@ -12,9 +12,20 @@
 
 @section('content')
 <div class="row">
-	{{-- @php
-		dd($tahap4->status)
-	@endphp --}}
+	
+	@if (session('gagal_tes'))
+		<div class="alert alert-danger alert-dismissible show fade">
+			<div class="alert-body">
+				<button class="close" data-dismiss="alert">
+					<span>&times;</span>
+				</button>
+				<h1><b>PENTING !</b></h1>
+				mohon maaf atas ketidaknyamanannya bagi yang gagal submit data pada tes seleksi tahap pertama, Silahkan anda coba kembali dan jika masih ada kendala silahkan hunbunggi kami melalui chat yang tersedia atau melalui media sosial kami.
+			</div>
+		</div>
+@endif
+
+
 	<div class="col-12 mb-4">
 		<div class="hero
 		@if ( isset($tahap2) && $tahap2->status == null || isset($tahap3) && $tahap3->status == null || isset($tahap4) && $tahap4->status == null || isset($tahap4) && $tahap4->status == null)

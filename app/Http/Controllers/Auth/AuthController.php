@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthRequest;
 use App\Mail\VerifikasiEmail;
 use App\Models\Biodata1;
+use App\Models\Biodata2;
 use App\Models\TahunAjaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,8 +33,11 @@ class AuthController extends Controller
       $data=$request->only('email','password');
 
         if (Auth::attempt($data)) {
-            $role=User::where('email','=',$request->email)->get();
-            $role=$role->pluck('role')->first();
+            $role_user=User::where('email','=',$request->email)->get();
+            $role=$role_user->pluck('role')->first();
+
+            $user_id = $role_user->pluck('id')->first();
+            // $biodata_2 = Biodata2::where('id' ==)
 
             if ($role == 'admin') {
                 return redirect()->route('dashboard');            
@@ -42,7 +46,15 @@ class AuthController extends Controller
                 //     Auth::logout();
                 //     return redirect()->route('login')->with('sukses-warning','Email anda belum terverifikasi, Silahkan Verifikasi email terlebih dahulu!');
                 // }
-                return redirect()->route('dashboard-user');
+                $bio = Biodata2::where('users_id','=',$user_id)->get();
+                $user_bio = $bio->toArray();
+                //dd($user_bio);
+                if ( count($user_bio) > 0) {
+                    return redirect()->route('dashboard-user');
+                }else{
+                    // return redirect()->back();
+                    return redirect()->route('dashboard-user')->with('gagal_tes','hello');
+                }
             }
         }else{
             return redirect()->route('login')->with('sukses-danger','email atau password salah.');
