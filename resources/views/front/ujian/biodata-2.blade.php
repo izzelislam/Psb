@@ -60,6 +60,15 @@
               <!-- end step wizard -->
               <p class="card-text">Silahkan isi form dibawah ini</p>
               <div class="card text-left">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="card-body">
                   <form id="multi-form" class="needs-validation" novalidate="" method="POST" action="{{ route('tahap-kedua-store') }}">
                     @csrf

@@ -25,7 +25,7 @@ class Biodata2Request extends FormRequest
     {
         return [
             'tempat_lahir'=>'required',
-            'alamat_lengkap'=>'required',
+            'alamt_lengkap'=>'required',
             'indonesia_provinces_id'=>'required',
             'indonesia_cities_id'=>'required',
             'facebook'=>'required',
@@ -55,7 +55,7 @@ class Biodata2Request extends FormRequest
             'pekerjaan_ayah'=>'required',
             'nama_ibu'=>'required',
             'pekerjaan_ibu'=>'required',
-            'penghasilan_ortu'=>'required|numeric|min:5|max:11',
+            'penghasilan_ortu'=>'required|numeric|digits_between:2,20',
             'anak_ke'=>'required',
             'saudara'=>'required',
             'no_wali'=>'required',
