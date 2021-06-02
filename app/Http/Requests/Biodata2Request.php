@@ -102,7 +102,7 @@ class Biodata2Request extends FormRequest
             'nama_ibu.required'=>'nama ibu wajib di isi',
             'pekerjaan_ibu.required'=>'pekerjaan ibu',
             'penghasilan_ortu.required'=>'penghasilan orang tua wajib diisi ',
-            'penghasilan_ortu.digits_between'=>'harus bilangan bulat antara 0 digits sampai 20 digits',
+            'penghasilan_ortu.digits_between'=>'penghasilan orang tua harus bilangan bulat antara 0 digits sampai 20 digits',
             'anak_ke.required'=>'anak ke- , wajib di isi',
             'saudara.required'=>'jumlah saudara wajib di isi',
             'no_wali.required'=>'no wali wajib di isi',
