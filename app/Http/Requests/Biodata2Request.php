@@ -64,4 +64,50 @@ class Biodata2Request extends FormRequest
             'setuju'=>'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            // 'name.required' => 'Please enter book name',
+            // 'author.required' => 'Please enter book author',
+            'tempat_lahir.required'=>'tempat lahir wajib di isi',
+            'alamt_lengkap.required'=>'alamat lengkap wajib di isi',
+            'indonesia_provinces_id.required'=>'provinsi wajib di isi',
+            'indonesia_cities_id.required'=>'kota wajib di isi',
+            'facebook.required'=>'facebook wajib di isi',
+            'instagram.required'=>'instagram wajib di isi',
+            'pendidikan_terakhir.required'=>'pendidikan terakhir wajib di isi',
+            'asal_sekolah.required'=>'asal sekolah wajib di isi',
+            'jurusan.required'=>'jurusan wajib di isi',
+            'pengalaman_organisasi.required'=>'pengalaman organisasi wajib di isi',
+            'prestasi.required'=>'prestasi wajib di isi',
+            'hobi.required'=>'hobi wajib di isi',
+            'cita_cita.required'=>'cita-cita wajib di isi',
+            'skill.required'=>'skill wajib di isi',
+            'jumlah_hafalan.required'=>'jumlah hafalan wajib di isi',
+            'tokoh_idola.required'=>'tokoh idola wajib di isi',
+            'ustadz_idola.required'=>'ustadz idola wajib di isi',
+            'tauhid.required'=>'pertanyaan "dimana Allah ?" wajib di isi',
+            'kajian.required'=>'kajian wajib di isi',
+            'buku.required'=>'buku kesukaan wajib di isi',
+            'perokok.required'=>'opsi merokok wajib di isi',
+            'punya_pacar.required'=>'opsi pacar wajib di isi',
+            'suka_game.required'=>'opsi suka game wajib di isi',
+            'alasan_mendaftar.required'=>'alasan medaftar wajib di isi',
+            'kegiatan.required'=>'kegiatan dari pagi sampai malam wajib di isi',
+            'kepribadian.required'=>'ceritakan kepribadian wajib di isi',
+            'orang_tua.required'=>'kelengkapan orangtua wajib di isi',
+            'nama_ayah.required'=>'nama ayah wajib di isi',
+            'pekerjaan_ayah.required'=>'pekerjaan ayah',
+            'nama_ibu.required'=>'nama ibu wajib di isi',
+            'pekerjaan_ibu.required'=>'pekerjaan ibu',
+            'penghasilan_ortu.required'=>'penghasilan orang tua wajib diisi ',
+            'penghasilan_ortu.digits_between'=>'harus bilangan bulat antara 0 digits sampai 20 digits',
+            'anak_ke.required'=>'anak ke- , wajib di isi',
+            'saudara.required'=>'jumlah saudara wajib di isi',
+            'no_wali.required'=>'no wali wajib di isi',
+            'izin_ortu.required'=>'izin ortu wajib di isi',
+            'punya_laptop.required'=>'opsi punya laptop wajib di isi',
+        ];
+    }
 }
