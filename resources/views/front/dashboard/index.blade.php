@@ -170,7 +170,6 @@
 								{{-- <img src="{{ Storage::url($item->gambar) }}" class="card-img-top" alt="..." style="height: 150px;"> --}}
 								<div class="card-body">
 									<h5 class="card-title">{{ $item->title }}</h5>
-									<p class="card-text">{!! \Illuminate\Support\Str::limit($item->isi,100, $end='.' ) !!}</p>
 									<p class="card-text"><small class="text-muted">{{ $item->created_at->format('Y-m-d') }}</small></p>
 								</div>
 								</div>
