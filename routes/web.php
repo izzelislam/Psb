@@ -124,6 +124,7 @@ Route::group(['prefix' => 'admin','middleware'=>['auth','admin']], function () {
     Route::post('/status-pendaftar/bulk-action',[StatusPendaftarController::class,'lolosall'])->name('bulk-action');
     Route::post('/status-tidaklolos',[StatusPendaftarController::class,'tidaklolos'])->name('tidak-lolos');
     Route::post('/status-hapusall',[StatusPendaftarController::class,'hapusall'])->name('hapusall');
+    Route::post('/status-pendaftar-hapus/{id}',[StatusPendaftarController::class, 'hapus'])->name('status-daftar-hapus');
     Route::get('/status-pendaftar/{id}',[StatusPendaftarController::class,'show'])->name('status-pendaftar.show');
     Route::get('/status-pendaftar/edit/{id}',[StatusPendaftarController::class,'edit'])->name('status-pendaftar.edit');
     Route::get('/filter-reset-tahatap-dua',[StatusPendaftarController::class,'filterreset'])->name('filter-reset-tahap2');

@@ -163,4 +163,10 @@ class StatusPendaftarController extends Controller
         return redirect()->back()->with('sukses-edit','Data Berhasil Dibuat');
     }
 
+    public function hapus($id)
+    {
+        Biodata2::findOrfail($id)->delete();
+        return redirect()->route('status-pendaftar')->with('hapus','Biodatata calon pendaftar berhasil di hapus');
+    }
+
 }

@@ -125,7 +125,7 @@
                                   <i class="fas fa-edit"></i> Edit
                                 </a>
 
-                                <button formaction="{{ route('informasi.destroy', $item->id) }}" class="btn btn-danger btn-icon icon-left btn-sm"> <i class="fas fa-times"></i> Hapus</button>
+                                <button formaction="{{ route('informasi.hapus', $item->id) }}" class="btn btn-danger btn-icon icon-left btn-sm"> <i class="fas fa-times"></i> Hapus</button>
                               </td>
                             </tr>
           

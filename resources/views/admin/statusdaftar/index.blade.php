@@ -157,7 +157,7 @@
                         <i class="fas fa-edit"></i>
                         Edit  
                       </a>  
-                      <button form="{{ route('pendaftar-hapus', $item->id ) }}" class="btn btn-danger btn-sm btn-icon icon-left"> <i class="fas fa-trash"></i> delete</button>
+                      <button formaction="{{ route('status-daftar-hapus', $item->id ) }}" class="btn btn-danger btn-sm btn-icon icon-left"> <i class="fas fa-trash"></i> delete</button>
                     </td>
                 </tr>
                 @endforeach
