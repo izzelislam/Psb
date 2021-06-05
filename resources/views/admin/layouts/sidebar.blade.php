@@ -15,7 +15,7 @@
               {{-- <li class="nav-item {{ request()->is('admin/data-pendaftar') ? 'active' : '' }}">
                 <a href="{{ route('data-pendaftar') }}" class="nav-link "><i class="fas fa-user-graduate"></i><span>Data Pendaftar</span></a>
               </li> --}}
-              <li class="nav-item {{ request()->is('admin/status-pendaftar') ? 'active' : '' }}">
+              <li class="nav-item {{ request()->is('admin/status-pendaftar*') ? 'active' : '' }}">
                 <a href="{{ route('status-pendaftar') }}" class="nav-link "><i class="fas fa-id-card"></i><span>Biodata</span></a>
               </li>
               <li class="nav-item {{ request()->is('admin/nilai') ? 'active' : '' }}">

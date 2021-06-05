@@ -160,7 +160,7 @@ class StatusPendaftarController extends Controller
         ]);
 
         $biodata2->update($request->except(['nama','umur','no_wa','keluarga']));
-        return redirect()->back()->with('sukses-edit','Data Berhasil Dibuat');
+        return redirect()->route('status-pendaftar')->with('edit-sukses','Data Berhasil Diedit');
     }
 
     public function hapus($id)

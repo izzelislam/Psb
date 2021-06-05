@@ -27,6 +27,18 @@
             </div>
         @endif
     @endif
+    @if (session('edit-sukses'))
+        @if (session('edit-sukses'))
+            <div class="alert alert-info alert-dismissible show fade">
+            <div class="alert-body">
+                <button class="close" data-dismiss="alert">
+                <span>&times;</span>
+                </button>
+                {{ session('edit-sukses') }}
+            </div>
+            </div>
+        @endif
+    @endif
 
     <div class="card">
       <div class="card-header">
@@ -148,11 +160,8 @@
                         <i class="fas fa-eye"></i>
                         Detail  
                       </a>
-                      <a href="#mymodal"
-                        data-remote="{{ route('status-pendaftar.edit',$item->id) }}"
-                        data-toggle="modal"
-                        data-target="#mymodal"
-                        data-title="Detail Data" 
+                      <a
+                        href="{{ route('status-pendaftar.edit',$item->id) }}"
                         class="btn btn-primary btn-sm btn-icon icin-right">
                         <i class="fas fa-edit"></i>
                         Edit  
@@ -331,6 +340,7 @@
                 
         `});
     </script>
+    {{-- modal deatil --}}
     <script>
       jQuery(document).ready(function($){
         $('#mymodal').on('show.bs.modal',function(e){
@@ -358,6 +368,7 @@
         </div>
       </div>
     </div>
+
 @endpush
                             
                                 

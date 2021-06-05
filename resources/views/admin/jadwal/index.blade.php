@@ -58,13 +58,13 @@
                                 <button href="" class="btn .btn-icon .icon-left btn-primary ml-2" id="del1"> Hapus Semua</button>
                             </div>
                            <div class="btn-group dropleft d-inline float-right">
-                                <a class="btn btn-info ml-2 btn-icon icon-left"
+                                {{-- <a class="btn btn-info ml-2 btn-icon icon-left"
                                    href="#mymodal"
                                    data-toggle="modal"
                                    data-target="#mymodal"
                                    data-remote="{{ route('informasi.create') }}"
-                                >
-                                  {{-- <a href="{{ route('informasi.create') }}" class="btn btn-info ml-2 btn-icon icon-left" > --}}
+                                > --}}
+                                  <a href="{{ route('informasi.create') }}" class="btn btn-info ml-2 btn-icon icon-left" >
                                   <i class="fas fa-plus"></i>
                                   Buat Data
                                 </a>
@@ -115,12 +115,18 @@
                                   <i class="fas fa-eye"></i> Detail
                                 </a>
                                 
-                                <a 
+                                {{-- <a 
                                   href="#mymodal"
                                   data-target="#mymodal"
                                   data-toggle="modal"
                                   data-remote="{{ route('informasi.edit', $item->id) }}"
                                   id="edit-data"
+                                  class="btn btn-info btn-icon icon-left btn-sm"> 
+                                  <i class="fas fa-edit"></i> Edit
+                                </a> --}}
+
+                                <a 
+                                  href="{{ route('informasi.edit', $item->id) }}"
                                   class="btn btn-info btn-icon icon-left btn-sm"> 
                                   <i class="fas fa-edit"></i> Edit
                                 </a>
