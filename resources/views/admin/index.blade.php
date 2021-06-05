@@ -190,7 +190,7 @@
               '19',
               '20',
               'diatas 21',
-              'dibawah 21'
+              'dibawah 16'
             ],
           },
           options: {
