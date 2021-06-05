@@ -204,7 +204,7 @@
                 @if ($biodata2->suka_game == 'iya')
                     <tr>
                         <td>Nama Game</td>
-                        <td>{{ $biodata2->nama_game }} &nbsp; Jam</td>
+                        <td>{{ $biodata2->nama_game }}</td>
                    </tr>
                    <tr>
                         <td>Durasi Main Game</td>
