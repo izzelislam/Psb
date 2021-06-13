@@ -96,6 +96,11 @@
                     </button>
                   </div>
                 </form>
+                <div class="row">
+                  <div class="col d-flex justify-content-center">
+                    <a href="{{ route('password-getemail') }}"><small class="tex-center">Lupa password ?</small></a>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="mt-3 text-muted text-center">

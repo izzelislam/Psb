@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\SoalTesIqController;
 use App\Http\Controllers\Admin\SoalTesKepribadianController;
 use App\Http\Controllers\Admin\VideoController as AdminVideoController;
 use App\Http\Controllers\Admin\WawancaraController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -83,6 +84,10 @@ Route::group(['prefix' => ''], function () {
     Route::get('/register',[AuthController::class,'register'])->name('register');
     Route::post('/register-proses',[AuthController::class,'registerProses'])->name('register-proses');
     Route::post('/logout',[AuthController::class,'logout'])->name('logout');
+    Route::get('/forget-password', [ForgotPasswordController::class, 'getEmail'])->name('password-getemail');
+    Route::post('/forget-password',[ForgotPasswordController::class, 'postEmail'])->name('pasword-postemail');
+    Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'getPassword'])->name('getPassword');
+    Route::post('/reset-password', [ForgotPasswordController::class, 'updatePassword'])->name('update-password');
 });
 
 // halaman admin
