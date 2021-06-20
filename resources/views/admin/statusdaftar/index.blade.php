@@ -342,7 +342,7 @@
     </script>
     {{-- modal deatil --}}
     <script>
-      jQuery(document).ready(function($){
+      $(document).ready(function($){
         $('#mymodal').on('show.bs.modal',function(e){
           var button =  $(e.relatedTarget);
           var modal  = $(this);

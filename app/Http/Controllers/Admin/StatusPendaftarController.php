@@ -71,7 +71,7 @@ class StatusPendaftarController extends Controller
     public function show($id)   
     {
         $biodata2=Biodata2::find($id);
-        dd($biodata2);
+        //dd($biodata2);
         return view('admin.statusdaftar.detail',compact('biodata2'));
     }
 
