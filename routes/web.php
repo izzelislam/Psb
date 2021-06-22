@@ -38,9 +38,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('emails.verifikasi');
+// });
+
 //halaman depan 
 Route::group(['prefix' => '','middleware'=>['guest']],function () {
-    Route::get('/',[FrontpageController::class,'index'])->name('front-page');
+    // Route::get('/',[FrontpageController::class,'index'])->name('front-page');
     Route::get('/question-and-answer',[FrontpageController::class,'qna'])->name('qna');
     Route::get('/informasi',[FrontpageController::class,'informasi'])->name('informasi');
     Route::get('/informasi-detail/{id}',[FrontpageController::class,'infodetail'])->name('informasi-detail');
