@@ -1,12 +1,12 @@
 @component('mail::message')
-# hello
+# Order Shipped
 
-Silahkan Klik tombol dibawah ini untuk melakukan ResetPassword anda.
+Your order has been shipped!
 
-@component('mail::button', ['url' => ''])
-Reset Password
+@component('mail::button', ['url' => '#'])
+View Order
 @endcomponent
 
-Terimakasih,<br>
-Admin
+Thanks,<br>
+{{ config('app.name') }}
 @endcomponent
