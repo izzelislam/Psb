@@ -50,7 +50,7 @@ Admin
           <p>
             atau klik link di bawah jika tombol di atas tidak berfungsi
           </p>
-          <a href="{{ route('getPassword', $user['token']) }}"></a>
+          <a href="{{ route('getPassword', $user['token']) }}">{{ route('getPassword', $user['token']) }}</a>
         </div>
       </div>
     </div>
