@@ -244,3 +244,27 @@ b {
 .card-info{
     margin-top: 100px;
 }
+
+
+/* email markup */
+
+.btn-confirm {
+    background-color: #363F48;
+    color: #fff;
+    width: 30px;
+    height: 15px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.btn-confirm a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.wrapper-email {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
