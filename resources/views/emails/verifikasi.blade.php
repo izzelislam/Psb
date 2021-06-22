@@ -28,5 +28,4 @@ Reset Password
 
 Terimakasih,<br>
 Admin
-
 @endcomponent
