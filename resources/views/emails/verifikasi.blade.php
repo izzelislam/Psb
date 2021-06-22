@@ -1,12 +1,12 @@
 @component('mail::message')
-# Order Shipped
+# Halo
 
-Your order has been shipped!
+Klik tombol di bawah ini untuk reset password
 
-@component('mail::button', ['url' => '#'])
-View Order
+@component('mail::button', ['url' => url('reset-password', $user['token'])])
+Reset Password
 @endcomponent
 
 Thanks,<br>
-{{ config('app.name') }}
+Admin
 @endcomponent
