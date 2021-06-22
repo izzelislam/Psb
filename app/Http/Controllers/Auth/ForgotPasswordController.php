@@ -23,6 +23,12 @@ class ForgotPasswordController extends Controller
         $request->validate([
             'email' => 'required|email|exists:users',
         ]);
+
+        $validateEmail = User::where('email', $request->email)->first();
+
+        if (!$validateEmail){
+            return back()->with('gagal-kirim', 'email anda belum terdaftar');
+        }
         
         $token = bin2hex(random_bytes(40));
         $user = [

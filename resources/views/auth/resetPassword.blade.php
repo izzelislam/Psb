@@ -34,7 +34,12 @@
                   <div class="alert alert-success">
                     {{ session('sukses-buat') }} <br>
                   </div>
-              @endif        
+              @endif
+              @if (session('gagal-kirim'))
+                  <div class="alert alert-danger">
+                    {{ session('gagal-kirim') }} <br>
+                  </div>
+              @endif          
               <div class="card-body">
                 <form method="POST" action="{{ route('update-password') }}" class="needs-validation" novalidate="">
                   @csrf
