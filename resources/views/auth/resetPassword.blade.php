@@ -90,7 +90,7 @@
             </div>
 
             <div class="simple-footer">
-              Copyright &copy; pondok Informatika 2020
+              Copyright &copy; pondok Informatika {{ date('Y') }}
             </div>
           </div>
         </div>

@@ -1,17 +1,44 @@
-@component('mail::message')
-# Halo
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-Untuk melakukan reset password silahkan klik tombol dibawah ini
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
 
-@component('mail::button', ['url' => '#'])
-Reset Password
-@endcomponent
+    <title>Hello, world!</title>
+  </head>
+  <body>
+     
+    <div class="w-50 m-auto">
+      <div class="card p-5">
+        {{-- logo --}}
+        <img style="width: 100px" src="{{ asset('front/assets/img/pita_avatar.png') }}" alt="">
+        {{-- text --}}
 
-atau klik dibawah ini jika tombol di atas tidak berfungsi
-<small>
-  <a href="{{ route('getPassword', $user['token']) }}">{{ route('getPassword', $user['token']) }}</a>
-</small>
+        <div class="div">
+          <h3>halo !</h3>
 
-Terimakasih,<br>
-Admin
-@endcomponent
+          <p>
+            untuk melakukan reset password silahkan klik link dibawah ini
+          </p>
+          <br>
+          <br>
+          <a href="{{ route('getPassword', $user['token']) }}">
+            {{ route('getPassword', $user['token']) }}
+          </a>
+          <br>
+          <br>
+          {{ date('Y') }} {{ 'PondokInformatika-AlMadinah' }}. @lang('All rights reserved.')
+          
+
+        </div>
+      </div>
+    </div>
+
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
