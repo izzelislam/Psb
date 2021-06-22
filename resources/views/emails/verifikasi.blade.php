@@ -1,12 +1,12 @@
 @component('mail::message')
 # Halo
 
-Klik tombol di bawah ini untuk reset password
+Untuk melakukan reset password silahkan klik tombol dibawah ini
 
-@component('mail::button', ['url' => url('reset-password', $user['token'])])
+@component('mail::button', ['url' => '#'])
 Reset Password
 @endcomponent
 
-Thanks,<br>
+Terimakasih,<br>
 Admin
 @endcomponent
