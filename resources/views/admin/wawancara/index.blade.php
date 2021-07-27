@@ -51,6 +51,9 @@
                           <a class="dropdown-item" id="hp1"> Hapus</a>
                         </div>
                       </div>
+                      <div>
+                        <a href="{{ route('wawancara-export') }}" class="btn btn-primary">Export Wawancara</a>
+                      </div>
                       </div>
                         <form method="POST">
                         @csrf

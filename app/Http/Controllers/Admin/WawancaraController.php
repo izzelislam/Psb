@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\WawancaraExport;
 use App\Http\Controllers\Controller;
 use App\Models\Wawancara;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class WawancaraController extends Controller
 {
@@ -77,5 +79,10 @@ class WawancaraController extends Controller
         }else{
             return redirect()->back();
         }
+    }
+
+    public function wawancaraExport()
+    {
+        return Excel::download(new WawancaraExport, 'data calon santri wawancara.xlsx');
     }
 }

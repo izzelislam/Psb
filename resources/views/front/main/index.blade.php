@@ -37,16 +37,16 @@
                 </div>
                 <div class="row mt-5">
 
-                <div class="col m-auto ">
-                    <div class="d-none d-md-block">
-                        {{-- <img src="{{ asset('front/assets/img/book.png') }}" class="book" style="width: 45%;
-                        margin-bottom: -70px;" alt="" data-aos="zoom-in-up" data-aos-delay="1500" data-aos-duration="1000" /> --}}
-                        <iframe class="book" width="560" height="315" src="https://www.youtube.com/embed/Aa4oPlkvxMY" title="YouTube video player"  frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="col m-auto ">
+                        <div class="d-none d-md-block">
+                            {{-- <img src="{{ asset('front/assets/img/book.png') }}" class="book" style="width: 45%;
+                            margin-bottom: -70px;" alt="" data-aos="zoom-in-up" data-aos-delay="1500" data-aos-duration="1000" /> --}}
+                            <iframe class="book" width="560" height="315" src="https://www.youtube.com/embed/Aa4oPlkvxMY" title="YouTube video player"  frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="d-sm-block d-md-none">
+                            <iframe class="book" width="295" height="172" src="https://www.youtube.com/embed/Aa4oPlkvxMY" title="YouTube video player"  frameborder="0" allow="accelerometer;clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
                     </div>
-                    <div class="d-sm-block d-md-none">
-                        <iframe class="book" width="295" height="172" src="https://www.youtube.com/embed/Aa4oPlkvxMY" title="YouTube video player"  frameborder="0" allow="accelerometer;clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
 
                 </div>
             </div>

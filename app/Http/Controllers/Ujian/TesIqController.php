@@ -99,7 +99,7 @@ class TesIqController extends Controller
             $data=Quis::where('users_id','=',Auth::user()->id)->pluck('id')->first();
             $nilai_kepribadian=Quis::find($data); 
             $nilai_kepribadian->update(['nilai_tes_kepribadian'=>$nilai]);     
-            return redirect()->route('sukses');
         }
+        return redirect()->route('sukses');
     }
 }

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\NilaiExport;
 use App\Http\Controllers\Controller;
 use App\Models\Biodata2;
 use App\Models\Quis;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class NilaiController extends Controller
 {
@@ -95,5 +97,10 @@ class NilaiController extends Controller
     public function filterreset()
     {
         return redirect()->route('nilai.index');
+    }
+
+    public function exportNilai()
+    {
+        return Excel::download(new NilaiExport, 'nilai hasl tes.xlsx');
     }
 }

@@ -148,6 +148,7 @@ Route::group(['prefix' => 'admin','middleware'=>['auth','admin']], function () {
     Route::post('/nilai-tidak-lolos-all',[NilaiController::class,'nilailolosall'])->name('nilai-lolos.all');
     Route::post('/nilai-tidak-tidak-lolos-all',[NilaiController::class,'nilaitidaklolosall'])->name('nilai-tidak-lolos.all');
     Route::get('/nilai-filter-reset',[NilaiController::class,'filterreset'])->name('nilai-filter.reset');
+    Route::get('/nilai-export',[NilaiController::class, 'exportNilai'])->name('export-nilai');
 
     // video
     Route::get('/video',[AdminVideoController::class,'index'])->name('video.index');
@@ -157,6 +158,7 @@ Route::group(['prefix' => 'admin','middleware'=>['auth','admin']], function () {
     Route::post('/video-hapus-all',[AdminVideoController::class,'hapusall'])->name('video-hapus.all');
     Route::post('/video-lolos-all',[AdminVideoController::class,'lolosall'])->name('video-lolos.all');
     Route::post('/video-tidak-lolos-all',[AdminVideoController::class,'tidaklolosall'])->name('video-tidak-lolos.all');
+    Route::get('/video-export',[AdminVideoController::class,'videoExport'])->name('video-export');
 
     // tes iq
     Route::resource('/soal-tes-iq', SoalTesIqController::class);
@@ -183,6 +185,7 @@ Route::group(['prefix' => 'admin','middleware'=>['auth','admin']], function () {
     Route::post('/wawancara-hapus-all',[WawancaraController::class,'hapusall'])->name('wawancara-hapus.all');
     Route::post('/wawancara-lolos-all',[WawancaraController::class,'lolosall'])->name('wawancara-lolos.all');
     Route::post('/wawancara-tidak-lolos-all',[WawancaraController::class,'tidaklolosall'])->name('wawancara-tidak-lolos.all');
+    Route::get('/wawancara-export', [WawancaraController::class, 'wawancaraExport'])->name('wawancara-export');
 
     // lolos
     Route::get('/calon-santri-baru',[LolosController::class,'index'])->name('lolos.index');

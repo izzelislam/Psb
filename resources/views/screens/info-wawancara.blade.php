@@ -17,20 +17,20 @@
 </head>
 
 <body>
-  <div id="app" style="background-color: #fff;">
+  <div id="app" style="background-color: #fff; height: 100%;" >
     <div class="col-12 col-md-12 col-sm-12">
         <div class="empty-state" style="height: 100vh;backgroud-color:#fff;">
             <div class="empty-state-icon">
                 <i class="fas fa-microphone"></i>
             </div>
             <h2>Berhasil</h2>
-                <p class="lead">
-                Data berhasil di kirim silahkan kembali ke beranda
+            <p class="lead">
+              Data berhasil di kirim silahkan kembali ke beranda
             </p>
-                <a href="{{ route('dashboard-user') }}" class="btn btn-primary mt-4">Kembali ke beranda</a>
+            <a href="{{ route('dashboard-user') }}" class="btn btn-primary mt-4">Kembali ke beranda</a>
         </div>
     </div>
-</div>
+  </div>
 
   <!-- General JS Scripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

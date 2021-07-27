@@ -13,8 +13,25 @@
             <p class="card-text">
               Silahkan kirim Link Video Melalui Form Dibawah Ini !
             </p>
+
             <div class="card text-left overflow-auto">
               <div class="card-body">
+
+                <h5>Video cara mengirimkan link video</h5>
+                <p>bagi yang kesulitan mangikuti tes tahap ini bisa simak video di bawah ini</p>
+                <div class="row">
+                  <div class="col m-auto ">
+                    <div class="d-none d-md-block">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/_ZJLc9FgvSM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="d-sm-block d-md-none">
+                        <iframe width="295" height="172" src="https://www.youtube.com/embed/_ZJLc9FgvSM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                  </div>
+                </div>
+
+                <hr class="mb-4 pb-4">
+
                 <form method="POST" action="{{ route('tahap-empat-video.store') }}">
                   @csrf
                   <div class="form-group">
@@ -34,7 +51,7 @@
                     Kirim
                   </button>
                 </form>
-              </div>
+              </div>              
             </div>
           </div>
         </div>

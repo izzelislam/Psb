@@ -41,16 +41,19 @@
                   </div>
                   <div class="card-body">
                       <div class="row mb-3 justify-content-between">
-                      <div class="col">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Aksi Masal
-                        </button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" id="lol1"> Lolos</a>
-                          <a class="dropdown-item" id="nl1"> Tidak Lolos</a>
-                          <a class="dropdown-item" id="hp1"> Hapus</a>
+                        <div class="col">
+                          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Aksi Masal
+                          </button>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" id="lol1"> Lolos</a>
+                            <a class="dropdown-item" id="nl1"> Tidak Lolos</a>
+                            <a class="dropdown-item" id="hp1"> Hapus</a>
+                          </div>
                         </div>
-                      </div>
+                        <div>
+                          <a href="{{ route('video-export') }}" class="btn btn-primary ml-2">Export Excel</a>
+                        </div>
                       </div>
                         <form method="POST">
                         @csrf

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\VideoExport;
 use App\Http\Controllers\Controller;
 use App\Models\Video;
 use App\Models\Wawancara;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class VideoController extends Controller
 {
@@ -112,5 +114,10 @@ class VideoController extends Controller
         }else{
             return redirect()->back();
         }
+    }
+
+    public function videoExport()
+    {
+        return Excel::download(new VideoExport, 'data video.xlsx');
     }
 }

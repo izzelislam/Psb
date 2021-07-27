@@ -50,7 +50,8 @@
                           <a class="dropdown-item" id="nl1"> Tidak Lolos</a>
                           <a class="dropdown-item" id="hp1"> Hapus</a>
                         </div>
-                          <div class="btn-group dropleft d-inline float-right">
+                          <div class="d-inline float-right">
+                            <a href="{{ route('export-nilai') }}" class="btn btn-primary ml-2">Export Excel</a>
                               <button type="button" class="btn btn-info ml-2" id="filter">Filter</button>
                           </div>
                       </div>
