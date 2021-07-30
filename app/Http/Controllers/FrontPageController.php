@@ -17,7 +17,7 @@ class FrontPageController extends Controller
         }])->get();
 
         $gel=TahunAjaran::where('status','=','aktif')->pluck('gelombang')->first();
-        $pendaftar=$data->where('tahun_ajaran','!=',null)->count();
+        $pendaftar=$data->where('tahun_ajaran','==', 'aktif')->count();
         return view('front.main.index',compact('pendaftar','gel'));
     }
 

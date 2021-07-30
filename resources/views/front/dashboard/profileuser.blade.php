@@ -77,7 +77,7 @@
                                 <td>{{ $biodata2->user->quis->nilai_tes_iq }}</td>
                             </tr>
                             <tr>
-                                <td style="width: 280px;">Tes Iq</td>
+                                <td style="width: 280px;">Tes Kepribadian</td>
                                 <td>{{ $biodata2->user->quis->nilai_tes_kepribadian }}</td>
                             </tr>
                         </table>
