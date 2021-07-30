@@ -13,11 +13,14 @@ class FrontPageController extends Controller
     public function index()
     {
         $data=Biodata1::with(['tahun_ajaran'=>function($query){
-            $query->where('tahun',date('Y'));
+            $query->where([
+                ['tahun',date('Y'),],
+                ['status','aktif']
+            ]);
         }])->get();
 
         $gel=TahunAjaran::where('status','=','aktif')->pluck('gelombang')->first();
-        $pendaftar=$data->where('tahun_ajaran','==', 'aktif')->count();
+        $pendaftar=$data->where('tahun_ajaran','!=', null)->count();
         return view('front.main.index',compact('pendaftar','gel'));
     }
 
