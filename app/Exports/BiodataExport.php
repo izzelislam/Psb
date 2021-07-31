@@ -19,10 +19,15 @@ class BiodataExport implements FromView,ShouldAutoSize,WithHeadings,WithColumnFo
   
     public function view(): View
     {
-        $data=Biodata2::with(['tahun_ajaran'=>function($query){
-            $query->where('status','=','aktif');
-        },'user.biodata1'])->orderBy('created_at','desc');
-        
+        if (request()->get('gelombang') && request()->get('gelombang') != null){
+            $data=Biodata2::with(['tahun_ajaran'=>function($query){
+                $query->where('gelombang','=', request()->get('gelombang'));
+            },'user.biodata1'])->orderBy('created_at','desc');
+        } else {
+            $data=Biodata2::with(['tahun_ajaran'=>function($query){
+                $query->where('status','=','aktif');
+            },'user.biodata1'])->orderBy('created_at','desc'); 
+        }
         $data=$data->get();
 
         $biodata2=$data->where('tahun_ajaran','!=',null);
