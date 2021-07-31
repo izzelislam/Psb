@@ -51,8 +51,9 @@
                             <a class="dropdown-item" id="hp1"> Hapus</a>
                           </div>
                         </div>
-                        <div>
+                        <div class="d-inline">
                           <a href="{{ route('video-export') }}" class="btn btn-primary ml-2">Export Excel</a>
+                          <button type="button" class="btn btn-info ml-2" id="filter">Filter</button>
                         </div>
                       </div>
                         <form method="POST">
@@ -150,31 +151,25 @@
       $("#filter").fireModal({
         title:'Filter Data',
         body: `
-          <form method="GET" action="{{ route('data-pendaftar') }}">
+          <form method="GET">
 
-            <div class="form-group">
-              <label for="exampleInputEmail1">Umur</label>
-              <select name="umur" class="custom-select">
-                <option selected value='null'>-- umur --</option>
-                <option value="16">16 Tahun</option>
-                <option value="17">17 Tahun</option>
-                <option value="18">18 Tahun</option>
-                <option value="19">19 Tahun</option>
-                <option value="20">20 Tahun</option>
-                <option value="21">21 Tahun</option>
-              </select>
-            </div>
-          
-            <div class="form-group">
-              <label for="exampleInputEmail1">Kondisi Keluarga</label>
-              <select name="keluarga" class="custom-select">
-                <option selected value='null'>-- Kondisi Keluarga --</option>
-                <option value="mampu">Keluarga Mampu</option>
-                <option value="tidak-mampu">Keluarga Tidak-Mampu</option>
-              </select>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Pilih Gelombang</label>
+                  <select name="gelombang" class="custom-select">
+                    <option value="" >-- pilih gelombang --</option>
+                    <option value="gel-1" {{ request()->get('gelombang') == 'gel-1' ? 'selected' : '' }} >GELOMBANG 1</option>
+                    <option value="gel-2" {{ request()->get('gelombang') == 'gel-2' ? 'selected' : '' }} >GELOMBANG 2</option>
+                    <option value="gel-3" {{ request()->get('gelombang') == 'gel-3' ? 'selected' : '' }}>GELOMBANG 3</option>
+                    <option value="gel-4" {{ request()->get('gelombang') == 'gel-4' ? 'selected' : '' }} >GELOMBANG 4</option>
+                  </select>
+                </div>
+              </div> 
             </div>
             
-            <button type="submit" class="btn btn-primary">Terapkan</button>
+            <button type="submit" formaction="{{ route('video.index') }}" class="btn btn-primary">Terapkan</button>
+            <button type="submit" formaction="{{ route('video-filter.reset') }}" class="btn btn-primary float-right">Atur Ulang</button>
              
           </form>
                 

@@ -13,9 +13,15 @@ class VideoController extends Controller
 {
     public function index()
     {
-        $data=Video::with(['tahun_ajaran'=>function($query){
-            $query->where('status','=','aktif');
-        },'user.biodata1'])->orderBy('created_at','desc')->get();
+        if (request()->get('gelombang') && request()->get('gelombang') != null){
+            $data=Video::with(['tahun_ajaran'=>function($query){
+                $query->where('gelombang','=', request()->get('gelombang'));
+            },'user.biodata1'])->orderBy('created_at','desc')->get();
+        }else {
+            $data=Video::with(['tahun_ajaran'=>function($query){
+                $query->where('status','=','aktif');
+            },'user.biodata1'])->orderBy('created_at','desc')->get();
+        }
         
         $video=$data->where('tahun_ajaran','!=',null);
         return view('admin.video.index',compact('video'));
@@ -119,5 +125,10 @@ class VideoController extends Controller
     public function videoExport()
     {
         return Excel::download(new VideoExport, 'data video.xlsx');
+    }
+
+    public function filterreset()
+    {
+        return redirect()->route('video.index');
     }
 }

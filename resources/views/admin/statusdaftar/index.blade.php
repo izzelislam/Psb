@@ -1,3 +1,6 @@
+@php
+    $gelombang = App\Models\TahunAjaran::all();
+@endphp
 @extends('admin.pages.app')
 
 @section('title','Data Biodata Pendaftar')
@@ -331,6 +334,21 @@
                     </div>
                   </div>
                 </div>
+              </div>
+
+              <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Pilih Gelombang</label>
+                      <select name="gelombang" class="custom-select">
+                        <option value="" >-- pilih gelombang --</option>
+                        <option value="gel-1" >GELOMBANG 1</option>
+                        <option value="gel-2" >GELOMBANG 2</option>
+                        <option value="gel-3" >GELOMBANG 3</option>
+                        <option value="gel-4" >GELOMBANG 4</option>
+                      </select>
+                    </div>
+                  </div> 
               </div>
             </div>  
            <button type="submit" formaction="{{ route('status-pendaftar') }}" class="btn btn-primary">Terapkan</button>

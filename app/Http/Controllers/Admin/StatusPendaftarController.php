@@ -14,9 +14,15 @@ class StatusPendaftarController extends Controller
 {
     public function index()
     {
-        $data=Biodata2::with(['tahun_ajaran'=>function($query){
-            $query->where('status','=','aktif');
-        },'user.biodata1'])->orderBy('created_at','desc');
+        if (request()->get('gelombang') && request()->get('gelombang') != null){
+            $data=Biodata2::with(['tahun_ajaran'=>function($query){
+                $query->where('gelombang','=',request()->get('gelombang'));
+            },'user.biodata1'])->orderBy('created_at','desc');
+        }else {
+            $data=Biodata2::with(['tahun_ajaran'=>function($query){
+                $query->where('status','=','aktif');
+            },'user.biodata1'])->orderBy('created_at','desc');
+        }
         
         if(request()->get('umur') && request()->get('umur') != null){
             $data=$data->whereHas('user',function($query){
@@ -63,9 +69,8 @@ class StatusPendaftarController extends Controller
             $query->where('status','=','aktif');
         },'user.biodata1'])->get();
 
-        $nilai = $data2->where('tahun_ajaran','!=',null);
         $biodata2=$data->where('tahun_ajaran','!=',null);
-        return view('admin.statusdaftar.index',compact('biodata2','nilai'));
+        return view('admin.statusdaftar.index',compact('biodata2'));
     }
 
     public function show($id)   

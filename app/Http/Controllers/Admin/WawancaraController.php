@@ -12,9 +12,15 @@ class WawancaraController extends Controller
 {
     public function index()
     {
-        $data=Wawancara::with(['tahun_ajaran'=> function($query){
-            $query->where('status','=','aktif');
-        },'user.biodata1'])->get();
+        if (request()->get('gelombang') && request()->get('gelombang') != null){
+            $data=Wawancara::with(['tahun_ajaran'=> function($query){
+                $query->where('gelombang','=',request()->get('gelombang'));
+            },'user.biodata1'])->get();
+        } else {
+            $data=Wawancara::with(['tahun_ajaran'=> function($query){
+                $query->where('status','=','aktif');
+            },'user.biodata1'])->get();
+        }
         
         $wawancara=$data->where('tahun_ajaran','!=',null);
         return view('admin.wawancara.index',compact('wawancara'));
@@ -84,5 +90,10 @@ class WawancaraController extends Controller
     public function wawancaraExport()
     {
         return Excel::download(new WawancaraExport, 'data calon santri wawancara.xlsx');
+    }
+
+    public function filterreset()
+    {
+        return redirect()->route('wawancara.index');
     }
 }
