@@ -17,7 +17,7 @@
                       <div class="col-md-8">
                         <div class="card-body">
                           <h5 class="card-title">{{ $item->title }}</h5>
-                          <p class="card-text">{!! \Illuminate\Support\Str::limit($item->isi,100, $end='.' ) !!}</p>
+                          <p class="card-text">{{ $item->title }}...</p>
                           <p class="card-text"><small class="text-muted">{{ $item->created_at->format('Y-m-d') }}</small></p>
                         </div>
                       </div>
